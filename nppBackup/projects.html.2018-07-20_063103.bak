@@ -98,7 +98,7 @@
 <hr>
 <h3 id="fractal"><a class="header-link" href="#fractal"></a>Fractal</h3>
 <p class="img-container"><img src="./imgs/fractal.png" alt="alt text" title="Fractal"></p>
-<p>The core of <em>Holy Land</em>&#39;s combat system, Fractal (formerly known as Fracas) is an event-driven combat engine for Twine/SugarCube2 developed to be highly configurable, easy to use, and fully functional out of the box.</p>
+<p>The core of <em>Holy Land</em>&#39;s combat system, Fractal (formally known as Fracas) is an event-driven combat engine for Twine/SugarCube2 developed to be highly configurable, easy to use, and fully functional out of the box.</p>
 <ul class="list">
 <li>Not yet available.</li>
 </ul>
