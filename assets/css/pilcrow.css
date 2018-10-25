@@ -40,3 +40,8 @@ h6:hover .header-link {
   display: inline-block;
   text-decoration: none;
 }
+
+.btn-container { 
+    float : right;
+    margin-left: 1em;
+}
