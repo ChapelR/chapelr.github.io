@@ -45,3 +45,7 @@ h6:hover .header-link {
     float : right;
     margin-left: 1em;
 }
+
+img[title="poof"] {
+    min-width: 50%;
+}
