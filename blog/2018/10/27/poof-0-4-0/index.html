@@ -5,20 +5,20 @@
   
 
   
-  <title>Welcome to TwineLab! | TwineLab</title>
+  <title>Poof v0.4.0 Release Notes | TwineLab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello world! TwineLab.net is going to be my new home on the web.  I also decided to move my blog off of the blogger platform and onto Hexo, which has been an interesting journey, to say the least.  Ve">
-<meta name="keywords" content="meta">
+  <meta name="description" content="Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views.  First, syntax highlighting powered by highlight.js has been added to both views. Passage source code doesn’t (and likely">
+<meta name="keywords" content="poof">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome to TwineLab!">
-<meta property="og:url" content="http://twinelab.net/blog/2018/07/14/a-new-site/index.html">
+<meta property="og:title" content="Poof v0.4.0 Release Notes">
+<meta property="og:url" content="http://twinelab.net/blog/2018/10/27/poof-0-4-0/index.html">
 <meta property="og:site_name" content="TwineLab">
-<meta property="og:description" content="Hello world! TwineLab.net is going to be my new home on the web.  I also decided to move my blog off of the blogger platform and onto Hexo, which has been an interesting journey, to say the least.  Ve">
+<meta property="og:description" content="Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views.  First, syntax highlighting powered by highlight.js has been added to both views. Passage source code doesn’t (and likely">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-27T06:24:39.318Z">
+<meta property="og:updated_time" content="2018-10-27T06:23:14.823Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to TwineLab!">
-<meta name="twitter:description" content="Hello world! TwineLab.net is going to be my new home on the web.  I also decided to move my blog off of the blogger platform and onto Hexo, which has been an interesting journey, to say the least.  Ve">
+<meta name="twitter:title" content="Poof v0.4.0 Release Notes">
+<meta name="twitter:description" content="Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views.  First, syntax highlighting powered by highlight.js has been added to both views. Passage source code doesn’t (and likely">
   
     <link rel="alternate" href="/blog/atom.xml" title="TwineLab" type="application/atom+xml">
   
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-a-new-site" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-poof-0-4-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2018/07/14/a-new-site/" class="article-date">
-  <time datetime="2018-07-14T22:57:13.000Z" itemprop="datePublished">2018-07-14</time>
+    <a href="/blog/2018/10/27/poof-0-4-0/" class="article-date">
+  <time datetime="2018-10-27T06:38:46.000Z" itemprop="datePublished">2018-10-27</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Welcome to TwineLab!
+      Poof v0.4.0 Release Notes
     </h1>
   
 
@@ -89,22 +89,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Hello world!</p>
-<p>TwineLab.net is going to be my new home on the web.  I also decided to move my blog off of the blogger platform and onto Hexo, which has been an interesting journey, to say the least.  Very easy to mess up, but also easier to configure, even if I haven’t done a lot of configuration just yet.</p>
-<p>I plan to try to write more blog posts going forward, but it is a hard sell.  I write for a living, and under a different name, so any time I spend blogging is time I spend both not working on my own projects, and not getting paid.  But blogging is good for the soul, and I feel like I lead a bit of a double life anymore; my Twine and non-Twine work seldom ever interact; people who want me for non-Twine projects don’t want to hear about Twine and vice-versa.  But Twine has become a part of my life in a fairly large way, and it seems wise to give that part of my life more space to vent.</p>
-<p>So here we are.  TwineLab is going to be dedicated to my Twine adventures.  I may occasionally cross over between my Twine and non-Twine work in the future and post about those things here, but for now, this seems the best way to scream into the void.</p>
-<p><del>There is one important caveat here, though.  All of TwineLab is client-side, with no server or backend.  That means no comments.  If you need to talk to me, seek me out as mentioned <a href="http://twinelab.net/about.html">here</a>.</del> Never mind.</p>
-<p>Also note that I’ve decided (at least for now) not to faff about with Google analytics.  So I have no idea if anyone will be reading this.  For that reason, if you are reading this and you see a disappointing lull in content, reach out to me and let me know.</p>
+        <p>Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views. </p>
+<p>First, syntax highlighting powered by <a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a> has been added to both views. Passage source code doesn’t (and likely won’t ever) get syntax highlighting, though. </p>
+<p>Second, a shiny new “lint” button has been added to the JavaScript view. This button uses a client-side, CDN-hosted version of <a href="https://jshint.com/" target="_blank" rel="noopener">JSHint</a> to help you debug your JavaScript code. It requires a web connection on at least the first use, though the script should cache itself for future offline usage. </p>
+<p>This version also includes a critical bug fix for compatibility with <a href="https://www.motoslave.net/tweego/" target="_blank" rel="noopener">Tweego</a>, which expects formats to be valid JSON, not just JavaScript (which is totally fair, mind you). Currently, the v0.3.x format files return a valid JavaScript object that is not valid JSON, which was unwise on my part and only implemented to save a few bytes. </p>
+<h2 id="In-future-0-4-x-versions"><a href="#In-future-0-4-x-versions" class="headerlink" title="In future 0.4.x versions:"></a>In future 0.4.x versions:</h2><p>A few patches will be released over the next few days/weeks to make the linter story format-aware to prevent false positives with certain code. </p>
+<p>As always, I intend to keep on top of any bugs or weirdness, too. </p>
+<h2 id="In-later-versions"><a href="#In-later-versions" class="headerlink" title="In later versions:"></a>In later versions:</h2><p>Depending on the reaction to the linting feature, a similar CSS validation feature may arrive in a future version, though validating CSS in the client-side may prove enough of a challenge that it may get pushed off to a later version or abandoned. JavaScript linting is a much bigger deal anyway, in my opinion. </p>
+<p>The PDF export option may get off-loaded to a CDN like the linter, meaning it will work as a cache-able script rather than being built in. This will massively reduce the size of poof, but may not be worth it based on how often this feature is used. </p>
+<p>At some point in the future, poof will go through a mild refactor of its codebase and build process to make it easier to work with, particularly for other devs. This will happen sometime prior to the full 1.0.0 release. </p>
+<p>I’m considering reworking the codebase to use node modules and webpack (or similar) as well, but such a refactor would increase the format’s size by a not insignificant margin, and only mildly help devs work on it, so I’m not convinced this is the right way to go. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2018/07/14/a-new-site/" data-id="cjnnuow010001aos3n36l2sqf" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2018/10/27/poof-0-4-0/" data-id="cjnr27kxv0000vgs3bztwjqpw" class="article-share-link">Share</a>
       
-        <a href="http://twinelab.net/blog/2018/07/14/a-new-site/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://twinelab.net/blog/2018/10/27/poof-0-4-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/meta/">meta</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
 
     </footer>
   </div>
@@ -112,15 +116,11 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2018/07/20/pronouns/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Pronouns and Game Settings
-        
-      </div>
-    </a>
   
+    <a href="/blog/2018/10/24/poof/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">What Is Poof?</div>
+    </a>
   
 </nav>
 
@@ -222,7 +222,7 @@
 <script>
   var disqus_shortname = 'twinelab';
   
-  var disqus_url = 'http://twinelab.net/blog/2018/07/14/a-new-site/';
+  var disqus_url = 'http://twinelab.net/blog/2018/10/27/poof-0-4-0/';
   
   (function(){
     var dsq = document.createElement('script');
