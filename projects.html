@@ -8,11 +8,37 @@
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
+    }
     </style>
     <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css"/>
     <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css"/>
     <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <style>
+      div.group {
+        height: 0;
+        overflow: hidden;
+      }
+      div.group.open-up {
+        height: unset;
+      }
+      a.group {
+        color: rebeccapurple;
+        font-size: 1.67em;
+        display: block;
+        padding: 0.5em 0;
+      }
+      a.group:hover, a.group:active, a.group:focus {
+        text-decoration: none;
+      }
+      a.group:hover, a.group:active {
+        background-color: #e5e5e5;
+      }
+      img[title="poof"] {
+        width: 65%;
+        margin-top: -5em;
+        margin-bottom: -5em;
+      }
+    </style>
   </head>
 <body>
 
@@ -38,23 +64,16 @@
   </div>
 
   <div class="container"><h2 id="projects"><a class="header-link" href="#projects"></a>Projects</h2><script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#EE82EE', 'F1F8IC35');kofiwidget2.draw();</script> 
-<p>Twine-related things I&#39;ve been working on:</p>
+<p>Software things I&#39;ve been working on:</p>
 <hr>
+<a href='javascript:void(0)' class='group' id='scripts-open'>Macros, Scripts, and Systems for Twine</a>
+<div class='group' id='scripts'>
 <h3 id="custom-macro-collection"><a class="header-link" href="#custom-macro-collection"></a>Custom Macro Collection</h3>
 <p class="img-container"><img src="./imgs/custom-macros.png" alt="Custom Macro Collection" title="Custom Macro Collection"></p>
 <p>A collection of macros and systems for the SugarCube 2 story format of Twine.</p>
 <ul class="list">
 <li><a href="https://github.com/ChapelR/custom-macros-for-sugarcube-2">Repo</a></li>
 <li><a href="https://twinelab.net/holy-land-demo/custom-macros">Demo</a></li>
-</ul>
-<hr>
-<h3 id="poof"><a class="header-link" href="#poof"></a>Poof</h3>
-<p class="img-container"><img src="./imgs/poof.svg" alt="poof" title="poof"></p>
-<p>A Twine 2 proofing format.</p>
-<ul class="list">
-<li><a href="https://twinelab.net/poof/">Website</a></li>
-<li><a href="https://github.com/ChapelR/poof">Repo</a></li>
-<li><a href="https://twinelab.net/poof/demo/">Demo</a></li>
 </ul>
 <hr>
 <h3 id="noble-avatars"><a class="header-link" href="#noble-avatars"></a>Noble Avatars</h3>
@@ -73,7 +92,35 @@
 <li><a href="https://twinelab.net/harlowe-audio/">Website</a></li>
 <li><a href="https://github.com/ChapelR/harlowe-audio">Repo</a></li>
 </ul>
+</div>
+<a href='javascript:void(0)' class='group' id='tools-open'>Tools for Twine and Tweego</a>
+<div class='group' id='tools'>
+<h3 id="poof"><a class="header-link" href="#poof"></a>Poof</h3>
+<p class="img-container"><img src="./imgs/poof.svg" alt="poof" title="poof"></p>
+<p>A Twine 2 proofing format.</p>
+<ul class="list">
+<li><a href="https://twinelab.net/poof/">Website</a></li>
+<li><a href="https://github.com/ChapelR/poof">Repo</a></li>
+<li><a href="https://twinelab.net/poof/demo/">Demo</a></li>
+</ul>
 <hr>
+<h3 id="tweego-installer"><a class="header-link" href="#tweego-installer"></a>Tweego Installer</h3>
+<p class="img-container"><img src="./imgs/twine.png" title="Tweego Installer"></p>
+<p>An executable that installs Tweego on Windows operating systems. It installs the appropriate version for your system automatically, and sets the environment variables and can optionally install all the default Twine 2 story formats as well.</p>
+<ul class="list">
+<li><a href="https://github.com/ChapelR/tweego-installer/releases">Downloads</a></li>
+<li><a href="https://github.com/ChapelR/tweego-installer">Repo</a></li>
+</ul>
+<hr>
+<h3 id="tweego-basic-setup"><a class="header-link" href="#tweego-basic-setup"></a>Tweego Basic Setup</h3>
+<p class="img-container"><img src="./imgs/twine.png" title="Tweego Setup"></p>
+<p>A blank Tweego project with all the trimmings, like source code minification and linting.  Used as a basis for most of my Twine projects.</p>
+<ul class="list">
+<li><a href="https://github.com/ChapelR/tweego-setup">Repo</a></li>
+</ul>
+</div>
+<a href='javascript:void(0)' class='group' id='apps-open'>Applications</a>
+<div class='group' id='apps'>
 <h3 id="spellbook"><a class="header-link" href="#spellbook"></a>Spellbook</h3>
 <p class="img-container"><img src="./imgs/spellbook.png" title="Spellbook App"></p>
 <p>A Dungeons and Dragons 5e spellbook application.</p>
@@ -81,17 +128,9 @@
 <li><a href="https://twinelab.net/spellbook/">The App</a></li>
 <li><a href="https://github.com/ChapelR/spellbook-source">Source Code</a></li>
 </ul>
-<hr>
-<h3 id="tweego-basic-setup"><a class="header-link" href="#tweego-basic-setup"></a>Tweego Basic Setup</h3>
-<p class="img-container"><img src="./imgs/twine.png" title="Noble Avatars"></p>
-<p>A blank Tweego project with all the trimmings, like source code minification and linting.  Used as a basis for most of my Twine projects.</p>
-<ul class="list">
-<li><a href="https://github.com/ChapelR/tweego-setup">Repo</a></li>
-</ul>
-<hr>
-<h2 id="in-development"><a class="header-link" href="#in-development"></a>In Development</h2>
-<p>Projects I&#39;m still hard at work on that will one day come out.</p>
-<hr>
+</div>
+<a href='javascript:void(0)' class='group' id='dev-open'>In Development</a>
+<div class='group' id='dev'>
 <h3 id="deep-dive"><a class="header-link" href="#deep-dive"></a>Deep Dive</h3>
 <p class="img-container"><img src="./imgs/deep-dive.png" title="Deep Dive"></p>
 <p>Currently in development.</p>
@@ -119,10 +158,27 @@
 <ul class="list">
 <li>Not yet available.</li>
 </ul>
-<hr>
+</div>
   </div>
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+        function openUp (id) {
+            $(id).toggleClass('open-up');
+        }
+        function clickOpen (group) {
+            $('#' + group + '-open').on('click', function (ev) {
+                ev.preventDefault();
+                openUp('#' + group);
+            });
+        };
+        clickOpen('scripts');
+        clickOpen('tools');
+        clickOpen('apps');
+        clickOpen('dev');
+    });
+  </script>
 </body>
 </html>
