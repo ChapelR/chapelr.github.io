@@ -5,20 +5,20 @@
   
 
   
-  <title>Poof v1.0.0 Release Notes | TwineLab</title>
+  <title>Poof v1.2.0 Release Notes | TwineLab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="They grow up so fast.  As mentioned in the notes for the last release, I’ve moved poof’s distribution to a CDN to avoid using the bandwidth from my personal site to host it. This has made the URL a li">
+  <meta name="description" content="Poof v1.2.0 is here (already). This version ties up some loose ends in the re-implemented PDF export feature. Note: If you’re having trouble with updating, grab the new link from the poof documentatio">
 <meta name="keywords" content="poof">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Poof v1.0.0 Release Notes">
-<meta property="og:url" content="http://twinelab.net/blog/2018/11/21/poof-1-0-0/index.html">
+<meta property="og:title" content="Poof v1.2.0 Release Notes">
+<meta property="og:url" content="http://twinelab.net/blog/2019/04/05/poof-1-2-0/index.html">
 <meta property="og:site_name" content="TwineLab">
-<meta property="og:description" content="They grow up so fast.  As mentioned in the notes for the last release, I’ve moved poof’s distribution to a CDN to avoid using the bandwidth from my personal site to host it. This has made the URL a li">
+<meta property="og:description" content="Poof v1.2.0 is here (already). This version ties up some loose ends in the re-implemented PDF export feature. Note: If you’re having trouble with updating, grab the new link from the poof documentatio">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-21T21:23:38.534Z">
+<meta property="og:updated_time" content="2019-04-05T11:53:37.524Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Poof v1.0.0 Release Notes">
-<meta name="twitter:description" content="They grow up so fast.  As mentioned in the notes for the last release, I’ve moved poof’s distribution to a CDN to avoid using the bandwidth from my personal site to host it. This has made the URL a li">
+<meta name="twitter:title" content="Poof v1.2.0 Release Notes">
+<meta name="twitter:description" content="Poof v1.2.0 is here (already). This version ties up some loose ends in the re-implemented PDF export feature. Note: If you’re having trouble with updating, grab the new link from the poof documentatio">
   
     <link rel="alternate" href="/blog/atom.xml" title="TwineLab" type="application/atom+xml">
   
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-poof-1-0-0" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-poof-1-2-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2018/11/21/poof-1-0-0/" class="article-date">
-  <time datetime="2018-11-21T21:25:00.000Z" itemprop="datePublished">2018-11-21</time>
+    <a href="/blog/2019/04/05/poof-1-2-0/" class="article-date">
+  <time datetime="2019-04-05T12:02:06.000Z" itemprop="datePublished">2019-04-05</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Poof v1.0.0 Release Notes
+      Poof v1.2.0 Release Notes
     </h1>
   
 
@@ -89,18 +89,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>They grow up so fast. </p>
-<p>As mentioned in the notes for the last release, I’ve moved poof’s distribution to a CDN to avoid using the bandwidth from my personal site to host it. This has made the URL a little less sexy. For now, I’ve kept the old URL functional, but in a few weeks I’ll deactivate it, so be ready for that. </p>
-<p>This release is a bit boring, as there’s no real changes anywhere, other than a migration to Gulp v4 to get rid of an annoying security warning from NPM. </p>
-<p>Other than that, the move, and the version bump, this is poof 0.5.1 in every other way. </p>
-<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>Poof is going into maintenance mode for the foreseeable future, so expect mostly bug fixes and boring releases for a while, with little in the way of new features or excitement. </p>
+        <p>Poof v1.2.0 is here (already). This version ties up some loose ends in the re-implemented PDF export feature.</p>
+<p><em>Note</em>: If you’re having trouble with updating, grab the new link from the <a href="https://poof.twinelab.net/" target="_blank" rel="noopener">poof documentation</a>. I’ve updated the link there to always, always grab the latest stable version.</p>
+<p>You now have options (configurable by the <code>poof.config</code> special passage) to control some basic styles of the generated PDF. First, you can select from on of three basic fonts: a serif option (Georgia), a sans-serif option (Roboto), and a monospace option (Consolas). Because the PDF export process requires fonts to be loaded as base-64 data into a “virtual file system”, the best I can do is provide basic options. Having three inoffensive options from the main font categories seemed like the wisest choice. Users can now also specify font sizes, the options are <code>very small</code>, <code>small</code>, <code>normal</code>, <code>large</code>, and <code>very large</code>. Normal is 12-point, very small is 8-point and very large is 16-point. The final option given is one for line height (or line spacing, if yoou prefer). You can set this option to a value between <code>1</code> and <code>2</code>, with <code>1</code> being single-spaced and <code>2</code> being double-spaced. The defaul line height is <code>1.15</code>.</p>
+<p>The style options provided above are all the low-hanging fruit I could manage. Since the new implementation generates a PDF on the fly from the HTML data, rather than generating a canvas image from the same, the styling options are fairly limited; it’s not as simple as recreating what appears on the screen anymore. In other words, we lost line numbers but gained copy/paste. And I’m alright with that. The simpler structure should be nicer for printers anyway. As always, though, if you want more, let me know and I’ll see if it’s at least possible.</p>
+<p>In addition, a the loading screen is now called when a PDF generates. For short projects, you’ll see nothing at all, maybe a flash. For lengthier projects, the process can take several seconds or more, and messing with the filtering or sorting during this process is probably unwise, so I decided to lock out the screen completely instead of risking that happening. It shouldn’t take more than fifteen or so seconds to generate the PDF, even in novel-length projects, but the speed of the operation will vary from machine to machine and browser to browser. </p>
+<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>Poof is going back on my maintenance shelf for now. I’m pleased with the new PDF implementation as it’s been a net positive all across the format, and getting the Twee encoder to respect filter and sort was something I was happy to knock out along the way. But other than those things, I don’t think there’s much more that needs to be done here.</p>
+<p>I’ll be on the lookout for bugs, problems, and feature requests, as always.</p>
+<h2 id="In-a-future-version-made-by-someone-smarter-than-me"><a href="#In-a-future-version-made-by-someone-smarter-than-me" class="headerlink" title="In a future version made by someone smarter than me:"></a>In a future version made by someone smarter than me:</h2><p>I jest, but I’ve been asked about implementing a “play order” sorting method. While this is theoretically possible, the only real way to do it would be to load up the story format engine in question, crawl the file somehow, and then interpret that order in a way that could be meaningfully sorted. I’m open to ideas, but I don’t believe this is possible–even parsing just the markup links in each passage to contruct a rough order would be expensive performance-wise and time-consuming to implement. Not to mention that it wouldn’t really return a reliable play order. It’s an interesting problem, but I can’t think of a solution, outside using passage naming conventions, like numbers, in the first place.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2018/11/21/poof-1-0-0/" data-id="cju1hrabv0004e4s36f7s4wca" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/04/05/poof-1-2-0/" data-id="cju32fu9m0000eks36ztdw1c3" class="article-share-link">Share</a>
       
-        <a href="http://twinelab.net/blog/2018/11/21/poof-1-0-0/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://twinelab.net/blog/2019/04/05/poof-1-2-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
@@ -111,19 +114,10 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2019/01/15/serious/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Serious Fiction for Serious People
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2018/11/19/holyland/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2019/04/03/poof-1-1-0/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Holy Land: Second Coming</div>
+      <div class="article-nav-title">Poof v1.1.0 Release Notes</div>
     </a>
   
 </nav>
@@ -230,7 +224,7 @@
 <script>
   var disqus_shortname = 'twinelab';
   
-  var disqus_url = 'http://twinelab.net/blog/2018/11/21/poof-1-0-0/';
+  var disqus_url = 'http://twinelab.net/blog/2019/04/05/poof-1-2-0/';
   
   (function(){
     var dsq = document.createElement('script');
