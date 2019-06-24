@@ -77,6 +77,56 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-poof-0-4-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2018/10/27/poof-0-4-0/" class="article-date">
+  <time datetime="2018-10-27T06:38:46.000Z" itemprop="datePublished">2018-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2018/10/27/poof-0-4-0/">Poof v0.4.0 Release Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views. </p>
+<p>First, syntax highlighting powered by <a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a> has been added to both views. Passage source code doesn’t (and likely won’t ever) get syntax highlighting, though. </p>
+<p>Second, a shiny new “lint” button has been added to the JavaScript view. This button uses a client-side, CDN-hosted version of <a href="https://jshint.com/" target="_blank" rel="noopener">JSHint</a> to help you debug your JavaScript code. It requires a web connection on at least the first use, though the script should cache itself for future offline usage. </p>
+<p>This version also includes a critical bug fix for compatibility with <a href="https://www.motoslave.net/tweego/" target="_blank" rel="noopener">Tweego</a>, which expects formats to be valid JSON, not just JavaScript (which is totally fair, mind you). Currently, the v0.3.x format files return a valid JavaScript object that is not valid JSON, which was unwise on my part and only implemented to save a few bytes. </p>
+<h2 id="In-future-0-4-x-versions"><a href="#In-future-0-4-x-versions" class="headerlink" title="In future 0.4.x versions:"></a>In future 0.4.x versions:</h2><p>A few patches will be released over the next few days/weeks to make the linter story format-aware to prevent false positives with certain code. </p>
+<p>As always, I intend to keep on top of any bugs or weirdness, too. </p>
+<h2 id="In-later-versions"><a href="#In-later-versions" class="headerlink" title="In later versions:"></a>In later versions:</h2><p>Depending on the reaction to the linting feature, a similar CSS validation feature may arrive in a future version, though validating CSS in the client-side may prove enough of a challenge that it may get pushed off to a later version or abandoned. JavaScript linting is a much bigger deal anyway, in my opinion. </p>
+<p>The PDF export option may get off-loaded to a CDN like the linter, meaning it will work as a cache-able script rather than being built in. This will massively reduce the size of poof, but may not be worth it based on how often this feature is used. </p>
+<p>At some point in the future, poof will go through a mild refactor of its codebase and build process to make it easier to work with, particularly for other devs. This will happen sometime prior to the full 1.0.0 release. </p>
+<p>I’m considering reworking the codebase to use node modules and webpack (or similar) as well, but such a refactor would increase the format’s size by a not insignificant margin, and only mildly help devs work on it, so I’m not convinced this is the right way to go. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2018/10/27/poof-0-4-0/" data-id="cjx5nhzy200034ss3mb7a4kma" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2018/10/27/poof-0-4-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-poof" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2018/10/24/poof/" class="article-date">
@@ -344,6 +394,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/blog/2019/06/24/poof-1-3-0/">Poof v1.3.0 Release Notes</a>
+          </li>
+        
+          <li>
             <a href="/blog/2019/06/21/serious-1-0-1/">Serious Release Version</a>
           </li>
         
@@ -357,10 +411,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2019/04/03/poof-1-1-0/">Poof v1.1.0 Release Notes</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/01/18/hlg-com/">HolyLandGame.com is Dead</a>
           </li>
         
       </ul>

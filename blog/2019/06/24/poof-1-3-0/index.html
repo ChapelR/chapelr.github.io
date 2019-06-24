@@ -18,20 +18,20 @@ ga('send', 'pageview');
 
 
   
-  <title>Poof v0.4.0 Release Notes | TwineLab</title>
+  <title>Poof v1.3.0 Release Notes | TwineLab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views.  First, syntax highlighting powered by highlight.js has been added to both views. Passage source code doesn’t (and likely">
+  <meta name="description" content="Poof v1.3.0 has arrived. In addition to dozens of small changes and improvements, the big news here is passage references and an updated Twee encoder. A passage reference is, as you may imagine, when">
 <meta name="keywords" content="poof">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Poof v0.4.0 Release Notes">
-<meta property="og:url" content="http://twinelab.net/blog/2018/10/27/poof-0-4-0/index.html">
+<meta property="og:title" content="Poof v1.3.0 Release Notes">
+<meta property="og:url" content="http://twinelab.net/blog/2019/06/24/poof-1-3-0/index.html">
 <meta property="og:site_name" content="TwineLab">
-<meta property="og:description" content="Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views.  First, syntax highlighting powered by highlight.js has been added to both views. Passage source code doesn’t (and likely">
+<meta property="og:description" content="Poof v1.3.0 has arrived. In addition to dozens of small changes and improvements, the big news here is passage references and an updated Twee encoder. A passage reference is, as you may imagine, when">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-27T06:23:14.823Z">
+<meta property="og:updated_time" content="2019-06-24T10:54:10.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Poof v0.4.0 Release Notes">
-<meta name="twitter:description" content="Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views.  First, syntax highlighting powered by highlight.js has been added to both views. Passage source code doesn’t (and likely">
+<meta name="twitter:title" content="Poof v1.3.0 Release Notes">
+<meta name="twitter:description" content="Poof v1.3.0 has arrived. In addition to dozens of small changes and improvements, the big news here is passage references and an updated Twee encoder. A passage reference is, as you may imagine, when">
   
     <link rel="alternate" href="/blog/atom.xml" title="TwineLab" type="application/atom+xml">
   
@@ -80,10 +80,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-poof-0-4-0" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-poof-1-3-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2018/10/27/poof-0-4-0/" class="article-date">
-  <time datetime="2018-10-27T06:38:46.000Z" itemprop="datePublished">2018-10-27</time>
+    <a href="/blog/2019/06/24/poof-1-3-0/" class="article-date">
+  <time datetime="2019-06-24T10:34:06.000Z" itemprop="datePublished">2019-06-24</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Poof v0.4.0 Release Notes
+      Poof v1.3.0 Release Notes
     </h1>
   
 
@@ -102,23 +102,45 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Poof 0.4.0 will add a few bells and whistles to your JavaScript and CSS views. </p>
-<p>First, syntax highlighting powered by <a href="https://highlightjs.org/" target="_blank" rel="noopener">highlight.js</a> has been added to both views. Passage source code doesn’t (and likely won’t ever) get syntax highlighting, though. </p>
-<p>Second, a shiny new “lint” button has been added to the JavaScript view. This button uses a client-side, CDN-hosted version of <a href="https://jshint.com/" target="_blank" rel="noopener">JSHint</a> to help you debug your JavaScript code. It requires a web connection on at least the first use, though the script should cache itself for future offline usage. </p>
-<p>This version also includes a critical bug fix for compatibility with <a href="https://www.motoslave.net/tweego/" target="_blank" rel="noopener">Tweego</a>, which expects formats to be valid JSON, not just JavaScript (which is totally fair, mind you). Currently, the v0.3.x format files return a valid JavaScript object that is not valid JSON, which was unwise on my part and only implemented to save a few bytes. </p>
-<h2 id="In-future-0-4-x-versions"><a href="#In-future-0-4-x-versions" class="headerlink" title="In future 0.4.x versions:"></a>In future 0.4.x versions:</h2><p>A few patches will be released over the next few days/weeks to make the linter story format-aware to prevent false positives with certain code. </p>
-<p>As always, I intend to keep on top of any bugs or weirdness, too. </p>
-<h2 id="In-later-versions"><a href="#In-later-versions" class="headerlink" title="In later versions:"></a>In later versions:</h2><p>Depending on the reaction to the linting feature, a similar CSS validation feature may arrive in a future version, though validating CSS in the client-side may prove enough of a challenge that it may get pushed off to a later version or abandoned. JavaScript linting is a much bigger deal anyway, in my opinion. </p>
-<p>The PDF export option may get off-loaded to a CDN like the linter, meaning it will work as a cache-able script rather than being built in. This will massively reduce the size of poof, but may not be worth it based on how often this feature is used. </p>
-<p>At some point in the future, poof will go through a mild refactor of its codebase and build process to make it easier to work with, particularly for other devs. This will happen sometime prior to the full 1.0.0 release. </p>
-<p>I’m considering reworking the codebase to use node modules and webpack (or similar) as well, but such a refactor would increase the format’s size by a not insignificant margin, and only mildly help devs work on it, so I’m not convinced this is the right way to go. </p>
+        <p>Poof v1.3.0 has arrived. In addition to dozens of small changes and improvements, the big news here is <em>passage references</em> and an updated Twee encoder.</p>
+<p>A passage reference is, as you may imagine, when one of your passages references another passage through a link, include/display, or goto. Poof will parse SugarCube and Harlowe stories for a certain subset of common macros used to transition passages as well as for markup links (e.g., <code>[[links like this]]</code>). The macros parsed are not exhaustive–for example, SugarCube’s <code>&lt;&lt;textbox&gt;&gt;</code> macro can send users to new passages, but is not parsed by poof because there has to be a cutoff somewhere. JavaScript functions and methods that transition passages are also not parsed. Additionally, poof can only parse <em>string literals</em>. So, <code>&lt;&lt;link &#39;Next&#39; &#39;some passage&#39;&gt;&gt;&lt;&lt;/link&gt;&gt;</code> will work, but <code>&lt;&lt;link &#39;Next&#39; $somePassage&gt;&gt;&lt;&lt;/link&gt;&gt;</code> will not.</p>
+<p>Here’s a list of things poof will try to parse for valid passage references in each format:</p>
+<h4 id="All-Formats"><a href="#All-Formats" class="headerlink" title="All Formats"></a>All Formats</h4><ul>
+<li>Markup links of any kind, including arrow markup links (<code>[[passage&lt;-text]]</code>).</li>
+<li>Setter links. Even though these are only supported by default by SugarCube, poof will try to parse setter links when it sees them regardless of the format.</li>
+</ul>
+<h4 id="Harlowe"><a href="#Harlowe" class="headerlink" title="Harlowe"></a>Harlowe</h4><ul>
+<li><code>(link-goto:)</code></li>
+<li><code>(click-goto:)</code></li>
+<li><code>(link-reveal-goto:)</code></li>
+<li><code>(goto:)</code></li>
+<li><code>(include:)</code></li>
+</ul>
+<h4 id="SugarCube"><a href="#SugarCube" class="headerlink" title="SugarCube"></a>SugarCube</h4><ul>
+<li><code>&lt;&lt;link&gt;&gt;</code></li>
+<li><code>&lt;&lt;button&gt;&gt;</code></li>
+<li><code>&lt;&lt;goto&gt;&gt;</code></li>
+<li><code>&lt;&lt;include&gt;&gt;</code></li>
+<li><code>&lt;&lt;display&gt;&gt;</code></li>
+</ul>
+<p>Poof will display passage references to and from each passage as links you can click to zoom to those passages, allowing you to essentially play along with your game while editing. This is my solution to requests for a “play order” sorting method.</p>
+<p>Note that parsing for passage references is somewhat slow. You cna shut this feature off if you’d prefer faster load times to having it via <code>poof.config</code>.</p>
+<p>The second change here is the Twee encoder. Poof now exports to classic Twee, the Twee2 version of Twee (previously unsupported) and <a href="https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md" target="_blank" rel="noopener">the new Twee3 spec</a>. This last spec is still a draft and is widely unsupported, so the default is still set to Twee classic for now. You can change the Twee encoder in the <code>poof.config</code> special passage.</p>
+<p>The smaller changes included in this update are:</p>
+<ul>
+<li>a starting passage tool to quickly zoom you to the starting passage,</li>
+<li>updates to SugarCube globals for the linter,</li>
+<li>a bunch of other internal and code-side improvements.</li>
+</ul>
+<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>Eventually Twee3 will be the default Twee encoder. SugarCube is also undergoing fairly major changes in v2.29.0, so I’ll be updating poof’s SugarCube support a lot. This will mostly be maintenance though.</p>
+<h2 id="Note-on-Twine-v2-3-2"><a href="#Note-on-Twine-v2-3-2" class="headerlink" title="Note on Twine v2.3.2:"></a>Note on Twine v2.3.2:</h2><p>Twine v2.3.2 currently has a bug in how it handles proofing formats, see <a href="https://github.com/klembot/twinejs/issues/563" target="_blank" rel="noopener">this issue</a>. This means if you want to use poof, you need to use an older version of Twine 2 until this gets sorted out.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2018/10/27/poof-0-4-0/" data-id="cjx5nhzy200034ss3mb7a4kma" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/06/24/poof-1-3-0/" data-id="cjxa9j07c0000qgs3aqeksd8d" class="article-share-link">Share</a>
       
-        <a href="http://twinelab.net/blog/2018/10/27/poof-0-4-0/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://twinelab.net/blog/2019/06/24/poof-1-3-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
@@ -129,19 +151,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/blog/2018/10/31/poof-0-5-0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Poof v0.5.0 Release Notes
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2018/10/24/poof/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2019/06/21/serious-1-0-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">What Is Poof?</div>
+      <div class="article-nav-title">Serious Release Version</div>
     </a>
   
 </nav>
@@ -248,7 +261,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'twinelab';
   
-  var disqus_url = 'http://twinelab.net/blog/2018/10/27/poof-0-4-0/';
+  var disqus_url = 'http://twinelab.net/blog/2019/06/24/poof-1-3-0/';
   
   (function(){
     var dsq = document.createElement('script');
