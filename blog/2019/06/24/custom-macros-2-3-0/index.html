@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140068697-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Custom Macro Collection v2.3.0 Release Notes | TwineLab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This is a pretty big update, so we’re gonna break this all into chunks and go through it piece-by-piece. As a brief overview, the changes are:   Three brand new macros / macro sets / scripts.  One add">
+<meta name="keywords" content="macros">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Custom Macro Collection v2.3.0 Release Notes">
+<meta property="og:url" content="http://twinelab.net/blog/2019/06/24/custom-macros-2-3-0/index.html">
+<meta property="og:site_name" content="TwineLab">
+<meta property="og:description" content="This is a pretty big update, so we’re gonna break this all into chunks and go through it piece-by-piece. As a brief overview, the changes are:   Three brand new macros / macro sets / scripts.  One add">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-28T08:06:29.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Custom Macro Collection v2.3.0 Release Notes">
+<meta name="twitter:description" content="This is a pretty big update, so we’re gonna break this all into chunks and go through it piece-by-piece. As a brief overview, the changes are:   Three brand new macros / macro sets / scripts.  One add">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="TwineLab" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">TwineLab</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/../">Home</a>
+        
+          <a class="main-nav-link" href="/blog/">Blog</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://twinelab.net/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-custom-macros-2-3-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/06/24/custom-macros-2-3-0/" class="article-date">
+  <time datetime="2019-06-24T10:34:06.000Z" itemprop="datePublished">2019-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Custom Macro Collection v2.3.0 Release Notes
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is a pretty big update, so we’re gonna break this all into chunks and go through it piece-by-piece. As a brief overview, the changes are: </p>
+<ul>
+<li>Three brand new macros / macro sets / scripts. </li>
+<li>One additional system from v1.x of the collection has been rewritten and re-added: the cycles system. </li>
+<li>Several scripts have been refactored to better adhere to best practices, improve performance, and rise to my evolving standard for code quality. These changes are internal and shouldn’t effect you as a user. </li>
+<li>The documentation has been improved, and the collection how has a dedicated web page at <a href="https://macros.twinelab.net" target="_blank" rel="noopener">https://macros.twinelab.net</a> </li>
+<li>A <a href="https://twinelab.net/custom-macros-for-sugarcube-2/demo/">demo project</a> to show off the basic functionality of each system. </li>
+<li>Finally, a <a href="https://twinelab.net/custom-macros-for-sugarcube-2/#/changelog">changelog</a> has been added so that changes can be tracked more easily. The v2.3.0 update represents the biggest update since v2.0.0, so it seemed wise to start documenting these changes more clearly. </li>
+</ul>
+<h2 id="New-Systems"><a href="#New-Systems" class="headerlink" title="New Systems"></a>New Systems</h2><p>I’ve added a <code>&lt;&lt;css&gt;&gt;</code> macro that lets authors programmatically customize the CSS style rules of elements on the page. This is still the <em>worst</em> way to change CSS, but it is useful in certain scenarios. </p>
+<p>The next addition is the meters macro set. It gives authors access to fully customizable meters for things like health bars, timers, and progress bars, all in SugarCube macro code. It has a few stipulations and limitations you need to be aware of to make good use of it, but I think it works well for what it is. It also includes a JavaScript API if you’re into that sort of thing. </p>
+<p>The final addition are the pronoun templates, a complete, drop-in pronoun configuration system for SugarCube leveraging the brand new <code>Template</code> API and syntax, and it can plug in to the <code>Setting</code> API as well. </p>
+<h2 id="The-Cycles-System-v2"><a href="#The-Cycles-System-v2" class="headerlink" title="The Cycles System v2"></a>The Cycles System v2</h2><p>The new cycles system is similar to, but better, than the old implementation. Code written for the old system will not be compatible with this one. Check the docs for more on how the new system works and how you may need to update your code. </p>
+<p>The only other system that is worth bringing forward to v2 is the consumables inventory system. If I do so, it will be as an extension to the existing Simple Inventory v2.x system. </p>
+<h2 id="Refactored-Scripts"><a href="#Refactored-Scripts" class="headerlink" title="Refactored Scripts"></a>Refactored Scripts</h2><p>The Simple Inventory, the Playtime system, the operations API (the dice roller and fairmath systems), and the fullscreen macros have all been refactored. Only the fullscreen macros and operations API have seen any end-user changes, in the form of a proper JavaScript-facing API for the former and support for Fate/Fudge dice for the latter (e.g., <code>&quot;2dF&quot;</code>). That said, all of these systems should now be more stable and perform better, and their code should conform better to best practices. </p>
+<h2 id="Documentation-Changes"><a href="#Documentation-Changes" class="headerlink" title="Documentation Changes"></a>Documentation Changes</h2><p>In addition to a shiny new website, much of the documentation has been clarified, improved, and fixed and several new examples have been added to several pages, while previously undocumented features have stabilized and been documented. </p>
+<p>You don’t <em>need</em> to re-read any of the docs, as none of the changes are specifically breaking. </p>
+<h2 id="The-Demo-Project"><a href="#The-Demo-Project" class="headerlink" title="The Demo Project"></a>The Demo Project</h2><p>The demo project includes demonstrations and examples of the <em>basic</em> usage of each system, and provides source code for each example passage, so that users can see how exactly each example is put together on the code side. </p>
+<p>Links to the demo and each relevant passage are in the documentation. </p>
+<h2 id="The-Changelog"><a href="#The-Changelog" class="headerlink" title="The Changelog"></a>The Changelog</h2><p>The changelog is mostly accurate to my recollection, though there may be some gaps or inconsistencies between it and the repo’s commit history. Since I typically only create releases when a system is retired, given the nature of this project, some changes that happened over short periods of time or weren’t given specific version numbers (e.g., fixed typos in the docs) have been retroactively bundled together and given a version number. </p>
+<p>Going forward, I intend to follow semantic versioning a little more closely for the sake of everyone’s sanity. </p>
+<h2 id="Other-News"><a href="#Other-News" class="headerlink" title="Other News"></a>Other News</h2><ul>
+<li>My proofing format, <a href="https://poof.twinelab.net" target="_blank" rel="noopener">poof</a>, has received a big update as well <a href="https://twinelab.net/blog/2019/06/24/poof-1-3-0/">in v1.3.0</a>. </li>
+<li><a href="https://hal.twinelab.net" target="_blank" rel="noopener">HAL (my Harlowe audio library)</a> has received an update for better compatibility with Harlowe 3 <a href="https://twinelab.net/blog/2019/06/25/hal-1-3-0/">in v1.3.0</a>. </li>
+<li>My episodic fiction framework for the web, <a href="https://serious.twinelab.net" target="_blank" rel="noopener">Serious</a>, has reached <a href="https://twinelab.net/blog/2019/06/21/serious-1-0-1/">v1.0.0</a>. </li>
+<li>The <a href="https://github.com/ChapelR/tweego-setup" target="_blank" rel="noopener">tweego-setup boilerplate</a> and tooling was <a href="https://github.com/ChapelR/tweego-setup/blob/master/docs/changelog.md" target="_blank" rel="noopener">updated recently</a> to address some issues with Babel and ES6 to ES5 transpilation. </li>
+</ul>
+<h2 id="Coming-Soon"><a href="#Coming-Soon" class="headerlink" title="Coming Soon"></a>Coming Soon</h2><ul>
+<li>My <a href="https://github.com/ChapelR/tweego-installer" target="_blank" rel="noopener">tweego-installer</a> will get its bundled formats updated in the coming month or so; I expect a v1 release of Chapbook and a new Harlowe version to be on the way soon, so I will wait for a bit before updating it’s SugarCube version to 2.29.0. </li>
+<li>Once more compilers adopt the new <a href="https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md" target="_blank" rel="noopener">Twee3 specification</a>, poof’s default Twee encoding method will be set to Twee3. Chapbook support will also be forthcoming, but probably later in the year. </li>
+<li>I’m investigating issues with HAL’s functionality on mobile devices, particularly iOS. If you’ve encountered weird behavior from HAL on mobiles, please comment on <a href="https://github.com/ChapelR/harlowe-audio/issues/14" target="_blank" rel="noopener">this issue</a>. </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2019/06/24/custom-macros-2-3-0/" data-id="cjxftcajk00004ws3yd8s1uwk" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2019/06/24/custom-macros-2-3-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/macros/">macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2019/06/25/hal-1-3-0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HAL v1.3.0 Release Notes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2019/06/24/poof-1-3-0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Poof v1.3.0 Release Notes</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/holyland/">holyland</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/macros/">macros</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/meta/">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/poof/">poof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/serious/">serious</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/thoughts/">thoughts</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/hal/" style="font-size: 15px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 10px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 15px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 15px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 10px;">thoughts</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2019/06/25/hal-1-3-0/">HAL v1.3.0 Release Notes</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/06/24/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/06/24/poof-1-3-0/">Poof v1.3.0 Release Notes</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/06/21/serious-1-0-1/">Serious Release Version</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/04/05/hal-1-2-0/">HAL v1.2.0 Release Notes</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Chapel<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/../" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/" class="mobile-nav-link">Blog</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'twinelab';
+  
+  var disqus_url = 'http://twinelab.net/blog/2019/06/24/custom-macros-2-3-0/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
