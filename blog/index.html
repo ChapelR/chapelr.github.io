@@ -77,57 +77,10 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-hal-1-3-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/06/25/hal-1-3-0/" class="article-date">
-  <time datetime="2019-06-25T18:12:01.000Z" itemprop="datePublished">2019-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/06/25/hal-1-3-0/">HAL v1.3.0 Release Notes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This version of HAL comes with a few important updates for greater compatibility with Harlowe 3, and fixes you’ll want even if you’ve stuck to Harlowe 2. </p>
-<p>The biggest addition is that HAL now preserves and restores it’s own state separately from Harlowe. In Harlowe 2, reloading the browser simply restarted the game, and this restarted HAL along with it. Loading a saved game had no meaningful effect on HAL. In Harlowe 3, browser reloads now preserve Harlowe’s state, but not in a way similar to loading a saved game. Instead, Harlowe reconstructs the history in a different way that completely ignores startup passages, meaning HAL tracks, playlists, and groups set up in such passages break even though the game itself is fine, and this failure was not handled well. </p>
-<p>Now, HAL will attempt to preserve it’s own state and restore it. This preservation only applies to tracks, playlists, and groups, and restores the ability of authors to use startup passages with these features. </p>
-<p>The menu API, however, cannot be easily serialized, and therefore must always be defined in user scripts. </p>
-<p>It is still gently recommended that you try to stick to Story JavaScript as much as possible, but this change should make it so you no longer <em>have</em> to rewrite code that was valid for Harlowe 2. </p>
-<p>Some other bug fixes, updates, and internal improvements are also included in this release, so it’s recommended you update even if the above problem wasn’t an issue for you. </p>
-<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>I will continue monitoring issue and clashes with Harlowe v3 and look into reported issues on mobile devices.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/25/hal-1-3-0/" data-id="cjxc4ev100000qss3n7nzobj2" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2019/06/25/hal-1-3-0/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hal/">hal</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-custom-macros-2-3-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/06/24/custom-macros-2-3-0/" class="article-date">
-  <time datetime="2019-06-24T10:34:06.000Z" itemprop="datePublished">2019-06-24</time>
+    <a href="/blog/2019/06/28/custom-macros-2-3-0/" class="article-date">
+  <time datetime="2019-06-28T08:10:06.000Z" itemprop="datePublished">2019-06-28</time>
 </a>
     
   </div>
@@ -138,7 +91,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/06/24/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
+      <a class="article-title" href="/blog/2019/06/28/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
     </h1>
   
 
@@ -182,12 +135,59 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/24/custom-macros-2-3-0/" data-id="cjxftcajk00004ws3yd8s1uwk" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/06/28/custom-macros-2-3-0/" data-id="cjxftcajk00004ws3yd8s1uwk" class="article-share-link">Share</a>
       
-        <a href="http://twinelab.net/blog/2019/06/24/custom-macros-2-3-0/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://twinelab.net/blog/2019/06/28/custom-macros-2-3-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/macros/">macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hal-1-3-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/06/25/hal-1-3-0/" class="article-date">
+  <time datetime="2019-06-25T18:12:01.000Z" itemprop="datePublished">2019-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/06/25/hal-1-3-0/">HAL v1.3.0 Release Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This version of HAL comes with a few important updates for greater compatibility with Harlowe 3, and fixes you’ll want even if you’ve stuck to Harlowe 2. </p>
+<p>The biggest addition is that HAL now preserves and restores it’s own state separately from Harlowe. In Harlowe 2, reloading the browser simply restarted the game, and this restarted HAL along with it. Loading a saved game had no meaningful effect on HAL. In Harlowe 3, browser reloads now preserve Harlowe’s state, but not in a way similar to loading a saved game. Instead, Harlowe reconstructs the history in a different way that completely ignores startup passages, meaning HAL tracks, playlists, and groups set up in such passages break even though the game itself is fine, and this failure was not handled well. </p>
+<p>Now, HAL will attempt to preserve it’s own state and restore it. This preservation only applies to tracks, playlists, and groups, and restores the ability of authors to use startup passages with these features. </p>
+<p>The menu API, however, cannot be easily serialized, and therefore must always be defined in user scripts. </p>
+<p>It is still gently recommended that you try to stick to Story JavaScript as much as possible, but this change should make it so you no longer <em>have</em> to rewrite code that was valid for Harlowe 2. </p>
+<p>Some other bug fixes, updates, and internal improvements are also included in this release, so it’s recommended you update even if the above problem wasn’t an issue for you. </p>
+<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>I will continue monitoring issue and clashes with Harlowe v3 and look into reported issues on mobile devices.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2019/06/25/hal-1-3-0/" data-id="cjxc4ev100000qss3n7nzobj2" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2019/06/25/hal-1-3-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hal/">hal</a></li></ul>
 
     </footer>
   </div>
@@ -687,11 +687,11 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/blog/2019/06/25/hal-1-3-0/">HAL v1.3.0 Release Notes</a>
+            <a href="/blog/2019/06/28/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
           </li>
         
           <li>
-            <a href="/blog/2019/06/24/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
+            <a href="/blog/2019/06/25/hal-1-3-0/">HAL v1.3.0 Release Notes</a>
           </li>
         
           <li>
