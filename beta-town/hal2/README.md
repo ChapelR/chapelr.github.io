@@ -41,6 +41,55 @@ All you need to install this library is the code. Download the most recent versi
 
 **In other compilers or IDEs**, you'll need to refer to your program's documentation for how to add JavaScript and CSS code.
 
+## Macros or JavaScript?
+
+HAL v2 allows authors to use either a simple JavaScript-based API or a set of custom macros for most operations. There are a handful of operations that can only be performed using the JavaScript API, but these are rare and probably not a major consideration for most authors. I recommend using whichever one you prefer.
+
+> [!WARNING]
+> HAL relies on a hack to gain access to Harlowe's `Macros` API, and uses other undocumented features or Harlowe's engine. This means that, particularly regarding custom macros, it's possible that future realeases of Harlowe could break certain parts of HAL. While I'll always try to stay on top of fixes, it's possible that certain parts of the library may stop working.
+
+> [!TIP]
+> HAL custom macros will show up in red in the Twine 2 passage editor, as if they don't exist. This is normal.
+
+<!--### Special Passages
+
+A *special* passage is a normal passage with a specific name that has special meaning to the library. HAL supports two special passages.
+
+#### The `hal.config` Special Passage
+
+See: [Configuration](#configuration)
+
+This special passage can be used to configure certain options within HAL.
+
+#### The `hal.tracks` Special Passage
+
+See: [THe Track Definition Special Passage](#the-track-definition-special-passage)
+
+This special passage can be used, in addition to or in place of the `(newtrack:)` macro or the `A.newTrack()` method, to define tracks.
+
+### The Custom Macros Overview
+
+HAL comes with the following custom macros:
+
+#### The `(newtrack:)` Macro
+
+**Syntax:** `(newtrack: name, source [, source...])`
+
+This macro is used to [define a track](#defining-tracks). You must give the track a name and at least one source URL that points to an audio file. You can give multiple source files to improve browser support.
+
+**Arguments:**  
+- `name` the name to give the track.
+- `source` at least one source URL must be passed to the macro.
+
+```
+(newTrack: 'beep', './audio/beep.mp3', './audio/beep.ogg')
+(newTrack: 'que-pena', './audio/que-pena.mp3', './audio/que-pena.ogg')
+```
+
+#### 
+
+### The JavaScript API Overview-->
+
 ## Configuration
 
 HAL has a variety of configuration options users can alter to fine tune the library to meet their needs. These options can be set using a *special passage*, which is a normal passage with a specific name that has meaning to the library. The special passage for configuring HAL must be named `hal.config`.
@@ -103,6 +152,12 @@ After creating a passage and naming it `hal.tracks`, you can type in the name of
 beep: ./audio/beep.mp3, ./audio/beep.ogg
 que-pena: ./audio/que-pena.mp3, ./audio/que-pena.ogg
 ```
+
+> [!DANGER]
+> Track names may contain latin letters (upper or lower cased), numbers, dashes, underscores, and dollar signs, but should not generally contain any other characters or symbols. Because of the way HAL parses the track definition special passage, track URLs must not contain commas. Most URLs do not and generally *should* not contain commas anyway, but if you need to use a URL with a comma for some reason and cannot change it, you will need to use a different method to define the track in question.
+
+> [!WARNING]
+> Parsing is not the fastest operation, so if your game takes an excessively long time to load or you are concerned about performance, it is recommended that you define your tracks in a different way. Note that the actual performance cost of the parsing operation would require potentially hundreds of tracks to introduce meaningful slowdown, however.
 
 If you only have one source URL, that's fine too.
 
@@ -252,7 +307,12 @@ Commands:
   - Returns: nothing.
 
 
-- `stop`: Stops a playing track (pauses it and resets it).
+- `isplaying`: Returns whether the indicated track is currently playing.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+- `stop`: Stops playback of the indicated track (pauses it and resets it).
   - Arguments: none.
   - Returns: nothing.
 
@@ -280,6 +340,11 @@ Commands:
 <!-- play a track when the ability to do so becomes unlocked -->
 (track: 'que-pena', 'playwhenpossible')
 
+<!-- play a track only if it isn't already playing -->
+(unless: (track: 'que-pena', 'isplaying'))[
+    (track: 'que-pena', 'play')
+]
+
 <!-- stop a track -->
 (track: 'que-pena', 'stop')
 
@@ -292,22 +357,27 @@ Commands:
 #### **JavaScript**
 
 Methods:  
-- `track#play()`: Plays the indicated track, if possible.
+- `track#play()`: Plays the track, if possible.
   - Arguments: none.
   - Returns: this track (chainable).
   
 
-- `track#playWhenPossible()`: Plays the indicated track, is possible, or waits for a valid user interaction to start playback.
+- `track#playWhenPossible()`: Plays the track, is possible, or waits for a valid user interaction to start playback.
   - Arguments: none.
   - Returns: this track (chainable).
   
 
-- `track#stop()`: Stops a playing track (pauses it and resets it).
+- `track#isPlaying()`: Returns whether the track is currently playing.
+  - Arguments: none.
+  - Returns: *boolean*.
+  
+
+- `track#stop()`: Stops playback of the track (pauses it and resets it).
   - Arguments: none.
   - Returns: this track (chainable).
   
 
-- `track#pause()`: Pauses playback of the indicated track, if it's playing.
+- `track#pause()`: Pauses playback of the track, if it's playing.
   - Arguments: none.
   - Returns: this track (chainable).
   
@@ -328,6 +398,11 @@ Methods:
 
 <!-- play a track when the ability to do so becomes unlocked -->
 <script>A.track('que-pena').playWhenPossible()</script>
+
+<!-- play a track only if it isn't already playing -->
+(unless: A.track('que-pena').isPlaying())[
+    <script>A.track('que-pena').play()</script>
+]
 
 <!-- stop a track -->
 <script>A.track('que-pena').stop()</script>
@@ -391,12 +466,12 @@ Methods:
 - `track#loop(bool)`: Change the loop state of the track.
   - Arguments:
     - `bool` (*boolean*) pass the value `true` to turn looping on, `false` to turn it off.
-  - Returns: nothing.
+  - Returns: this track (chainable).
 
 
 - `track#toggleLoop()`: Toggle the loop state of the track (setting it to `true` if it's false and vice versa).
   - Arguments: none.
-  - Returns: nothing.
+  - Returns: this track (chainable).
 
 
 - `track#isLooping()`: Returns `true` if the track is looping.
@@ -500,18 +575,18 @@ Methods:
 - `track#seek(time)`: Change the time of the track, moving to the indicated time for playback.
   - Arguments:
     - `time` (*number*) pass a number of seconds; negative values will seek from the end of the track.
-  - Returns: nothing.
+  - Returns: this track (chainable).
 
 
 - `track#mute(bool)`: Mute the track.
   - Arguments:
     - `bool` (*boolean*) pass the value `true` to mute the track, `false` to unmute it. 
-  - Returns: nothing.
+  - Returns: this track (chainable).
 
 
 - `track#toggleMute()`: Toggle the mute state of the track (muting it if it isn't muted and vice versa).
   - Arguments: none. 
-  - Returns: nothing.
+  - Returns: this track (chainable).
 
 
 - `track#isMuted()`: Returns whether the track is currently muted.
@@ -522,7 +597,7 @@ Methods:
 - `track#volume(vol)`: Sets the volume of the track.
   - Arguments: 
     - `vol` (*number*) pass a number between 0 (silent) and 1 (full volume) to set the volume of a track.
-  - Returns: *boolean*.
+  - Returns: this track (chainable).
 
 
 - `track#getVolume()`: Returns the track's current *own* volume--this does not account for the state of the master volume.
@@ -563,9 +638,113 @@ Methods:
 
 ### Fading Tracks
 
-### Testing Tracks
+Tracks can be faded in, out, or over to new volume levels.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+Commands:  
+- `fadein`: Starts playback and fades the track's volume from silent to its current volume level over an indicated number of seconds.
+  - Arguments:
+    - (*number*) pass a number of seconds for the fade to last.
+  - Returns: nothing.
+
+
+- `fadeout`: Fades the track's volume from its current level to siltent over an indicated number of seconds, then stops playback.
+  - Arguments:
+    - (*number*) pass a number of seconds for the fade to last. 
+  - Returns: nothing.
+
+
+- `fadeto`: Fades the track's volume from its current level to the indicated level over an indicated number of seconds.
+  - Arguments:
+    - (*number*) pass a number of seconds for the fade to last. 
+    - (*number*) pass a number between 0 and 1; this is the new volume the track will fade to.
+  - Returns: nothing.
+
+
+```
+<!-- fade a track in over two seconds -->
+(track: 'que-pena', 'fadein', 2)
+
+<!-- fade a track out over five seconds -->
+(track: 'que-pena', 'fadeout', 5)
+
+<!-- fade a track's volume from 1 to 0.5 over three seconds -->
+(track: 'que-pena', 'volume', 1)
+(track: 'que-pena', 'play')
+(track: 'que-pena', 'fadeto', 3, 0.5)
+
+<!-- fade a track out and then fade a new one in -->
+(track: 'score', 'fadeout', 2)
+(live: 2s)[
+    (stop:)
+    (track: 'que-pena', 'fadein', 2)
+]
+
+<!-- crossfade two tracks -->
+(track: 'score', 'fadeout', 2)
+(track: 'que-pena', 'fadein', 2)
+```
+
+#### **JavaScript**
+
+Methods:  
+- `track#fadeIn(time)`: Starts playback and fades the track's volume from silent to its current volume level over an indicated number of seconds.
+  - Arguments:
+    - `time` (*number*) pass a number of seconds for the fade to last.
+  - Returns: this track (chainable).
+
+
+- `track#fadeOut(time)`: Fades the track's volume from its current level to siltent over an indicated number of seconds, then stops playback.
+  - Arguments:
+    - `time` (*number*) pass a number of seconds for the fade to last. 
+  - Returns: this track (chainable).
+
+
+- `track#fadeTo(time, vol)`: Fades the track's volume from its current level to the indicated level over an indicated number of seconds.
+  - Arguments:
+    - `time` (*number*) pass a number of seconds for the fade to last. 
+    - `vol` (*number*) pass a number between 0 and 1; this is the new volume the track will fade to.
+  - Returns: this track (chainable).
+
+
+```
+<!-- fade a track in over two seconds -->
+<script>A.track('que-pena').fadeIn(2)</script>
+
+<!-- fade a track out over five seconds -->
+<script>A.track('que-pena').fadeOut(5)</script>
+
+<!-- fade a track's volume from 1 to 0.5 over three seconds -->
+<script>A.track('que-pena').volume(1).play().fadeTo(3, 0.5)</script>
+
+<!-- fade a track out and then fade a new one in -->
+<script>A.track('score').fadeOut(2)</script>
+(live: 2s)[
+    (stop:)
+    <script>A.track('que-pena').fadeIn(2)</script>
+]
+
+<!-- crossfade two tracks -->
+<script>
+    A.track('score').fadeIn(2);
+    A.track('que-pena').fadeIn(2);
+</script>
+```
+
+<!-- tabs:end -->
+
+For more JavaScript methods you can use on tracks, [click here](#tracks).
 
 ## Master Audio Commands
+
+Master audio commands and methods effect *all* of the playback happening in the game. You can use these methods to preload audio tracks, stop all audio from playing, or adjust the master mute and master volume settings.
+
+### Master Volume and Mute Settings
+
+### Other Commands and Methods
 
 ## Defining Playlists
 
