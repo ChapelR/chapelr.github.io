@@ -41,7 +41,7 @@ All you need to install this library is the code. Download the most recent versi
 
 **In other compilers or IDEs**, you'll need to refer to your program's documentation for how to add JavaScript and CSS code.
 
-## Macros or JavaScript?
+## Overview
 
 HAL v2 allows authors to use either a simple JavaScript-based API or a set of custom macros for most operations. There are a handful of operations that can only be performed using the JavaScript API, but these are rare and probably not a major consideration for most authors. I recommend using whichever one you prefer.
 
@@ -51,7 +51,7 @@ HAL v2 allows authors to use either a simple JavaScript-based API or a set of cu
 > [!TIP]
 > HAL custom macros will show up in red in the Twine 2 passage editor, as if they don't exist. This is normal.
 
-<!--### Special Passages
+### Special Passages
 
 A *special* passage is a normal passage with a specific name that has special meaning to the library. HAL supports two special passages.
 
@@ -63,11 +63,11 @@ This special passage can be used to configure certain options within HAL.
 
 #### The `hal.tracks` Special Passage
 
-See: [THe Track Definition Special Passage](#the-track-definition-special-passage)
+See: [The Track Definition Special Passage](#the-track-definition-special-passage)
 
 This special passage can be used, in addition to or in place of the `(newtrack:)` macro or the `A.newTrack()` method, to define tracks.
 
-### The Custom Macros Overview
+### Custom Macros Overview
 
 HAL comes with the following custom macros:
 
@@ -86,9 +86,222 @@ This macro is used to [define a track](#defining-tracks). You must give the trac
 (newTrack: 'que-pena', './audio/que-pena.mp3', './audio/que-pena.ogg')
 ```
 
-#### 
+#### The `(newplaylist:)` Macro
 
-### The JavaScript API Overview-->
+**Syntax:** `(newplaylist: name, track [, track...])`
+
+This macro is used to [define a playlist](#defining-playlists). You must give the playlist a name and a list of tracks.
+
+**Arguments:**  
+- `name` the name to give the playlist.
+- `track` a number of tracks should be passed to playlist by name as individual arguments.
+
+```
+(newplaylist: 'bgm', 'que-pena', 'score', 'sad-song')
+```
+
+#### The `(newgroup:)` Macro
+
+**Syntax:** `(newgroup: name, track [, track...])`
+
+This macro is used to [define custom audio groups](#defining-groups). You must give the group a name and a list of tracks.
+
+**Arguments:**  
+- `name` the name to give the group.
+- `track` a number of tracks should be passed to group by name as individual arguments.
+
+```
+(newgroup: 'ui-sounds', 'beep', 'no-beep', 'click')
+```
+
+#### The `(masteraudio:)` Macro
+
+**Syntax:** `(masteraudio: command [, arguments])`
+
+This macro is used to run [master audio commands](#master-audio-commands).
+
+**Arguments:**  
+- `command` the name of a master audio command.
+- `arguments` (optional) the arguments passed to the command, if applicable.
+
+```
+(masteraudio: 'preload')
+(masteraudio: 'stopall')
+```
+
+#### The `(track:)` Macro
+
+**Syntax:** `(track: name, command [, arguments...])`
+
+This macro is used to run [track commands](#track-commands).
+
+**Arguments:**  
+- `name` the name of a previously defined track.
+- `command` the name of a track command.
+- `arguments` a list of arguments to pass to the command
+
+```
+(track: 'beep', 'play')
+(track: 'que-pena', 'loop', true)
+```
+
+#### The `(playlist:)` Macro
+
+**Syntax:** `(playlist: name, command [, arguments...])`
+
+This macro is used to run [playlist commands](#playlist-commands).
+
+**Arguments:**  
+- `name` the name of a previously defined playlist.
+- `command` the name of a playlist command.
+- `arguments` a list of arguments to pass to the command
+
+```
+(playlist: 'bgm', 'play')
+(playlist: 'bgm', 'loop', true)
+```
+
+#### The `(group:)` Macro
+
+**Syntax:** `(group: name, command [, arguments...])`
+
+This macro is used to run [group commands](#group-commands).
+
+**Arguments:**  
+- `name` the name of a previously defined group.
+- `command` the name of a group command.
+- `arguments` a list of arguments to pass to the command
+
+```
+(group: 'ui-sounds', 'volume', 0.5)
+(group: 'ui-sounds', 'mute', true)
+```
+
+### The JavaScript API Overview
+
+An overview of JavaScript APIs available in HAL:
+
+#### The `A` / `Chapel.Audio` Object
+
+This object is the root object of the library, and contains several methods, most of which are master audio commands. If the `globalA` [configuration option](#configuration) is `false` or the `window.A` namespace is already taken, everything can be found on the `Chapel.Audio` object instead. We use the `A` namespace throughout this guide, but keep in mind that they are interchangeable.
+
+#### The Tracks API
+
+Tracks can be [defined](#defining-tracks) with the `A.newTrack()` method and accessed with the `A.track()` method so that you can run [track methods](#track-commands) on them.
+
+---
+
+**Syntax:** `A.newTrack(name, sourceList)`
+
+**Arguments:**  
+- `name` (*string*) the name to give the track.
+- `sourceList` (*string*|*string array*) a list of source URLs, which may be provided as a number of individual arguments, or as a single array of strings.
+
+**Example:**  
+```
+// sources passed as a series of arguments:
+A.newTrack('beep', './audio/beep.mp3', './audio/beep.ogg');
+
+// sources passed as a single array of strings:
+A.newTrack('que-pena', ['./audio/que-pena.mp3', './audio/que-pena.ogg']);
+```
+
+---
+
+**Syntax:** `A.track(name)`
+
+**Returns:** a `Track` instance, which you can then run methods on.
+
+**Arguments:**  
+- `name` (*string*) the name of a previously defined track.
+
+**Example:**  
+```
+A.track('beep').play();
+A.track('que-pena').loop(true);
+```
+
+---
+
+#### The Playlist API
+
+Playlists can be [defined](#defining-playlists) with the `A.createPlaylist()` method and accessed with the `A.playlist()` method so that you can run [playlist methods](#playlist-commands) on them.
+
+---
+
+**Syntax:** `A.createPlaylist(name, trackList)`
+
+**Arguments:**  
+- `name` (*string*) the name to give the playlist.
+- `trackList` (*string*|*string array*) a list of track names, which may be provided as a number of individual arguments, or as a single array of strings.
+
+**Example:**  
+```
+// tracks passed as a series of arguments:
+A.createPlaylist('bgm', 'que-pena', 'score', 'sad-song');
+
+// tracks passed as a single array of strings:
+A.createPlaylist('bgm', ['que-pena', 'score', 'sad-song']);
+```
+
+---
+
+**Syntax:** `A.playlist(name)`
+
+**Returns:** a `Playlist` instance, which you can then run methods on.
+
+**Arguments:**  
+- `name` (*string*) the name of a previously defined playlist.
+
+**Example:**  
+```
+A.playlist('bgm').play();
+A.playlist('bgm').loop(true);
+```
+
+---
+
+#### The Group API
+
+Groups can be [defined](#defining-groups) with the `A.createGroup()` method and accessed with the `A.group()` method so that you can run [group methods](#group-commands) on them.
+
+---
+
+**Syntax:** `A.createGroup(name, trackList)`
+
+**Arguments:**  
+- `name` (*string*) the name to give the group.
+- `trackList` (*string*|*string array*) a list of track names, which may be provided as a number of individual arguments, or as a single array of strings.
+
+**Example:**  
+```
+// tracks passed as a series of arguments:
+A.createGroup('ui-sounds', 'beep', 'no-beep', 'click');
+
+// tracks passed as a single array of strings:
+A.createGroup('ui-sounds', ['beep', 'no-beep', 'click']);
+```
+
+---
+
+**Syntax:** `A.group(name)`
+
+**Returns:** a `Group` instance, which you can then run methods on.
+
+**Arguments:**  
+- `name` (*string*) the name of a previously defined group.
+
+**Example:**  
+```
+A.playlist('ui-sounds').volume(0.5);
+A.playlist('ui-sounds').mute(true);
+```
+
+---
+
+#### Other APIs
+
+See the [Additional Javascript Features](additional-javascript-features) section for a complete list of additional APIs and features.
 
 ## Configuration
 
@@ -176,8 +389,8 @@ You can use the JavaScript API or the macro API to define tracks as well. Track 
 - `source` at least one source URL must be passed to the macro.
 
 ```
-(newTrack: 'beep', './audio/beep.mp3', './audio/beep.ogg')
-(newTrack: 'que-pena', './audio/que-pena.mp3', './audio/que-pena.ogg')
+(newtrack: 'beep', './audio/beep.mp3', './audio/beep.ogg')
+(newtrack: 'que-pena', './audio/que-pena.mp3', './audio/que-pena.ogg')
 ```
 
 #### **JavaScript**
@@ -277,7 +490,7 @@ You can use the `(track:)` macro or the `A.track()` method to get a track. The m
 **Returns:** a `Track` instance, which you can then run methods on.
 
 **Arguments:**  
-- `name` (*string*) the name to give the track.
+- `name` (*string*) the name of a previously defined track.
 
 **Example:**  
 ```
@@ -736,46 +949,1463 @@ Methods:
 
 <!-- tabs:end -->
 
-For more JavaScript methods you can use on tracks, [click here](#tracks).
-
 ## Master Audio Commands
 
 Master audio commands and methods effect *all* of the playback happening in the game. You can use these methods to preload audio tracks, stop all audio from playing, or adjust the master mute and master volume settings.
 
+<!-- tabs:start -->
+
+#### **Macros**
+
+**Syntax:** `(masteraudio: command [, arguments])`
+
+**Arguments:**  
+- `command` the name of a master audio command.
+- `arguments` (optional) the arguments passed to the command, if applicable.
+
+```
+(masteraudio: 'preload')
+(masteraudio: 'stopall')
+```
+
+#### **JavaScript**
+
+**Syntax:** `A`
+
+The master audio methods are simply static methods of the `A` or `Chapel.Audio` object.
+
+**Example:**  
+```
+A.preload();
+A.stopAll();
+```
+
+<!-- tabs:end -->
+
 ### Master Volume and Mute Settings
+
+> [!NOTE]
+> Master audio volume and mute settings are considered *user controls*, and are, by default, persisted between game sessions. Generally speaking, users, not developers, should be adjusting these controls.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+Commands:  
+- `volume`: Sets the master volume. The master volume effects all tracks.
+  - Arguments:
+    - (*number*) a number, between 0 and 1, to set the master volume to.
+  - Returns: nothing.
+
+
+- `getvolume`: Returns the current master volume level.
+  - Arguments: none.
+  - Returns: *number*.
+
+
+- `mute`: Changes the master mute setting. The master mute setting overrides track mute settings when turned on, and defers to track mute settings when turned off. In other words, if the master mute setting is on, all tracks are effectively muted, but when it's off, individual tracks may or may not still be muted.
+  - Arguments:
+    - (*boolean*) pass `true` to mute, `false` to unmute. 
+  - Returns: nothing.
+
+
+- `ismuted`: Returns whether the master audio mute setting is on or off.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+```
+<!-- create a link that toggles the master mute -->
+{
+(link-repeat: 'Mute')[
+    (if: (masteraudio: 'ismuted'))[
+        (masteraudio: 'mute', false)
+    ](else:)[
+        (masteraudio: 'mute', true)
+    ]
+]
+}
+
+<!-- set the master volume to 0.5 -->
+(masteraudio: 'volume', 0.5)
+
+<!-- print the current master volume -->
+(print: (masteraudio: 'getvolume'))
+```
+
+#### **JavaScript**
+
+Methods:  
+- `A.volume(vol)`: Sets the master volume. The master volume effects all tracks.
+  - Arguments:
+    - `vol` (*number*) a number, between 0 and 1, to set the master volume to.
+  - Returns: nothing.
+
+
+- `A.getvolume()`: Returns the current master volume level.
+  - Arguments: none.
+  - Returns: *number*.
+
+
+- `A.mute(bool)`: Changes the master mute setting. The master mute setting overrides track mute settings when turned on, and defers to track mute settings when turned off. In other words, if the master mute setting is on, all tracks are effectively muted, but when it's off, individual tracks may or may not still be muted.
+  - Arguments:
+    - `bool` (*boolean*) pass `true` to mute, `false` to unmute. 
+  - Returns: nothing.
+
+
+- `A.isMuted()`: Returns whether the master audio mute setting is on or off.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+```
+<!-- create a link that toggles the master mute -->
+{
+(link-repeat: 'Mute')[
+    (if: A.isMuted())[
+        <script>A.mute(false)</script>
+    ](else:)[
+        <script>A.mute(true)</script>
+    ]
+]
+}
+
+<!-- set the master volume to 0.5 -->
+<script>A.volume(0.5)</script>
+
+<!-- print the current master volume -->
+(print: A.getVolume())
+```
+
+<!-- tabs:end -->
 
 ### Other Commands and Methods
 
+<!-- tabs:start -->
+
+#### **Macros**
+
+Commands:  
+- `stopall`: Stops all currently playing audio.
+  - Arguments: none.
+  - Returns: nothing.
+
+
+- `isplaying`: Returns whether any audio is currently playing.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+- `preload`: Extends the loading screen while all previously defined tracks preload. Only works in a startup-tagged passage or the first passage of the story. See: [Preloading Audio](#preloading-audio).
+  - Arguments: none.
+  - Returns: nothing.
+
+
+```
+<!-- stop all playing audio -->
+(masteraudio: 'stopall')
+
+<!-- check if any audio is playing -->
+(unless: (masteraudio: 'isplaying'))[
+    It's quiet... Too quiet.
+]
+
+<!-- preload all previously defined tracks -->
+(masteraudio: 'preload')
+```
+
+#### **JavaScript**
+
+Methods:  
+- `A.stopAll()`: Stops all currently playing audio.
+  - Arguments: none.
+  - Returns: nothing.
+
+
+- `A.audioPlaying()`: Returns whether any audio is currently playing.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+- `A.preload()`: Extends the loading screen while all previously defined tracks preload. Only works in your story JavaScript, a startup-tagged passage, or the first passage of the story. See: [Preloading Audio](#preloading-audio).
+  - Arguments: none.
+  - Returns: nothing.
+
+
+```
+<!-- stop all playing audio -->
+<script>A.stopAll()</script>
+
+<!-- check if any audio is playing -->
+(unless: A.audioPlaying())[
+    It's quiet... Too quiet.
+]
+
+<!-- preload all previously defined tracks -->
+<script>A.preload()</script>
+```
+
+<!-- tabs:end -->
+
 ## Defining Playlists
+
+You can define playlists using the `(newplaylist:)` macro or the `A.createPlaylist()` method. A playlist is an ordered collection of tracks used to play those tracks one after the other. Playlists can also be shuffled and can be looped--a playlist loop differs from a track loop: the playlist will play all of its songs through once and then start over from the first cong when looped.
+
+Playlists differ from [groups](#defining-groups) in that groups are intended to create distinct audio subsets--music, sound effects, etc, that can be controlled in unison, while playlists are tracks that are meant to be played in some sort of order together.
+
+A playlist must be given a name and a set of track names, in order.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+**Syntax:** `(newplaylist: name, track [, track...])`
+
+**Arguments:**  
+- `name` the name to give the playlist.
+- `track` a number of tracks should be passed to playlist by name as individual arguments.
+
+```
+(newplaylist: 'bgm', 'que-pena', 'score', 'sad-song')
+```
+
+#### **JavaScript**
+
+**Syntax:** `A.createPlaylist(name, trackList)`
+
+**Arguments:**  
+- `name` (*string*) the name to give the playlist.
+- `trackList` (*string*|*string array*) a list of track names, which may be provided as a number of individual arguments, or as a single array of strings.
+
+**Example:**  
+```
+// tracks passed as a series of arguments:
+A.createPlaylist('bgm', 'que-pena', 'score', 'sad-song');
+
+// tracks passed as a single array of strings:
+A.createPlaylist('bgm', ['que-pena', 'score', 'sad-song']);
+```
+
+<!-- tabs:end -->
+
+Once you've defined a playlist, you can act on it using the `(playlist:)` macro or the `A.playlist()` method in much the same way as you'd act on tracks.
 
 ## Playlist Commands
 
+You can use the `(playlist:)` macro or the `A.playlist()` method to get a playlist. The macro version accepts a command and arguments directly in the macro, while the JavaScript version allows you to call methods directly on the returned playlist instance. The JavaScript methods can generally be chained unless they need to return a specific value.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+**Syntax:** `(playlist: name, command [, arguments...])`
+
+**Arguments:**  
+- `name` the name of a previously defined playlist.
+- `command` the name of a playlist command.
+- `arguments` a list of arguments to pass to the command
+
+```
+(playlist: 'bgm', 'play')
+(playlist: 'bgm', 'loop', true)
+```
+
+#### **JavaScript**
+
+**Syntax:** `A.playlist(name)`
+
+**Returns:** a `Playlist` instance, which you can then run methods on.
+
+**Arguments:**  
+- `name` (*string*) the name of a previously defined playlist.
+
+**Example:**  
+```
+A.playlist('bgm').play();
+A.playlist('bgm').loop(true);
+```
+
+<!-- tabs:end -->
+
+### Playing, Pausing, and Stopping Playlists
+
+> [!TIP]
+> Playlists do not have an equivalent to the `playwhenpossible` [track command](#track-commands), so you'll need to make sure the user interacts with the page in some way before playing a playlist.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+Commands:  
+- `play`: Starts playback of the indicated playlist. When a track ends, the next track is played until the last one is reached. If the playlist is set to loop, it will start over, otherwise playback will end when the last track ends.
+  - Arguments:
+    - (*number*) you can pass a number to start the playlist at a different track than the first. Playlists are zero-based, so the first track in a playlist is `0`, the second is `1`, and so on.
+  - Returns: nothing.
+
+
+- `pause`: Pauses the playback of the indicated playlist.
+  - Arguments: none.
+  - Returns: nothing.
+
+
+- `stop`: Stops playback of the indicated playlist. This pauses the current track and resets it, and resets the playlist.
+  - Arguments: none.
+  - Returns: nothing.
+
+
+- `isplaying`: Returns whether the indicated playlist is currently playing.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+```
+<!-- start playback of a playlist at the first track -->
+(playlist: 'bgm', 'play')
+
+<!-- start playback of a playlist at the third (note that the number is 2, as the list is zero-based) track -->
+(playlist: 'bgm', 'play', 2)
+
+<!-- pause playback of a playlist -->
+(playlist: 'bgm', 'pause')
+
+<!-- stop playback of a playlist -->
+(playlist: 'bgm', 'stop')
+
+<!-- check if the playlist is already playing, if not, play it -->
+(if: (playlist: 'bgm', 'isplaying'))[
+    (playlist: 'bgm', 'play')
+]
+```
+
+#### **JavaScript**
+
+Methods:  
+- `playlist#play(trackNum)`: Starts playback of the playlist. When a track ends, the next track is played until the last one is reached. If the playlist is set to loop, it will start over, otherwise playback will end when the last track ends.
+  - Arguments:
+    - `trackNum` (*number*) you can pass a number to start the playlist at a different track than the first. Playlists are zero-based, so the first track in a playlist is `0`, the second is `1`, and so on.
+  - Returns: this playlist (chainable).
+
+
+- `playlist#pause()`: Pauses the playback of the playlist.
+  - Arguments: none.
+  - Returns: this playlist (chainable).
+
+
+- `playlist#stop()`: Stops playback of the playlist. This pauses the current track and resets it, and resets the playlist.
+  - Arguments: none.
+  - Returns: this playlist (chainable).
+
+
+- `playlist#isPlaying()`: Returns whether the playlist is currently playing.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+```
+<!-- start playback of a playlist at the first track -->
+<script>A.playlist('bgm').play()</script>
+
+<!-- start playback of a playlist at the third (note that the number is 2, as the list is zero-based) track -->
+<script>A.playlist('bgm').play(2)</script>
+
+<!-- pause playback of a playlist -->
+<script>A.playlist('bgm').pause()</script>
+
+<!-- stop playback of a playlist -->
+<script>A.playlist('bgm').stop()</script>
+
+<!-- check if the playlist is already playing, if not, play it -->
+(if: A.playlist('bgm').isPlaying())[
+    <script>A.playlist('bgm').play()</script>
+]
+```
+
+<!-- tabs:end -->
+
+### Looping Playlists
+
+Playlists can be looped. Unlike tracks, this works more like the "repeat all" option on a music player. When a playlist is set to loop, it starts over from the beginning of the first track once the last track has finished playing.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+Commands:  
+- `loop`: Sets the indicated playlist to loop. Once the last track finished playing, the first track will start again from the beginning.
+  - Arguments:
+    - (*boolean*) pass `true` to make the playlist loop, `false` to stop it from looping.
+  - Returns: nothing.
+
+
+- `islooping`: Returns whether the indicated playlist is set to loop.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+```
+<!-- set a playlist to loop and start playback -->
+(playlist: 'bgm', 'loop', true)
+(playlist: 'bgm', 'play')
+
+<!-- stop a playlist from looping -->
+(playlist: 'bgm', 'loop', false)
+
+<!-- set a playlist to loop only if it isn't already -->
+(if: (playlist: 'bgm', 'islooping'))[
+    (playlist: 'bgm', 'loop', true)
+]
+```
+
+#### **JavaScript**
+
+Methods:  
+- `playlist#loop(bool)`: Sets the playlist to loop. Once the last track finished playing, the first track will start again from the beginning.
+  - Arguments:
+    - `bool` (*boolean*) pass `true` to make the playlist loop, `false` to stop it from looping.
+  - Returns: this playlist (chainable).
+
+
+- `playlist#isLooping()`: Returns whether the playlist is set to loop.
+  - Arguments: none.
+  - Returns: *boolean*.
+
+
+```
+<!-- set a playlist to loop and start playback -->
+<script>A.playlist('bgm').loop(true).play()</script>
+
+<!-- stop a playlist from looping -->
+<script>A.playlist('bgm').loop(false)</script>
+
+<!-- set a playlist to loop only if it isn't already -->
+(if: A.playlist('bgm').isLooping())[
+    <script>A.playlist('bgm').loop(true)</script>
+]
+```
+
+<!-- tabs:end -->
+
+### Shuffling and Randomizing Playlists
+
+You can also shuffle a playlist, which randomizes its order, or, using the JavaScript API, pick a single track from a playlist at random.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+Commands:  
+- `shuffle`: Randomizes the order of a playlist.
+  - Arguments: none.
+  - Returns: nothing.
+
+
+```
+<!-- shuffle the playlist and play it -->
+(playlist: 'bgm', 'shuffle')
+(playlist: 'bgm', 'play')
+```
+
+#### **JavaScript**
+
+Methods:  
+- `playlist#shuffle()`: Randomizes the order of a playlist.
+  - Arguments: none.
+  - Returns: this playlist (chainable).
+
+
+- `playlist#random()`: Return a random track from the playlist, which can then be used with track methods.
+  - Arguments: none.
+  - Returns: a `Track` instance.
+
+
+```
+<!-- shuffle the playlist and play it -->
+<script>A.playlist('bgm').shuffle().play()</script>
+
+<!-- play a random track from a playlist -->
+<script>A.playlist('bgm').random().play()</script>
+```
+
+<!-- tabs:end -->
+
 ## Defining Groups
+
+Groups are ways to collect and organize tracks, but should not be confused with [playlists](#defining-playlists). These are designed to allow you to select and control a large number of tracks and do something to them. The methods used by groups are very similar to some of the track methods, but as said, do something to all of them at once.
+
+There are two built-in groups, `playing` and `looping`, that can be used to control all currently playing or looping tracks, respectively. Additionally, you can define your own groups with the macro `(newgroup:)` or the method `A.createGroup()`.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+**Syntax:** `(newgroup: name, track [, track...])`
+
+**Arguments:**  
+- `name` the name to give the group.
+- `track` a number of tracks should be passed to group by name as individual arguments.
+
+```
+(newgroup: 'ui-sounds', 'beep', 'no-beep', 'click')
+```
+
+#### **JavaScript**
+
+**Syntax:** `A.createGroup(name, trackList)`
+
+**Arguments:**  
+- `name` (*string*) the name to give the group.
+- `trackList` (*string*|*string array*) a list of track names, which may be provided as a number of individual arguments, or as a single array of strings.
+
+**Example:**  
+```
+// tracks passed as a series of arguments:
+A.createGroup('ui-sounds', 'beep', 'no-beep', 'click');
+
+// tracks passed as a single array of strings:
+A.createGroup('ui-sounds', ['beep', 'no-beep', 'click']);
+```
+
+<!-- tabs:end -->
 
 ## Group Commands
 
-## Examples
+You can use the `(group:)` macro or the `A.group()` method to get a group. The macro version accepts a command and arguments directly in the macro, while the JavaScript version allows you to call methods directly on the returned group instance. The JavaScript methods can generally be chained unless they need to return a specific value.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+**Syntax:** `(group: name, command [, arguments...])`
+
+**Arguments:**  
+- `name` the name of a previously defined group.
+- `command` the name of a group command.
+- `arguments` a list of arguments to pass to the command
+
+```
+(group: 'ui-sounds', 'volume', 0.5)
+(group: 'ui-sounds', 'mute', true)
+```
+
+#### **JavaScript**
+
+**Syntax:** `A.group(name)`
+
+**Returns:** a `Group` instance, which you can then run methods on.
+
+**Arguments:**  
+- `name` (*string*) the name of a previously defined group.
+
+**Example:**  
+```
+A.playlist('ui-sounds').volume(0.5);
+A.playlist('ui-sounds').mute(true);
+```
+
+<!-- tabs:end -->
+
+The group commands are a subset of track commands, and accept the same arguments and perform the same actions. The commands are:
+
+|Command|Description|Macro Example|JavaScript Example|
+|---|---|---|---|
+|`play`|Attempts to start playback every sound in the group. At once. Probably not useful, but included for completeness.|`(group: 'ui-sounds', 'play')`|`A.group('ui-sounds').play()`|
+|`pause`|Pauses all the tracks in the group.|`(group: 'ui-sounds', 'pause')`|`A.group('ui-sounds').pause()`|
+|`stop`|Stops all the tracks in the group.|`(group: 'ui-sounds', 'stop')`|`A.group('ui-sounds').stop()`|
+|`mute`|Mutes or unmutes every track in the group.|`(group: 'ui-sounds', 'mute', true)`|`A.group('ui-sounds').mute(true)`|
+|`volume`|Sets the colume level of every track in the group.|`(group: 'ui-sounds', 'volume', 0.5)`|`A.group('ui-sounds').volume(0.5)`|
+|`loop`|Sets all tracks in the group to loop or not loop.|`(group: 'ui-sounds', 'loop', true)`|`A.group('ui-sounds').loop(true)`|
+
+## Detailed Examples
+
+The following section will provide detailed examples and explanations of common use-cases.
+
+### Loading Audio Over the Network
+
+You can use any URL that points to an audio file (i.e. they end in an audio file extension like `.wav` or `.ogg`) to set up a track. For example:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(newtrack: 'theme', 'http://www.kozco.com/tech/piano2.wav', 'http://www.kozco.com/tech/piano2.aif')
+```
+
+#### **JavaScript**
+
+```javascript
+A.newTrack('theme', 'http://www.kozco.com/tech/piano2.wav', 'http://www.kozco.com/tech/piano2.aif');
+```
+
+<!-- tabs:end -->
+
+You can also use the [track definition special passage](#track-definition-special-passage) by creating a passage, naming it `hal.tracks`, and adding text like the following:
+
+```
+theme: http://www.kozco.com/tech/piano2.wav, http://www.kozco.com/tech/piano2.aif
+```
+
+### Loading Audio with Relative Paths
+
+You can load audio with a **relative path**. A relative path is one that is resolved from where your file is located. Here's an [explanation](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL#Absolute_URLs_vs_relative_URLs). Note that relative paths will only work with published HTML files--they won't work correctly from the Twine 2 application's test and play modes.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(newtrack: 'beep', 'audio/beep.mp3', 'audio/beep.ogg')
+(newtrack: 'cool-song', 'audio/cool.mp3', 'audio/cool.ogg')
+(newtrack: 'techno', 'audio/techno.mp3', 'audio/techno.ogg')
+```
+
+#### **JavaScript**
+
+```javascript
+A.newTrack('beep', 'audio/beep.mp3', 'audio/beep.ogg');
+A.newTrack('cool-song', 'audio/cool.mp3', 'audio/cool.ogg');
+A.newTrack('techno', 'audio/techno.mp3', 'audio/techno.ogg');
+```
+
+<!-- tabs:end -->
+
+[More information on adding media to your Twine game.](https://twinery.org/wiki/twine2:add_an_image_movie_sound_effect_or_music)
+
+### Preloading Sound
+
+See: [Preloading Audio](#preloading-audio)
+
+By default, [the `preload` configuration option](#configuration) is `true`, and your game will attempt to preload all the audio it needs. This will make the game feel unresponsive and strange until loading completes. You can show a loading screen during this time by using the `A.preload()` method or the `(masteraudio: 'preload')` command, which may be preferable to an unresponsive page.
+
+You can speed up initial loading and skip that sloppiness altogether by shutting off preloading, but the risk there is that sounds won't be ready when they're called the first time. That nice crisp beep when you click? Half a second late. The awesome theme tune timed to a slick CSS animation? Not so slick now.
+
+Regardless, on subsequent plays, a given user shouldn't have either problem, as the data should be cached in their browser.
+
+### Autoplaying Sound
+
+**Autoplaying** refers to playing a sound (or video) *before* the user interacts with a page. Autoplaying is widely considered annoying, especially on mobiles. However, you've made a game--most users will expect autoplaying sound! It doesn't matter to most browser manufacturers.
+
+There's no way to fake out autoplay, but once your document has permission to play a single sound, autoplay will work from then on out.
+
+For example, if the following is how you play your first bit of audio, it won't work in some browsers:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(track: 'theme', 'play')
+```
+
+#### **JavaScript**
+
+```
+<script>A.track('theme').play();</script>
+```
+
+<!-- tabs:end -->
+
+You have two options. The first is to simply tie the first sound you play to a `(link:)` of some kind. You may want to add a splash screen to your story to do this:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+#My Awesome Game
+
+(link: 'Start')[
+    (track: 'theme', 'play')
+    (goto: 'real first passage')
+]
+```
+
+#### **JavaScript**
+
+```
+#My Awesome Game
+
+(link: 'Start')[
+    <script>A.track('theme').play();</script>
+    (goto: 'real first passage')
+]
+```
+
+<!-- tabs:end -->
+
+The second is to use the `track#playWhenPossible()` method or the `playwhenpossible` command in the `(track:)` macro, which will listen for valid user interactions, and then piggyback off of them to play a sound.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(track: 'theme', 'playwhenpossible)
+```
+
+#### **JavaScript**
+
+```
+<script>A.track('theme').playWhenPossible()</script>
+```
+
+<!-- tabs:end -->
+
+Once it detects a user interaction, control over sound will be unlocked for your game.
+
+### Playing a Sound Only if It isn't Already Playing
+
+If the user is jumping around in your story using the undo or redo features of Harlowe, or if they can get to a scene in multiple ways at different times, you may want to use some [`(if:)`s](https://twine2.neocities.org/#macro_if) or [`(unless:)`s](https://twine2.neocities.org/#macro_unless) along with the `track#isPlaying()` method or the `isplaying` command of the `(track:)` macro to make sure the track you want to play isn't already playing.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(unless: (track: 'theme', 'isplaying'))[
+    (track: 'theme', 'loop', true)
+    (track: 'theme', 'play')
+]
+```
+
+Or
+
+```
+(if: not (track: 'theme', 'isplaying'))[
+    (track: 'theme', 'loop', true)
+    (track: 'theme', 'play')
+]
+```
+
+#### **JavaScript**
+
+```
+(unless: A.track('theme').isPlaying())[
+    <script>A.track('theme').loop(true).play();</script>
+]
+```
+
+Or
+
+```
+(if: not (A.track('theme').isPlaying()))[
+    <script>A.track('theme').loop(true).play();</script>
+]
+```
+
+<!-- tabs:end -->
+
+In some cases, like a major theme switch, where you already had music playing, you may need to do a bit more work, and make sure to stop any sounds that were already playing before playing more tracks.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(unless: (track: 'theme', 'isplaying'))[
+    (masteraudio: 'stopall')
+    (track: 'theme', 'loop', true)
+    (track: 'theme', 'play')
+]
+```
+
+#### **JavaScript**
+
+```
+(unless: A.track('theme').isPlaying())[
+    <script>
+        A.stopAll();
+        A.track('theme').loop(true).play();
+    </script>
+]
+```
+
+<!-- tabs:end -->
+
+If you've already set up all your music tracks in a group, you can potentially do something even better, preventing potentially stopping other tracks, like UI noises or ambiance:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(newtrack: 'theme', 'http://www.kozco.com/tech/piano2.wav')
+(newtrack: 'beep', 'audio/beep.mp3', 'audio/beep.ogg')
+(newtrack: 'cool-song', 'audio/cool.mp3', 'audio/cool.ogg')
+(newtrack: 'techno', 'audio/techno.mp3', 'audio/techno.ogg')
+
+(newgroup: 'bgmusic', 'theme', 'cool-song', 'techno')
+```
+
+Then:
+
+```
+(unless: (track: 'theme', 'isplaying'))[
+    (group: 'bgmusic', 'stop')
+    (track: 'theme', 'loop', true)
+    (track: 'theme', 'play')
+]
+```
+
+#### **JavaScript**
+
+```javascript
+A.newTrack('theme', 'http://www.kozco.com/tech/piano2.wav');
+A.newTrack('beep', 'audio/beep.mp3', 'audio/beep.ogg');
+A.newTrack('cool-song', 'audio/cool.mp3', 'audio/cool.ogg');
+A.newTrack('techno', 'audio/techno.mp3', 'audio/techno.ogg');
+
+A.createGroup('bgmusic', 'theme', 'cool-song', 'techno');
+```
+
+Then:
+
+```
+(unless: A.track('theme').isPlaying())[
+    <script>
+        A.group('bgmusic').stop();
+        A.track('theme').loop(true).play();
+    </script>
+]
+```
+
+<!-- tabs:end -->
+
+### Looping Background Music
+
+The `<track>.loop()` method can be used to make music loop. If all you're after is a a backing track, this is all you need:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+Place this code in a `startup`-tagged passage:
+
+```
+(newtrack: 'theme', 'url/to-you-track.mp3')
+(track: 'theme', 'loop', true)
+(track: 'theme', 'playwhenpossible')
+```
+
+#### **JavaScript**
+
+Place this code in your Story JavaScript area right after the library:
+
+```javascript
+A.newTrack('theme', 'url/to-you-track.mp3');
+A.track('theme').loop(true).playWhenPossible();
+```
+
+<!-- tabs:end -->
+
+That's it; you're done.
+
+### Fading Music in and Out
+
+A nice fade goes a long way.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(track: 'cool-song', 'loop', true)
+(track: 'cool-song', 'fadein', 2)
+```
+
+#### **JavaScript**
+
+```javascript
+A.track('cool-song').loop(true).fadeIn(2);
+```
+
+<!-- tabs:end -->
+
+This will fade `'cool-song'` in over two seconds and loop it.
+
+You can also fade music out:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(track: 'cool-song', 'fadeout', 6)
+```
+
+#### **JavaScript**
+
+```javascript
+A.track('cool-song').fadeOut(6);
+```
+
+<!-- tabs:end -->
+
+This will fade the song out over six seconds and stop it when the fade is over.
+
+To fade one song out and another one in:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+{
+(track: 'cool-song', 'fadeout', 2)
+(live: 2s)[
+    (stop:)
+    (track: 'theme', 'fadein', 2)
+]
+}
+```
+
+#### **JavaScript**
+
+```
+{
+<script>A.track('cool-song').fadeOut(2);</script>
+(live: 2s)[
+    (stop:)
+    <script>A.track('theme').fadeIn(2);</script>
+]
+}
+```
+
+<!-- tabs:end -->
+
+The above passage code will cause the `'cool-song'` track to fade out over two seconds, and the `'theme'` track to fade in over two seconds immediately afterward.
+
+You can also use the *top-secret* `track#delay()` method if you're comfortable with JavaScript:
+
+```javascript
+A.track('cool-song').fadeOut(2);
+A.track('theme').delay(2000, function () { this.fadeIn(2); });
+```
+
+### Playing a Random Sound
+
+You can play a random sound from a predefined list by making a playlist:
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(newtrack: 'beep', 'audio/beep.mp3', 'audio/beep.ogg')
+(newtrack: 'click', 'audio/click.mp3', 'audio/click.ogg')
+(newtrack: 'scream', 'audio/scream.mp3', 'audio/scream.ogg')
+
+(newplaylist: 'noises', 'beep', 'click', 'scream')
+```
+
+There is no macro equivalent for the `playlist#random()` method, so you'll need to use a little JavaScript to actually do the deed:
+
+```
+{
+(link-repeat: 'Play a noise')[
+    <script>A.playlist('noises').random().play();</script>
+]
+}
+```
+
+#### **JavaScript**
+
+```javascript
+A.newTrack('beep', 'audio/beep.mp3', 'audio/beep.ogg');
+A.newTrack('click', 'audio/click.mp3', 'audio/click.ogg');
+A.newTrack('scream', 'audio/scream.mp3', 'audio/scream.ogg');
+
+A.createPlaylist('noises', 'beep', 'click', 'scream');
+```
+
+Then:
+
+```
+{
+(link-repeat: 'Play a noise')[
+    <script>A.playlist('noises').random().play();</script>
+]
+}
+```
+
+<!-- tabs:end -->
+
+The `<playlist>.random()` method returns one random track from the playlist, and you can then use any [track methods](#track-methods) on it.
+
+### Playing Sounds when Links are Clicked
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+You can place audio macros directly in links.
+
+```
+[[Boring Link|some passage]]
+
+{
+(link: 'Exciting Link')[
+    (track: 'beep', 'play')
+    (goto: 'some passage')
+]
+}
+```
+
+#### **JavaScript**
+
+Placing a `<script>` element with the method you need inside a `(link:)` (or similar) macro will allow you to play sounds on click.
+
+```
+[[Boring Link|some passage]]
+
+{
+(link: 'Exciting Link')[
+    <script>A.track('beep').play();</script>
+    (goto: 'some passage')
+]
+}
+```
+
+<!-- tabs:end -->
+
+### Adjusting the Volume of a Sound
+
+Tracks can have individual volumes to help you balance out sounds, or make some faint.
+
+<!-- tabs:start -->
+
+#### **Macros**
+
+```
+(track: 'beep', 'volume', 0.5)
+```
+
+#### **JavaScript**
+
+```javascript
+A.track('beep').volume(0.5);
+```
+
+<!-- tabs:end -->
+
+Volume levels are numbers between 0 and 1 (inclusive), so 0.5 is half volume. By default tracks have a volume of 1.
+
+### Have ideas?
+
+[Open an issue](https://github.com/ChapelR/harlowe-audio/issues/new) to suggest more examples, or for clarification on existing ones.
 
 ## Pitfalls and Gotchas
 
+Here are a few things to keep in mind when using HAL.
+
+### `<script>` elements are processed (very) late.
+
+`<script>` elements are *not* processed in the order they are encountered, but rather they are always processed last--after all passage code. Even when they're in `startup`- or `header`-tagged passages, they will be processed after **all** macro code. This can create weird issues. Consider the following:
+
+```
+:: audio-init [startup]
+<script>
+    A.newTrack('piano', 'http://www.kozco.com/tech/piano2.wav');
+    A.preload();
+</script>
+
+:: Start
+(print: A.track('piano').isPlaying())
+<script>A.track('piano').loop(true).playWhenPossible();</script>
+```
+
+You would probably expect the `(print:)` there to print `false`; instead, it will throw an error (`cannot read property isPlaying of undefined`) because our script is processed late.
+
+You can abuse the set macro, to run code in order:
+
+```
+:: audio-init [startup]
+(set: _dummy to A.newTrack('piano', 'http://www.kozco.com/tech/piano2.wav'))
+(set: _dummy to A.preload())
+
+:: Start
+(print: A.track('piano').isPlaying())
+<script>A.track('piano').loop(true).playWhenPossible();</script>
+```
+
+The `(set:)` will force the function to be evaluated in order, and the `(print:)` will print `false` as expected. However, this is a hack, and may not be possible in future versions of Harlowe.
+
+If you need to make sure your HAL methods are processed in order with the rest of the passage, use the macros if at all possible.
+
+### Use caution when altering tracks in multiple ways.
+
+When you do something to the same track(s) with its playlist, its group, or its track methods at one time, you're asking for trouble. Even though tracks can be part of groups and playlists, I opted **not** to clone the tracks; there is only ever one track, and this means **all changes to the track are essentially "global"** and will effect the track regardless of how you interact with it.
+
+This may not always be the case, but this seemed like it gave tracks a much more consistent and expected behavior. Adding cloned version of tracks for at least playlists is on the table, though, so let me know [via an issue](https://github.com/ChapelR/harlowe-audio/issues/new) if you feel that makes more sense.
+
+### Prefer track methods when possible.
+
+Collections are always slower, and this is true with tracks, too. Whenever it would make sense to use more than one kind of method, always prefer track methods, as they are *much* faster.
+
+### Master controls are user controls.
+
+Note that the state of the master controls (mute and volume) are intended for your players to adjust, not for the developer. You *can* use them, but they're generally a poor way to achieve most results. For this reason, I would suggest always using group methods to adjust volume or mute state for a group of tracks (or even all tracks, if it comes to that) rather than the master controls. Remember that tracks can be members of multiple groups. This is why the group interface exists in the first place.
+
 ## Additional JavaScript Features
 
-### Additional Methods
-
-#### Tracks
-
-#### Master Audio
-
-#### Playlists
-
-#### Groups
+There are a handful of additional features and APIs included in HAL that users may access via the JavaScript API.
 
 ### The Loading Screen
 
+This library adds a loading screen to Harlowe that is superficially similar to SugarCube's. You can use this load screen by calling the `A.preload()` method after defining some tracks. You can potentially use it for other things too, if you want. Show it by calling `A.loadScreen.show()`, and get rid of it with `A.loadScreen.dismiss()`. That's really all there is to it.
+
 ### The Controls API
+
+> [!TIP]
+> These APIs are completely unavailable if the `showControls` [configuration option](#configuration) is `false`.
+
+The control panel is a user interface for controlling the audio that is set up through this library. You can use it to give your players a mute button and a volume control without having to build these functions yourself.
+
+You may wish to alter the panels CSS to math your game. [Look here](https://github.com/ChapelR/harlowe-audio/blob/master/src/panel.css) to check out it's default styles.
+
+Some facets of the control panel can be controlled via JavaScript using the following methods:
+
+---
+
+- **the `A.controls.close()` method**
+
+- Arguments: none.
+
+- Returns: none.
+
+Closes (shrinks) the panel.
+
+---
+
+- **the `A.controls.open()` method**
+
+- Arguments: none.
+
+- Returns: none.
+
+Opens (expands) the panel.
+
+---
+
+- **the `A.controls.hide()` method**
+
+- Arguments: none.
+
+- Returns: none.
+
+Hides the panel completely.
+
+---
+
+- **the `A.controls.show()` method**
+
+- Arguments: none.
+
+- Returns: none.
+
+Makes the panel visible after hiding it.
+
+---
 
 ### The Menu API
 
+> [!TIP]
+> These APIs are completely unavailable if the `showControls` [configuration option](#configuration) is `false`.
+
+> [!DANGER]
+> You should **always** define your menu links Story JavaScript, or your compiler's equivalent script section, never in passages.
+
+This API allows you to add links to the sidebar as a 'story menu', similar to what can be done in SugarCube. THese links can be used to navigate to a passage, run a JavaScript function, or both. They can be hidden, shown, toggled, and removed at any time.
+
+---
+
+- **the `A.menu.hide()` method**
+
+- Arguments: none.
+
+- Returns: the `#story-menu` element (jQuery).
+
+Hides the story menu portion of the side bar.
+
+---
+
+- **the `A.menu.show()` method**
+
+- Arguments: none.
+
+- Returns: the `#story-menu` element (jQuery).
+
+Shows the story menu portion of the side bar.
+
+---
+
+- **the `A.menu.isShown()` method**
+
+- Arguments: none.
+
+- Returns: boolean.
+
+Returns whether the story menu portion of the side bar is currently visible.
+
+---
+
+- **the `A.menu.links.add(linkText, [passageName], [callback])` method**
+
+- Arguments: 
+    - `linkText`: (string) the text of the link.
+    - `passageName`: (optional) (string) a passage name to navigate to when the link is clicked.
+    - `callback`: (optional) (string) a function to run when the link is clicked.
+
+- Returns: the generated link (jQuery).
+
+This method creates a story menu link. You must pass it text to display or it will raise an error. You can then pass it a passage name to navigate to, a callback function to run on click, both, or neither. If you include both, they must be included in the indicated order.
+
+---
+
+- **the `A.menu.links.clear()` method**
+
+- Arguments: none.
+
+- Returns: the `#story-menu` element (jQuery).
+
+This method removes all of the links from the story menu.
+
+---
+
+- **the `A.menu.links.hide(text)` method**
+
+- Arguments: 
+    - `text`: the text of the link you want to alter.
+
+- Returns: nothing.
+
+This method hides a story menu link. If there are multiple links with the same link text, all of them will be hidden.
+
+---
+
+- **the `A.menu.links.show(text)` method**
+
+- Arguments: 
+    - `text`: the text of the link you want to alter.
+
+- Returns: nothing.
+
+This method shows a hidden story menu link. If there are multiple links with the same link text, all of them will be shown.
+
+---
+
+- **the `A.menu.links.toggle(text)` method**
+
+- Arguments: 
+    - `text`: the text of the link you want to alter.
+
+- Returns: nothing.
+
+This method toggles the visibility a story menu link (hiding it if it's visible, showing it if it is hidden). If there are multiple links with the same link text, all of them will be toggled.
+
+---
+
+- **the `A.menu.links.remove(text)` method**
+
+- Arguments: 
+    - `text`: the text of the link you want to alter.
+
+- Returns: nothing.
+
+This method removes a story menu link. If there are multiple links with the same link text, all of them will be removed. Hidden links can be re-shown later, removed links are gone for good and will need to be recreated via `A.menu.links.add()`.
+
+---
+
 ### Events
 
+There are two kinds of events that are triggered by HAL--events triggered on the document *only* and events triggered on *both* the track element and the document.
+
+#### Track Event Methods
+
+There are two track event methods you can use; `<track>.on()` and `<track>.one()`. The former triggers a handler each time the indicated event occurs, the latter triggers a handler only once. These methods can only be used with [track events](#list-of-track-events).
+
+```javascript
+A.track('some-song').one(':volume', function () {
+    // occurs only once when the volume of "some-song" is changed
+    console.log('track "some-song" volume changed');
+});
+```
+
+```javascript
+A.track('some-song').on(':volume', function () {
+    // occurs each time the volume of "some-song" is changed
+    console.log('track "some-song" volume changed');
+});
+```
+
+#### Global Event Methods
+
+As with track event methods, there are two: `A.on()` and `A.one()`. These event methods monitor *all* tracks for events, and also monitor for [master audio events](#list-of-master-audio-events).
+
+```javascript
+A.one(':volume', function (ev) {
+    // occurs only once when the volume of a track is changed
+    console.log('track "' + ev.track.id + '" volume changed');
+});
+```
+
+```javascript
+A.on(':volume', function (ev) {
+    // occurs each time the volume of any track is changed
+    console.log('track "' + ev.track.id + '" volume changed');
+});
+```
+
+#### List of Track Events
+
+These events are triggered on both the document and the track element. The track's definition is available as `<event>.track`. These events may be used with `<track>.on()` and `<track>.one()` to listen for events on specific tracks, or with `A.on()` and `A.one()` to listen for events on any and all tracks.
+
+| Event        | Description                                |
+| ---          | ---                                        |
+| `:available` | a track's metadata is loaded               |
+| `:loaded`    | a track can be played from start to finish |
+| `:play`      | a track starts playing                     |
+| `:pause`     | a track is paused                          |
+| `:stop`      | a track reaches the end or is stopped      |
+| `:mute`      | a track is muted or unmuted                |
+| `:volume`    | a track's volume is changed                |
+
+#### List of Master Audio Events
+
+These events are only available for use with `A.on()` and `A.one()`, and are only triggered on the document element.
+
+| Event            | Description                                 |
+| ---              | ---                                         |
+| `:master-mute`   | the master mute control is muted or unmuted |
+| `:master-volume` | the master volume is changed                |
+
+#### The Event Object
+
+The event object in track events contains the `track` property, which contains the definition of the track that triggered the event.
+
+| Property                | Description                                  |
+| ---                     | ---                                          |
+| `<event>.track.id`      | The track's name/id.                         |
+| `<event>.track.$el`     | The track's jQuery-wrapped audio element.    |
+| `<event>.track.unwrap`  | The track's `<audio>` element object.        |
+| `<event>.track.sources` | The track's sources; a string array of URLs. |
+
+You can run any valid track methods directly on the track in the event object as well, e.g. `<event>.track.getVolume()`.
+
+---
+
 ### Extensions
+
+You can build or import JavaScript-based extensions into this library using special funcitons designed to add features without clobbering existing stuff. For example, if you wanted to make a method for tracks that returned their names, you could use the `A.extendTrackProto()` method, and pass it an object containing the new method. For example:
+
+```javascript
+A.extendTrackProto({
+    getName : function () {
+        return this.id;
+    }
+});
+```
+
+Then you can use it just like any other track method:
+
+```javascript
+var trackName = A.playlist('bgm').random().getName();
+```
+
+You can add multiple properties at once, but if a property name that is already taken is encountered, an error will be thrown.
+
+```javascript
+A.extendTrackProto({
+    getName : function () {
+        return this.id;
+    },
+    loop : true // error!
+});
+```
+
+These functions are probably most useful for people already experienced with JavaScript, but will allow me (and potentially other devs) to quickly add features for people without rebuilding the entire library.
+
+[Example extensions.](https://gist.github.com/ChapelR/57655e2a9a75352c70cf7d605858d7c7)
+
+#### Extension Method List
+
+The following is a complete list of the extension methods available for use:
+
+---
+
+- **the `A.extend(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to the `A` / `Chapel.Audio` object.
+
+---
+
+- **the `A.extendTrack(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to the Track constructor (e.g. static methods).
+
+---
+
+- **the `A.extendTrackProto(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to Track instances (e.g. instance methods).
+
+---
+
+- **the `A.extendGroup(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to the Group constructor (e.g. static methods).
+
+---
+
+- **the `A.extendGroupProto(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to Group instances (e.g. instance methods).
+
+---
+
+- **the `A.extendPlaylist(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to the Playlist constructor (e.g. static methods).
+
+---
+
+- **the `A.extendPlaylistProto(obj)` method**
+
+- Arguments:  
+    - `obj` (object) an object containing the properties and methods you want to add.
+
+- Returns: none.
+
+Safely adds properties and methods to the Playlist instances (e.g. instance methods).
+
+---
