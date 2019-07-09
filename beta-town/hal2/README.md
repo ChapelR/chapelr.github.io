@@ -13,10 +13,6 @@ HAL is an audio library for [Harlowe (v2.1.0 or higher)](https://twine2.neocitie
 - Supports preloading of audio, with an optional loading screen.
 - Configurable and extensible for users who need it, with sane defaults and a bevy of built-in features for users who don't want to mess with any of that.
 
-In v2.0.0 and higher:
-- A set of custom audio macros to simplify usage.
-- HAL uses *special passages* for configuration options and allows users to optionally use a special passage to define tracks, further simplifying the usage of HAL.
-
 ## Getting the Library
 
 You can download any version of HAL from [here](https://github.com/ChapelR/harlowe-audio/releases). If you're just getting started, it's highly recommended that you grab the latest version. Once you've downloaded HAL, you'll need to read the [guide](#guide) or the [documentation](v2) to learn how to use it.
@@ -46,13 +42,13 @@ This is a quick, twenty-minute (give or take) guide to getting HAL working. You'
 
 [See the docs for installing with other compilers.](v2#installation)
 
-To install HAL, all you need is the code, which you can get [on the releases page of the repo](https://github.com/ChapelR/harlowe-audio/releases). You should choose the latest version possible. Download the `harlowe-audio.zip` file and unzip it. There should be three files, `harlowe-audio.min.js`, `harlowe-audio.min.css`, and `LICENSE`. Open the `harlowe-audio.min.js` file in a text editor, copy all of the contents, and paste it into your story JavaScript area in Twine 2. To find the story JavaScript area, click the up arrow next to your story's name in the editor (bottom left-hand side), then click the appropriate menu option.
+To install HAL, all you need is the code, which you can get [on the releases page of the repo](https://github.com/ChapelR/harlowe-audio/releases). You should choose the version with the highest version number. Download the `harlowe-audio.zip` file and unzip it. There should be three files, `harlowe-audio.min.js`, `harlowe-audio.min.css`, and `LICENSE`. Open the `harlowe-audio.min.js` file in a text editor, copy all of the contents, and paste it into your story JavaScript area in Twine 2. To find the story JavaScript area, click the up arrow next to your story's name in the editor (bottom left-hand side), then click the appropriate menu option.
 
-<image src='./assets/js.jpg' title='The story JavaScript menu option in the Twine 2 editor.' alt='The story JavaScript menu option in the Twine 2 editor.' width='50%'>
+<image src='./assets/menu1.jpg' title='The story JavaScript menu option in the Twine 2 editor.' alt='The story JavaScript menu option in the Twine 2 editor.'>
 
 You'll then do the same thing with the `harlowe-audio.min.css` file, pasting it into the story Stylesheet area instead.
 
-<image src='./assets/css.jpg' title='The story Stylesheet menu option in the Twine 2 editor.' alt='The story Stylesheet menu option in the Twine 2 editor.' width='50%'>
+<image src='./assets/menu2.jpg' title='The story Stylesheet menu option in the Twine 2 editor.' alt='The story Stylesheet menu option in the Twine 2 editor.'>
 
 > [!TIP]
 > You should open these files in a **text editor**, not a word processor. Any text editor you have, like notepad, will work fine for this. Opening the file in a word processor may cause the code to stop working, as they sometimes convert certain characters into other characters on loading files&mdash;like turning normal quotes (&quot;...&quot;) into curly quotes (&ldquo;...&rdquo;)&mdash;that can mess up programming code.
@@ -79,7 +75,7 @@ To define a track, list the track name first, then a colon, and finally one or m
 
 Track names should only include letters (upper or lower case), numbers, dashes (`-`), underscores (`_`), and dollar signs (`$`). Other characters may work but are not officially supported. That's code for "don't use them even when they seem like they're working."
 
-An example of a `hal.tracks` story that defines two tracks: a beeping sound called `beep` and a song called `que-pena` might look like this:
+An example of a `hal.tracks` special passage that defines two tracks: a beeping sound called `beep` and a song called `que-pena` might look like this:
 
 ```
 beep: ./audio/beep.mp3, ./audio/beep.ogg
@@ -252,9 +248,9 @@ In fact, most times where music switches in your story from one background track
 ]
 ```
 
-### Playing Sounds When Links Are Clicked
+### Playing Sounds with Links
 
-See also: [Playing Sounds when Links Are Clicked](v2#playing-sounds-when-links-are-clicked)
+See also: [Playing Sounds When Links Are Clicked](v2#playing-sounds-when-links-are-clicked)
 
 You can wrap the `(track:)` macro to start playback of a track inside a `(link:)` macro (or one of its siblings).
 
