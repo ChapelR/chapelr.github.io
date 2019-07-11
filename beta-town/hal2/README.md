@@ -33,14 +33,12 @@ See [below](#guide) for a guide on the basics of using HAL.
 
 # Guide
 
-This is a quick, twenty-minute (give or take) guide to getting HAL working. You're here for audio, and this guide aims to please. HAL has a lot of other nice features you'll no doubt love to come to grips with later, but for now, we'll focus on the bare minimum you'll need to know to take your story from a boring, soundless husk to grooving like it's 1999.
+This is a quickand dirty guide to getting HAL working. You're here for audio, and this guide aims to please. HAL has a lot of other nice features you'll no doubt love to come to grips with later, but for now, we'll focus on the bare minimum you'll need to know to take your story from a boring, soundless husk to grooving like it's 1999.
 
 > [!NOTE]
 > This guide is intended to get users up and running with HAL quickly and without too much fuss. It covers v2.0.0 and higher of HAL, [for v1, check out its docs](v1). For detailed reference documentation for v2, [click here](v2).
 
 ## Installing HAL in Twine 2
-
-[See the docs for installing with other compilers.](v2#installation)
 
 To install HAL, all you need is the code, which you can get [on the releases page of the repo](https://github.com/ChapelR/harlowe-audio/releases). You should choose the version with the highest version number. Download the `harlowe-audio.zip` file and unzip it. There should be three files, `harlowe-audio.min.js`, `harlowe-audio.min.css`, and `LICENSE`. Open the `harlowe-audio.min.js` file in a text editor, copy all of the contents, and paste it into your story JavaScript area in Twine 2. To find the story JavaScript area, click the up arrow next to your story's name in the editor (bottom left-hand side), then click the appropriate menu option.
 
@@ -58,8 +56,6 @@ Once all the code is in place, try playing your story. If you see a gray sidebar
 <image src='./assets/installed.jpg' title='If you have a sidebar like this and no errors, HAL has been installed correctly.' alt='If you have a sidebar like this and no errors, HAL has been installed correctly.'>
 
 ## Defining Tracks
-
-[For more detailed information, see the docs.](v2#defining-tracks)
 
 There are a few ways to define tracks in HAL, but the easiest (and recommended) way is with a *special passage* called `hal.tracks`.
 
@@ -86,8 +82,6 @@ Most projects will probably want to use [*relative* URLs](#defining-tracks-with-
 
 ## Playing Tracks
 
-[For more detailed information, see the docs.](v2#track-commands)
-
 On a basic level, all you need to do to play a track is have this code in a passage `(track: 'beep', 'play')`. However, [reality often resists simplicity](#autoplay-or-why-won39t-my-audio-work-on-the-first-passage).
 
 This is the `(track:)` macro, and you give it the name of a track you've defined and a command to perform. Some commands accept additional arguments, which you can just pass to the macro after the command name. For example, to set a track to loop, you'd write `(track: 'que-pena', 'loop', true)`. This is because the *loop command* accepts an argument, which should be boolean `true` or `false`; `true` to set the track to loop, `false` to stop it from looping.
@@ -103,18 +97,14 @@ If you just want a looping background track and that's it, define the track in t
 }
 ```
 
-See [this example from the docs](v2#looping-background-music) for more.
-
 > [!NOTE]
 > When you write one of HAL's macros in the Twine 2 passage editor, it will show up colored in red like macros that don't exist. It is not possible for a library like HAL to edit Harlowe's syntax highlighting feature, so this is unfortunately impossible to fix. Just know that it's expected behavior and doesn't mean you did anything wrong.
 
 ## Examples
 
-Now that you've got HAL installed and you know how to define a few tracks and play them, we'll cover a bunch of common use-cases here. To see [more complex examples and use-cases](v2#detailed-examples), and learn more about what you can do with HAL, look at the [reference documentation](v2).
+Now that you've got HAL installed and you know how to define a few tracks and play them, we'll cover a bunch of common use-cases here. To see more complex examples and use-cases, and learn more about what you can do with HAL, look at the [reference documentation](v2).
 
 ### Defining Tracks with Absolute URLs
-
-See also: [Loading Audio Over the Network](v2#loading-audio-over-the-network)
 
 An *absolute URL* is a type of URL that basically tells a browser *exactly* where to find a resource, whereas a relative URL tells a browser where to find the resource *relative* to the file it's currently using. This might seem a bit confusing, but basically an absolute URL starts with `http://` or `https://` (prefer the latter whenever possible) and points to a file you're linking to somewhere on the web.
 
@@ -143,8 +133,6 @@ In the big scheme of things, unless you plan to upload to [philome.la](http://ph
 
 ### Defining Tracks with Relative URLs
 
-See also: [Loading Audio with Relative Paths](v2#loading-audio-with-relative-paths)
-
 In our original example for defining tracks, we used relative links. Let's look at that again.
 
 ```
@@ -170,8 +158,6 @@ The choice is yours, but I *strongly* recommend shipping your game with relative
 
 ### Autoplay (Or, Why Won't My Audio Work on the First Passage?)
 
-See also: [Autoplaying Sound](v2#autoplaying-sound)
-
 If you dropped `(track: 'que-pena', 'play')` in your story's first passage, there is a pretty high chance that it didn't work. Most modern browsers do not allow audio to *autoplay*, which means that the audio starts before the user has interacted with the page. Once the user interacts with the page, clicking on a link or something, then you can play as much audio as you want.
 
 There are three ways to get around this limitation.
@@ -194,8 +180,6 @@ Similar to the above, tying the `play` command to a link should work every time.
 
 ### Stopping a Sound Before Playing Another
 
-See also: [Playing a Sound Only If it Isn't Already Playing](v2#playing-a-sound-only-if-it-isn't-already-playing)
-
 If you need to change tracks, that is, stop one and start another, you can use the `stop` command.
 
 ```
@@ -203,14 +187,14 @@ If you need to change tracks, that is, stop one and start another, you can use t
 (track: 'que-pena', 'play')
 ```
 
-This, of course, assumes you know which track is playing. If you don't you can instead run the `stop` command on the [audio group](v2#defining-groups) `playing`, which will stop all currently playing tracks.
+This, of course, assumes you know which track is playing. If you don't you can instead run the `stop` command on the audio group `playing`, which will stop all currently playing tracks.
 
 ```
 (group: 'playing', 'stop')
 (track: 'que-pena', 'play')
 ```
 
-Another way to stop all playing tracks is via the [master audio command](v2#master-audio-commands) `stopall`.
+Another way to stop all playing tracks is via the master audio command `stopall`.
 
 ```
 (masteraudio: 'stopall')
@@ -218,8 +202,6 @@ Another way to stop all playing tracks is via the [master audio command](v2#mast
 ```
 
 ### Checking If a Sound Is Already Playing
-
-See also: [Playing a Sound Only If it Isn't Already Playing](v2#playing-a-sound-only-if-it-isn't-already-playing)
 
 You can test to see if a track is playing by combining an `(if:)` or `(unless:)` macro with the `(track:)` macro command `isplaying`:
 
@@ -250,8 +232,6 @@ In fact, most times where music switches in your story from one background track
 
 ### Playing Sounds with Links
 
-See also: [Playing Sounds When Links Are Clicked](v2#playing-sounds-when-links-are-clicked)
-
 You can wrap the `(track:)` macro to start playback of a track inside a `(link:)` macro (or one of its siblings).
 
 ```
@@ -265,6 +245,6 @@ You can wrap the `(track:)` macro to start playback of a track inside a `(link:)
 
 ## This Is Only the Beginning
 
-HAL supports many other features, including [master audio controls](v2#master-audio-commands), [playlists](v2#defining-playlists), and [audio groups](v2#defining-groups), and there are many other [track commands](v2#track-commands) you can use. You can also change HAL's [configuration settings](v2#configuration), use JavaScript event handlers to plug into [various audio events](v2#events), and even [edit the sidebar to display a menu](v2#the-menu-api).
+HAL supports many other features, including master audio controls, playlists, and audio groups, and there are many other track commands you can use. You can also change HAL's configuration settings, use JavaScript event handlers to plug into various audio events and even edit the sidebar to display a menu
 
 To learn more, check out [HAL's documentation](v2). It's a bit drier and more technical than this guide, but it's worth reading if you have grander designs than what's been covered here.

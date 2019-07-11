@@ -5,7 +5,14 @@
 > [!NOTE]
 > I'm going to start keeping a changelog for these macros because keeping track of them is becoming a nightmare. The overall version numbers are not really helpful for tracking what's happening on a macro-by-macro basis, but I'm trying to stick to major version bumps meaning breaking changes in any macro, or complete refactors of the whole collection, like what v2.0.0 was. Minor version updates indicate new macros have been added. Patch version updates means individual macro updates and bug fixes, or documentation, website, or demo updates.
 
-### Jun 0, 2019 (v2.3.0)
+### Jul 0, 2019 (v2.4.0)
+
+- **[Update]** The `<<dialog>>` macro now accepts an `<<onopen>>` and `<<onclose>>` macro tag to set up handlers. These tags set up single-use event handlers for the dialog open and close events.
+- **[New]** Added the articles (a/an) macro set.
+- **[Docs]** Removed the note about retirement from the `<<mouseover>>` macro.
+- **[Docs]** Reorganized / grouped macros in the main readme.
+
+### Jun 28, 2019 (v2.3.0)
 
 - **[Update]** Simple Inventory:  
     - Refactored code base.  
@@ -20,11 +27,13 @@
     - Refactored code base.  
     - Dice functions now respect PRNG settings.  
     - Internal improvements.  
+    - Added support for Fate/Fudge dice.  
 - **[Update]** The Fullscreen Macros now toggle the fullscreen state and now include a little bit of a JavaScript API on the `setup` object.  
 - **[Update]** Small fixes and internal improvements to several other macros.  
 - **[New]** Added the CSS Macro.  
 - **[New]** Added the Pronoun Templates system.  
 - **[New]** Added the Meter Macro Set.  
+- **[New]** Added the Cycles System (v2).  
 - **[Demo]** Updated demo.  
     - Added examples for new macros.  
     - Cleanup and fixed typos.  
