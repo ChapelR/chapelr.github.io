@@ -77,6 +77,90 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-twine-2019" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/12/12/twine-2019/" class="article-date">
+  <time datetime="2019-12-12T11:11:56.000Z" itemprop="datePublished">2019-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/12/12/twine-2019/">Twine in 2019</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2019 was a pretty big year for Twine, and I think now is a great time to reflect on everything that’s happened. It’ll be helpful to me to collect my thoughts and talk through how I feel about the past year, but I think it’ll also help others get caught up on what’s been happening in the Twine community and ecosystem. </p>
+<h2 id="Twine-2-3-0-and-Electron"><a href="#Twine-2-3-0-and-Electron" class="headerlink" title="Twine 2.3.0 and Electron"></a>Twine 2.3.0 and Electron</h2><p>Twine 2.3.0 entered beta in mid-December 2018, with a full release arriving in April 2019. This version of Twine represented a pretty massive change for the project, particularly the downloadable application version. Previous versions of the downloadable application version of Twine ran on the <a href="https://nwjs.io/" target="_blank" rel="noopener">NW.js software</a>, a browser shell based on Chromium that allowed web applications to run kind of like native apps by using a dedicated, stripped down browser. Applications like this are often called “hybrid applications.” With version 2.3.0, Twine switched to a different browser shell (also based on Chromium) called <a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a>. Why? Well it’s complicated, but you can read <a href="https://github.com/klembot/twinejs/issues/461#issuecomment-397844459" target="_blank" rel="noopener">this comment from Chris Klimas</a> for a very brief explanation.</p>
+<p>As you may be able to imagine, a change this drastic in the underlying middleware of a fairly complicated app was a big deal and it took a few patches to smooth things over. <a href="https://www.reddit.com/r/twinegames/comments/bgufk9/twine_v231_is_out/" target="_blank" rel="noopener">Posts over</a> <a href="https://www.reddit.com/r/twinegames/comments/devpx4/twine_v235_now_available/" target="_blank" rel="noopener">on the reddit</a> <a href="https://www.reddit.com/r/twinegames/comments/citsk8/twine_v233_now_available/" target="_blank" rel="noopener">announcing each</a> <a href="https://www.reddit.com/r/twinegames/comments/d934ff/twine_v234_now_available/" target="_blank" rel="noopener">version 2.3.x release</a> <a href="https://www.reddit.com/r/twinegames/comments/devpx4/twine_v235_now_available/" target="_blank" rel="noopener">track the story</a> if you’re interested. The big takeaway is that Twine 2.3.5 is now as stable as Twine has ever been.</p>
+<p>Twine also now opens the test and play versions of your story in your default browser, which is a great change in my estimation. Subtle differences between the shells used by the Twine apps in the past and real browsers have always existed. These differences caused widely encountered issues in Twine 2.3.x, but it’s possible they could have caused issues anyway, so I think this change makes a lot of sense. Twine also now saves back-ups in case your main story files are corrupted or deleted. This feature was added due to a specific bug in the 2.3.0 release that was eating stories, but the Twine app has been known to eat stories outside of that bug, so this was another clever and welcome change.</p>
+<p>What’s in store for version 2.4.0? Well, nothing too exciting, really. You can look at the plans so far <a href="https://github.com/klembot/twinejs/projects/5" target="_blank" rel="noopener">here</a>.</p>
+<h2 id="Chooseco-vs-the-World"><a href="#Chooseco-vs-the-World" class="headerlink" title="Chooseco vs the World"></a>Chooseco vs the World</h2><p><a href="https://www.cyoa.com/" target="_blank" rel="noopener">Chooseco</a> is the company behind those <em>Choose Your Own Adventure</em> books you maybe read as a kid. They own the term and, apparently, its acronym, “CYOA.” Lately, they’ve been <a href="https://www.theverge.com/2019/12/9/21003455/chooseco-choose-your-own-adventure-itch-io-trademark-infringement-takedown-notices" target="_blank" rel="noopener">letting us know about it</a>. Also <a href="https://www.theverge.com/2019/1/11/18178846/netflix-black-mirror-bandersnatch-choose-your-own-adventure-book-trademark-lawsuit-chooseco" target="_blank" rel="noopener">letting Netflix know about it</a>. In a way this is fair. Companies are required by US law to proactively defend their trademarks or risk losing them. But the loss of a useful descriptive term has been a bit of a blow to the Twine community. As an alternative, I suggest “choice-based.”</p>
+<p>Note that it does not seem that Chooseco is actively suing any developers or anything like that, but instead trying to get people to stop using the terms. If you have a game published somewhere that is described as a “CYOA” or “Choose Your Own Adventure” consider changing that language in any official descriptions or in the game itself.</p>
+<h2 id="Trademarking-Twine"><a href="#Trademarking-Twine" class="headerlink" title="Trademarking Twine"></a>Trademarking Twine</h2><p>Speaking of trademarks, the IFTF also officially trademarked the name “Twine” this year. What effect that has on the community, if any, remains to be seen. My guess is that this is not going to impact any of us in any major way, though referring to games as “Twines” or games made in other programs as “Twine games” may become a point of contention in the future.</p>
+<h2 id="Goodbye-Q-amp-A"><a href="#Goodbye-Q-amp-A" class="headerlink" title="Goodbye Q&amp;A"></a>Goodbye Q&amp;A</h2><p>In late July, the <a href="https://twinery.org/questions/" target="_blank" rel="noopener">Twine Q&amp;A</a> was <a href="https://www.youtube.com/watch?v=F8MlRGvri-c" target="_blank" rel="noopener">retired from active duty</a> due to an overabundance of spam and a lack of time, manpower, and technology to deal with it. For reference, I was one of the mods. As bad as it looked to an end user, you don’t know the half of it. The Q&amp;A site still exists for users to search through and still appears in searches, so the answers written there are still available, much like <a href="https://twinery.org/forum/" target="_blank" rel="noopener">the old forum archive</a> before it.</p>
+<p>Twine’s official online community is now <a href="https://intfiction.org/c/authoring/twine" target="_blank" rel="noopener">the Twine category at intfiction.org</a>. The <a href="https://www.reddit.com/r/twinegames/" target="_blank" rel="noopener">subreddit</a> and <a href="https://discordapp.com/invite/n5dJvPp" target="_blank" rel="noopener">Discord</a> communities continue to exist as well.</p>
+<h2 id="The-Twine-Resources-Guide"><a href="#The-Twine-Resources-Guide" class="headerlink" title="The Twine Resources Guide"></a>The Twine Resources Guide</h2><p>I released a <a href="https://resources.twinelab.net/" target="_blank" rel="noopener">curated list of Twine resources</a> in June this year. While it’s my own guide so it may be a bit inappropriate to plug it here, it is, to my knowledge, the most exhaustive and well-tested list of its kind. You can make suggestions and contributions via its <a href="https://github.com/ChapelR/twine-resources/" target="_blank" rel="noopener">repo</a> if you’re so inclined.</p>
+<h2 id="Flash-in-the-Pan"><a href="#Flash-in-the-Pan" class="headerlink" title="Flash in the Pan"></a>Flash in the Pan</h2><p>The <a href="https://twinery.org/news/" target="_blank" rel="noopener">Twine news</a> section of the official Twine website, meant to be a twice monthly report on the biggest happenings in the Twine universe ended in February 2019 after only five or so months of operation. This was a curious addition to the Twine website in the first place, in my opinion, as the Twine Twitter account seems like a better way to handle this, but I feel like it’s unceremonious end is just as curious. I don’t have much to talk about here, I just didn’t want this short-lived news section to be lost to the ages.</p>
+<h2 id="Narrascope"><a href="#Narrascope" class="headerlink" title="Narrascope"></a>Narrascope</h2><p>I didn’t go to the first annual <a href="https://narrascope.org/" target="_blank" rel="noopener">Narrascope</a> conference that happened in June, but I’m glad it exists and I’m interested in going to one of them someday, should one happen in my neck of the woods. I do know a lot of people who went and several who spoke at the event and it generated a number of great blog posts. If you’re interested, this year’s conference is going to be held on May 29-31 in Urbana-Champaign, IL, and is accepting proposals from speakers through January 17.</p>
+<p>Chris Klimas, creator of Twine, spoke at Narrascope 2019. <a href="http://chrisklimas.com/twine-past-present-future/" target="_blank" rel="noopener">Here’s his talk in blog post form.</a> I think it’s a fascinating read for anyone with more than a passive interest in Twine.</p>
+<p>There’s also a Narrascope <a href="https://narrascope.org/pages/podcast.html" target="_blank" rel="noopener">podcast</a> now if that’s your thing.</p>
+<h2 id="Harlowe-3"><a href="#Harlowe-3" class="headerlink" title="Harlowe 3"></a>Harlowe 3</h2><p>Harlowe 3 technically released late last year, two weeks before the year ended with the first beta release of Twine 2.3.0 in mid-December 2018. However, it wasn’t widely used until April this year when Twine 2.3.0 had its full release, so I’ll consider it a 2019 development for our purposes. </p>
+<p>I’m not a fan of Harlowe 3. It’s just Harlowe 2, honestly. Changes I feel Harlowe desperately needs, like any kind of mobile support or responsive design, did not happen, and those changes are likely to be breaking for users, meaning there is a high chance we’ll have to wait for Harlowe 4 to see them, if we ever see them at all (I’m not holding my breath).</p>
+<p>Other than that, Harlowe 3 now has a few input types like dropdowns and cycling links, but still doesn’t have actual text inputs and still uses ugly prompts (though the situation there has improved somewhat) even though users have been asking for textbox inputs for years now. I should clarify, the new input macros could support a traditional textbox-style input easily, Harlowe 3 just hasn’t added it yet (and again, I’m not holding my breath).</p>
+<p>Overall, I was disappointed with the limited changes here, especially for a major version bump. I do think Harlowe has great ideas. I’ve dug pretty deep into its source code in developing <a href="https://hal.twinelab.net" target="_blank" rel="noopener">HAL</a>, and I can assure you that there’s a stroke of genius every few lines.</p>
+<p>But for as much brilliance is on display in some areas of Harlowe’s design, I think it is hamstrung by other design decisions. Decisions that box authors in, lock them out of any extensibility or options, or simply don’t make sense, like the aforementioned indefensible lack of responsiveness. Harlowe literally just needs a single line of HTML code to become responsive, but the so-called beginner format would instead force authors who want to fully support mobiles to manually add the line required. </p>
+<p>In my opinion, Harlowe’s design decisions remain as at odds with themselves in version 3 as they were in version 1 and 2. It is a format that wants to be limited and focused and opinionated, but also strives to be as full-featured and wide-ranging as SugarCube. I think it’s spread too thin and I don’t know that it will ever strike that balance.</p>
+<h2 id="SugarCube-2"><a href="#SugarCube-2" class="headerlink" title="SugarCube 2"></a>SugarCube 2</h2><p>SugarCube 2 is still mostly what you probably expect. It’s still the format that’s hardest to go wrong with. It’s still clunky, but straightforward, syntax-wise. It’s still powerful, simple, and packed with features, options, and extensibility. That’s not to say there haven’t been improvements this year, though.</p>
+<p>First, the <code>SimpleAudio</code> API is now fully documented, giving authors the ability to more easily leverage SugarCube’s audio subsystem from JavaScript code. SugarCube has also added a <code>Template</code> API and syntax for text replacements and now features a new <code>State.metadata</code> API that replaces the <code>&lt;&lt;remember&gt;&gt;</code> and <code>&lt;&lt;forget&gt;&gt;</code> macros. Improved documentation rounds out the changes we’ve seen from the format over the year.</p>
+<p>So, all-in-all, nothing life changing, but the releases this year, particularly v2.29.0 in June, have been impactful and full of features and improvements.</p>
+<p>As a general rule, I still recommend SugarCube 2 for most Twine users and that’s on track to continue throughout 2020. It’s as simple, or nearly so, as Harlowe, almost as extensible as Snowman, and it has the deepest bench of features, options, and functionality. It’s just so hard to go wrong with SugarCube.</p>
+<h2 id="Snowman-2"><a href="#Snowman-2" class="headerlink" title="Snowman 2"></a>Snowman 2</h2><p>Snowman has impressed me this year. Chris Klimas has moved to developing Chapbook (more on that in a moment) and handed development duties for Snowman off to Twine guru and <a href="https://twinery.org/cookbook/" target="_blank" rel="noopener">cookbook</a> editor <a href="https://videlais.com/" target="_blank" rel="noopener">Dan Cox (AKA Videlais)</a>, who has been working on developing <a href="https://videlais.github.io/snowman/2/" target="_blank" rel="noopener">a second major version of the format</a> and <a href="https://videlais.github.io/snowman/1/" target="_blank" rel="noopener">providing <strong>actual documentation</strong> for the first version</a>.</p>
+<p>Snowman 2 does make a small handful of changes I don’t like, but by and large it’s mostly just added some conveniences, features, and functions that make the format more usable by more people. Snowman was always meant to be minimal, and I think that central design concept needs to be respected. But I think you could argue that Snowman was <em>too</em> minimal in its first incarnation. I think adding a few bells and whistles is a great idea and is likely to make the format more appealing to the advanced users it was meant to attract.</p>
+<p>Under this new direction, I think Snowman is gonna be a format to keep your eye on in 2020. That’s not to knock the solid base provided by Chris, but I do feel like Snowman was stagnant at best for the past few years and I’m excited to see where it ends up.</p>
+<h2 id="Chapbook"><a href="#Chapbook" class="headerlink" title="Chapbook"></a>Chapbook</h2><p>I love the idea of Chapbook even though I have some issues with its implementation and execution. I think that Chapbook could become what I feel like Harlowe should be, and that’s massively exciting to me, because there’s value in a simple, opinionated, somewhat limited story format. I feel that Chapbook fully commits to being different and more focused, whereas Harlowe seems to want to simultaneously compete with SugarCube’s wide-ranging design and provide a slimmer, more focused feature set. Where Harlowe is, in my estimation, at odds with itself, Chapbook strikes a completely different balance that has long been foreign to Twine. Or at least it’s on the way to doing that.</p>
+<p>Chapbook has a neat backstage feature that provides the best built-in testing features in any Twine story format, with live updates, styling options, variable editing, and all sorts of other goodies, which is a stroke of genius, especially since you can omit all the backstage code to slim down your game when you go on to release it. Backstage is excellent and has no downsides.</p>
+<p>My issues with Chapbook are mostly in the inconvenient way it handles control logic like if statements. Sure it has conditional assignment via the JavaScript ternary operator and a few other conveniences, but this limitation coupled with enforced separation of variable control and story content mean that it can be a challenge to make logic-heavy games compared to the other formats. I am also concerned by the fact that all variables are global unless you namespace them yourself (a sharp edge less experienced coders are likely to get cut on), that saves are automatic and very outside author control, and that Chapbook seems to lack a history system or a rewind/undo feature. </p>
+<p>Taken together, I’m more excited to see what Chapbook evolves into throughout 2020 than I am to use it right now. I think the promise of what Chapbook could become is more exciting than what it is right now, but I don’t want to belittle what it is right now either. It is a bold, new direction for Twine story formats that does challenge some of the core concepts we expect, and I think that’s very much worth celebrating.</p>
+<h2 id="Paperthin"><a href="#Paperthin" class="headerlink" title="Paperthin"></a>Paperthin</h2><p>I think Paperthin should be replaced by <a href="http://www.maximumverbosity.net/twine/Illume/" target="_blank" rel="noopener">Illume</a> or <a href="https://poof.twinelab.net/" target="_blank" rel="noopener">poof</a> (yes, I made poof, so I’m biased, but I <em>hate</em> Paperthin). We should bug Chris on Twitter about this. Otherwise, Paperthin remained bad throughout 2019 (it hasn’t changed since it was made, honestly). It still doesn’t let you print or copy paste passage titles along with passage content, and is basically useless.</p>
+<h2 id="Twee-Compilers"><a href="#Twee-Compilers" class="headerlink" title="Twee Compilers"></a>Twee Compilers</h2><p>It’s no secret to anyone who knows me that I prefer working with Twee and command-line compilers to the Twine application any day of the week. And this was a big year for Twee and Twee compilers. First, we finally got <a href="https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md" target="_blank" rel="noopener">an official Twee3 specification</a> so that tools using Twee can now enjoy greater interoperability and developers of such tools actually know what the rules are.</p>
+<p>In response to the new Twee3 spec, <a href="https://www.motoslave.net/tweego/" target="_blank" rel="noopener">Tweego 2</a> (by Thomas Michael Edwards, developer of SugarCube) and <a href="https://github.com/videlais/extwee" target="_blank" rel="noopener">Extwee</a> (by Dan Cox/Videlais, developer of Snowman and editor of the Twine Cookbook) were also released this year. While I still prefer Tweego overall, I really like Extwee, and that it’s an NPM package is sure to make it super tempting to some authors. It also has built in transpilation and minification, things I do anyway. I think there’s a chance it tries to do too much stuff at once for some people, but for most users, these are good choices and good inclusions. Tweego on the whole is more mature and has more features, though.</p>
+<p>Other Twine specs are also in the works, so the future of third party tools for Twine is looking particularly bright for 2020. As a developer of a few such third party tools, I can’t begin to express how nice it is to have some real specifications.</p>
+<h2 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts"></a>Final Thoughts</h2><p>2019 was a pretty big year for Twine, and I think looking back on it helps us see where we may be going, and how we’re going to get there. So let’s speculate a bit.</p>
+<p>First, I don’t think we’ll see any big changes in the Twine app next year like we did this year with the jump to Electron. I do think 2.4.0 will arrive sometime next year, but I don’t foresee major or dramatic changes in the way we use the app, in how it feels to use, or in its underlying tech.</p>
+<p>I don’t have any specific expectations for the story formats outside the normal updates we tend to see over time. I wouldn’t expect a Harlowe 4. I would expect Chapbook to change a lot over the course of 2020. Don’t hold your breath for a SugarCube 3, though <a href="https://trello.com/b/lw6z5bUF/sugarcube-todo" target="_blank" rel="noopener">the Trello for SugarCube</a> should help you manage your expectations for what’s coming in SugarCube 2. There’s only so much you can add to a format that’s meant to be minimal, so I also wouldn’t expect Snowman 2 to get more than maybe a handful of additional convenience features. Dan Cox has shown a willingness to rethink parts of Snowman, though, so I’d still keep an eye on it in 2020.</p>
+<p>I think we’ll see more custom story formats and other tools for Twine now that there’s actually documentation on Twine’s HTML data chunk, documentation on developing story formats, and a proper spec for Twee. I don’t expect things to suddenly explode, but having these things documented is step one in expanding the base of people who are capable of experimenting with them. I had to read source code to figure out how to make poof. I think now that you don’t have to do that, there’s no reason why other community members won’t start making their own tools.</p>
+<p>Finally, I wouldn’t sweat Chooseco’s crack down too much, or Twine’s trademark. Chooseco has to protect their brand–that I, and many others, I’m sure, think of Twine or other computer software when I hear “CYOA” or “Choose Your Own Adventure” is proof of that. Likewise, I think Twine should be more proactive in protecting its own brand. Any old schlub can come along and make a website with the brand name in it, after all*. </p>
+<p>I’m interested in hearing from others, too. I may release a follow up to this piece in early 2020 where I cover some of the things I missed in this article, but also some things I haven’t touched on, like game releases. If you have ideas or know something I don’t, leave a comment or drop me a line. I’m also interested in what Twine games you’ve played that were released this year and what you thought of them.</p>
+<p>Thanks a lot for reading. Happy holidays and happy new year.</p>
+<p>*Note: I actually doubt that TwineLab.net would run afoul of this trademark.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2019/12/12/twine-2019/" data-id="ck42mhq8l00004cs3fxjkh591" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2019/12/12/twine-2019/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/thoughts/">thoughts</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-poof-1-5-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/12/11/poof-1-5-0/" class="article-date">
@@ -554,59 +638,11 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-poof-1-2-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/04/05/poof-1-2-0/" class="article-date">
-  <time datetime="2019-04-05T12:02:06.000Z" itemprop="datePublished">2019-04-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/04/05/poof-1-2-0/">Poof v1.2.0 Release Notes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Poof v1.2.0 is here (already). This version ties up some loose ends in the re-implemented PDF export feature.</p>
-<p><em>Note</em>: If you’re having trouble with updating, grab the new link from the <a href="https://poof.twinelab.net/" target="_blank" rel="noopener">poof documentation</a>. I’ve updated the link there to always, always grab the latest stable version.</p>
-<p>You now have options (configurable by the <code>poof.config</code> special passage) to control some basic styles of the generated PDF. First, you can select from one of three basic fonts: a serif option (Georgia), a sans-serif option (Roboto), and a monospace option (Consolas). Because the PDF export process requires fonts to be loaded as base-64 data into a “virtual file system”, the best I can do is provide basic options. Having three inoffensive options from the main font categories seemed like the wisest choice. Users can now also specify font sizes, the options are <code>very small</code>, <code>small</code>, <code>normal</code>, <code>large</code>, and <code>very large</code>. Normal is 12-point, very small is 8-point and very large is 16-point. The final option given is one for line height (or line spacing, if you prefer). You can set this option to a value between <code>1</code> and <code>2</code>, with <code>1</code> being single-spaced and <code>2</code> being double-spaced. The defaul line height is <code>1.15</code>.</p>
-<p>The style options provided above are all the low-hanging fruit I could manage. Since the new implementation generates a PDF on the fly from the HTML data, rather than generating a canvas image from the same, the styling options are fairly limited; it’s not as simple as recreating what appears on the screen anymore. In other words, we lost line numbers but gained copy/paste. And I’m alright with that. The simpler structure should be nicer for printers anyway. As always, though, if you want more, let me know and I’ll see if it’s at least possible.</p>
-<p>In addition, a the loading screen is now called when a PDF generates. For short projects, you’ll see nothing at all, maybe a flash. For lengthier projects, the process can take several seconds or more, and messing with the filtering or sorting during this process is probably unwise, so I decided to lock out the screen completely instead of risking that happening. It shouldn’t take more than fifteen or so seconds to generate the PDF, even in novel-length projects, but the speed of the operation will vary from machine to machine and browser to browser. </p>
-<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>Poof is going back on my maintenance shelf for now. I’m pleased with the new PDF implementation as it’s been a net positive all across the format, and getting the Twee encoder to respect filter and sort was something I was happy to knock out along the way. But other than those things, I don’t think there’s much more that needs to be done here.</p>
-<p>I’ll be on the lookout for bugs, problems, and feature requests, as always.</p>
-<h2 id="In-a-future-version-made-by-someone-smarter-than-me"><a href="#In-a-future-version-made-by-someone-smarter-than-me" class="headerlink" title="In a future version made by someone smarter than me:"></a>In a future version made by someone smarter than me:</h2><p>I jest, but I’ve been asked about implementing a “play order” sorting method. While this is theoretically possible, the only real way to do it would be to load up the story format engine in question, crawl the file somehow, and then interpret that order in a way that could be meaningfully sorted. I’m open to ideas, but I don’t believe this is possible–even parsing just the markup links in each passage to construct a rough order would be expensive performance-wise and time-consuming to implement. Not to mention that it wouldn’t really return a reliable play order. It’s an interesting problem, but I can’t think of a solution, outside using passage naming conventions, like numbers, in the first place.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/04/05/poof-1-2-0/" data-id="cjx5nhzy500054ss3hxwdmc8b" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2019/04/05/poof-1-2-0/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -630,7 +666,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 13.33px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 10px;">thoughts</a>
+      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 13.33px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -652,6 +688,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/blog/2019/12/12/twine-2019/">Twine in 2019</a>
+          </li>
+        
+          <li>
             <a href="/blog/2019/12/11/poof-1-5-0/">Poof v1.5.0 Release Notes</a>
           </li>
         
@@ -665,10 +705,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2019/07/15/poof-1-4-0/">Poof v1.4.0 Release Notes</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/06/28/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
           </li>
         
       </ul>

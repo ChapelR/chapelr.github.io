@@ -77,6 +77,54 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-poof-1-2-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/04/05/poof-1-2-0/" class="article-date">
+  <time datetime="2019-04-05T12:02:06.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/04/05/poof-1-2-0/">Poof v1.2.0 Release Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Poof v1.2.0 is here (already). This version ties up some loose ends in the re-implemented PDF export feature.</p>
+<p><em>Note</em>: If you’re having trouble with updating, grab the new link from the <a href="https://poof.twinelab.net/" target="_blank" rel="noopener">poof documentation</a>. I’ve updated the link there to always, always grab the latest stable version.</p>
+<p>You now have options (configurable by the <code>poof.config</code> special passage) to control some basic styles of the generated PDF. First, you can select from one of three basic fonts: a serif option (Georgia), a sans-serif option (Roboto), and a monospace option (Consolas). Because the PDF export process requires fonts to be loaded as base-64 data into a “virtual file system”, the best I can do is provide basic options. Having three inoffensive options from the main font categories seemed like the wisest choice. Users can now also specify font sizes, the options are <code>very small</code>, <code>small</code>, <code>normal</code>, <code>large</code>, and <code>very large</code>. Normal is 12-point, very small is 8-point and very large is 16-point. The final option given is one for line height (or line spacing, if you prefer). You can set this option to a value between <code>1</code> and <code>2</code>, with <code>1</code> being single-spaced and <code>2</code> being double-spaced. The defaul line height is <code>1.15</code>.</p>
+<p>The style options provided above are all the low-hanging fruit I could manage. Since the new implementation generates a PDF on the fly from the HTML data, rather than generating a canvas image from the same, the styling options are fairly limited; it’s not as simple as recreating what appears on the screen anymore. In other words, we lost line numbers but gained copy/paste. And I’m alright with that. The simpler structure should be nicer for printers anyway. As always, though, if you want more, let me know and I’ll see if it’s at least possible.</p>
+<p>In addition, a the loading screen is now called when a PDF generates. For short projects, you’ll see nothing at all, maybe a flash. For lengthier projects, the process can take several seconds or more, and messing with the filtering or sorting during this process is probably unwise, so I decided to lock out the screen completely instead of risking that happening. It shouldn’t take more than fifteen or so seconds to generate the PDF, even in novel-length projects, but the speed of the operation will vary from machine to machine and browser to browser. </p>
+<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>Poof is going back on my maintenance shelf for now. I’m pleased with the new PDF implementation as it’s been a net positive all across the format, and getting the Twee encoder to respect filter and sort was something I was happy to knock out along the way. But other than those things, I don’t think there’s much more that needs to be done here.</p>
+<p>I’ll be on the lookout for bugs, problems, and feature requests, as always.</p>
+<h2 id="In-a-future-version-made-by-someone-smarter-than-me"><a href="#In-a-future-version-made-by-someone-smarter-than-me" class="headerlink" title="In a future version made by someone smarter than me:"></a>In a future version made by someone smarter than me:</h2><p>I jest, but I’ve been asked about implementing a “play order” sorting method. While this is theoretically possible, the only real way to do it would be to load up the story format engine in question, crawl the file somehow, and then interpret that order in a way that could be meaningfully sorted. I’m open to ideas, but I don’t believe this is possible–even parsing just the markup links in each passage to construct a rough order would be expensive performance-wise and time-consuming to implement. Not to mention that it wouldn’t really return a reliable play order. It’s an interesting problem, but I can’t think of a solution, outside using passage naming conventions, like numbers, in the first place.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2019/04/05/poof-1-2-0/" data-id="cjx5nhzy500054ss3hxwdmc8b" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2019/04/05/poof-1-2-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-poof-1-1-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/04/03/poof-1-1-0/" class="article-date">
@@ -649,57 +697,11 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-a-new-site" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2018/07/14/a-new-site/" class="article-date">
-  <time datetime="2018-07-14T22:57:13.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/07/14/a-new-site/">Welcome to TwineLab!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hello world!</p>
-<p>TwineLab.net is going to be my new home on the web.  I also decided to move my blog off of the blogger platform and onto Hexo, which has been an interesting journey, to say the least.  Very easy to mess up, but also easier to configure, even if I haven’t done a lot of configuration just yet.</p>
-<p>I plan to try to write more blog posts going forward, but it is a hard sell.  I write for a living, and under a different name, so any time I spend blogging is time I spend both not working on my own projects, and not getting paid.  But blogging is good for the soul, and I feel like I lead a bit of a double life anymore; my Twine and non-Twine work seldom ever interact; people who want me for non-Twine projects don’t want to hear about Twine and vice-versa.  But Twine has become a part of my life in a fairly large way, and it seems wise to give that part of my life more space to vent.</p>
-<p>So here we are.  TwineLab is going to be dedicated to my Twine adventures.  I may occasionally cross over between my Twine and non-Twine work in the future and post about those things here, but for now, this seems the best way to scream into the void.</p>
-<p><del>There is one important caveat here, though.  All of TwineLab is client-side, with no server or backend.  That means no comments.  If you need to talk to me, seek me out as mentioned <a href="http://twinelab.net/about.html">here</a>.</del> Never mind.</p>
-<p>Also note that I’ve decided (at least for now) not to faff about with Google analytics.  So I have no idea if anyone will be reading this.  For that reason, if you are reading this and you see a disappointing lull in content, reach out to me and let me know.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2018/07/14/a-new-site/" data-id="cjx5nhzxs00004ss37y086tp9" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2018/07/14/a-new-site/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/meta/">meta</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -723,7 +725,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 13.33px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 10px;">thoughts</a>
+      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 13.33px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -745,6 +747,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/blog/2019/12/12/twine-2019/">Twine in 2019</a>
+          </li>
+        
+          <li>
             <a href="/blog/2019/12/11/poof-1-5-0/">Poof v1.5.0 Release Notes</a>
           </li>
         
@@ -758,10 +764,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2019/07/15/poof-1-4-0/">Poof v1.4.0 Release Notes</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/06/28/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
           </li>
         
       </ul>
