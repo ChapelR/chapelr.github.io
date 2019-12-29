@@ -18,20 +18,20 @@ ga('send', 'pageview');
 
 
   
-  <title>HAL v2.0.0 Release Notes | TwineLab</title>
+  <title>Poof v1.6.0 Release Notes | TwineLab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HAL v2 is here. This version represents a fairly large refactor of most of the code base, many usability improvements, and some improved or additional functionality. It also, unfortunately, means that">
-<meta name="keywords" content="hal">
+  <meta name="description" content="In addition to UI updates, accessibility improvements, and bug fixes, the main feature of this release is the new passage list interface, which lists the passages in your project for quick navigation">
+<meta name="keywords" content="poof">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HAL v2.0.0 Release Notes">
-<meta property="og:url" content="http://twinelab.net/blog/2019/07/18/hal-2-0-0/index.html">
+<meta property="og:title" content="Poof v1.6.0 Release Notes">
+<meta property="og:url" content="http://twinelab.net/blog/2019/12/28/poof-1-6-0/index.html">
 <meta property="og:site_name" content="TwineLab">
-<meta property="og:description" content="HAL v2 is here. This version represents a fairly large refactor of most of the code base, many usability improvements, and some improved or additional functionality. It also, unfortunately, means that">
+<meta property="og:description" content="In addition to UI updates, accessibility improvements, and bug fixes, the main feature of this release is the new passage list interface, which lists the passages in your project for quick navigation">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-18T18:36:28.197Z">
+<meta property="og:updated_time" content="2019-12-29T01:13:07.821Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HAL v2.0.0 Release Notes">
-<meta name="twitter:description" content="HAL v2 is here. This version represents a fairly large refactor of most of the code base, many usability improvements, and some improved or additional functionality. It also, unfortunately, means that">
+<meta name="twitter:title" content="Poof v1.6.0 Release Notes">
+<meta name="twitter:description" content="In addition to UI updates, accessibility improvements, and bug fixes, the main feature of this release is the new passage list interface, which lists the passages in your project for quick navigation">
   
     <link rel="alternate" href="/blog/atom.xml" title="TwineLab" type="application/atom+xml">
   
@@ -80,10 +80,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hal-2-0-0" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-poof-1-6-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/07/18/hal-2-0-0/" class="article-date">
-  <time datetime="2019-07-18T18:37:01.000Z" itemprop="datePublished">2019-07-18</time>
+    <a href="/blog/2019/12/28/poof-1-6-0/" class="article-date">
+  <time datetime="2019-12-29T01:33:09.000Z" itemprop="datePublished">2019-12-28</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      HAL v2.0.0 Release Notes
+      Poof v1.6.0 Release Notes
     </h1>
   
 
@@ -102,34 +102,19 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HAL v2 is here. This version represents a fairly large refactor of most of the code base, many usability improvements, and some improved or additional functionality. It also, unfortunately, means that some code written for HAL v1 <em>may</em> no longer work, or work slightly differently. I kept the APIs as similar as possible, but some behavior may not always be as you expect, so if you decide to upgrade from v1, test carefully and keep the docs on hand. </p>
-<h2 id="Special-Passages"><a href="#Special-Passages" class="headerlink" title="Special Passages"></a>Special Passages</h2><p>HAL v2 now uses <em>special passages</em> both to configure the library and to set up track definitions. </p>
-<p>The <code>hal.config</code> special passage is the new way to configure HAL. You no longer have to hand-edit the libraries source code, which was a hack-y nightmare, especially when you needed to upgrade to a new version. <strong>Do not</strong> attempt to hand-edit the source code anymore. </p>
-<p>The <code>hal.tracks</code> special passage is the new, recommended way for users to define tracks and assign them source files. The old <code>A.newTrack()</code> method is still available and still works, and is joined by the <code>(newtrack:)</code> macro, so you have options if you want them. </p>
-<h2 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h2><p>HAL v2 adds a number of <em>custom macros</em> to the library that allow you to use macro code to interact with HAL instead of JavaScript. </p>
-<p>The macros are:</p>
-<ul>
-<li><code>(masteraudio:)</code></li>
-<li><code>(newtrack:)</code></li>
-<li><code>(newplaylist:)</code></li>
-<li><code>(newgroup:)</code></li>
-<li><code>(track:)</code></li>
-<li><code>(playlist:)</code></li>
-<li><code>(group:)</code></li>
-</ul>
-<p>Details on the macros are in <a href="https://hal.twinelab.net/#/v2#custom-macros-overview" target="_blank" rel="noopener">the docs</a>.</p>
-<h2 id="The-Guide"><a href="#The-Guide" class="headerlink" title="The Guide"></a>The Guide</h2><p>In addition to rewritten reference documentation, HAL now includes a gentler <a href="https://hal.twinelab.net/#/#guide" target="_blank" rel="noopener">guide</a> to help get novices acclimated quickly with just the info needed to get started. Docs for v1 are <a href="https://hal.twinelab.net/#/v1" target="_blank" rel="noopener">still available</a>.</p>
-<h2 id="Please-Report-Problems"><a href="#Please-Report-Problems" class="headerlink" title="Please Report Problems"></a>Please Report Problems</h2><p>Changes this big rarely go <em>completely</em> smoothly. If you find any bugs or other issues, please report them on <a href="https://github.com/ChapelR/harlowe-audio/issues" target="_blank" rel="noopener">the issue tracker</a>.</p>
+        <p>In addition to UI updates, accessibility improvements, and bug fixes, the main feature of this release is the new passage list interface, which lists the passages in your project for quick navigation in larger projects.</p>
+<p>Clicking on the “hamburger” icon (&#9776;) on the top left will toggle the passage list. This list reflects your current sorting and filtering settings.</p>
+<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases"></a>In future releases</h2><p>Additional improvements to the passage list are possible, and I’ll be looking into ways to make it more useful.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/07/18/hal-2-0-0/" data-id="cjy90jzfu0000uws3fzs4rzfr" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/12/28/poof-1-6-0/" data-id="ck4qblco700008ks3jotsgdby" class="article-share-link">Share</a>
       
-        <a href="http://twinelab.net/blog/2019/07/18/hal-2-0-0/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://twinelab.net/blog/2019/12/28/poof-1-6-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hal/">hal</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
 
     </footer>
   </div>
@@ -137,19 +122,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/blog/2019/12/11/poof-1-5-0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Poof v1.5.0 Release Notes
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2019/07/16/custom-macros-2-4-0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2019/12/12/twine-2019/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Custom Macro Collection v2.4.0 Release Notes</div>
+      <div class="article-nav-title">Twine in 2019</div>
     </a>
   
 </nav>
@@ -256,7 +232,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'twinelab';
   
-  var disqus_url = 'http://twinelab.net/blog/2019/07/18/hal-2-0-0/';
+  var disqus_url = 'http://twinelab.net/blog/2019/12/28/poof-1-6-0/';
   
   (function(){
     var dsq = document.createElement('script');
