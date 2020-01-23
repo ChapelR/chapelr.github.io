@@ -77,6 +77,60 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-custom-macros-2-5-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2020/01/23/custom-macros-2-5-0/" class="article-date">
+  <time datetime="2020-01-23T11:05:18.000Z" itemprop="datePublished">2020-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/23/custom-macros-2-5-0/">Custom Macro Collection v2.5.0 Release Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This release includes two new systems, one bug fix, and some documentation and website fixes.</p>
+<h3 id="The-Continue-lt-lt-cont-gt-gt-Macro"><a href="#The-Continue-lt-lt-cont-gt-gt-Macro" class="headerlink" title="The Continue &lt;&lt;cont&gt;&gt; Macro"></a>The Continue <code>&lt;&lt;cont&gt;&gt;</code> Macro</h3><p>A thing I see requested reasonably often is a “click anywhere to continue” style of macro. In fact I’ve written a few implementations for people in the past, but was never super happy with any of them. Well, I’m not super happy with this one either, it’s significantly clunkier to use than I think it should be, but it’s the best implementation I’m personally likely to develop, and it’s not bad, just probably not as slick as you may expect.</p>
+<p>You can optionally make pressing any key also activate the macro, and adjust other options.</p>
+<h3 id="The-Speech-Box-System"><a href="#The-Speech-Box-System" class="headerlink" title="The Speech Box System"></a>The Speech Box System</h3><p>I sometimes call things a “macro” even when they have some JavaScript functions or interfaces built-in, as long as there’s just one macro in the script and that’s the primary interface most users will utilize. I often call things “macro sets” when there’s a few related macros involved. I use the term “system” when I’m not really sure what the hell to call something. This is one of those latter things, because what it actually does is give you a “macro factory” that creates macros at runtime. You plug a name and image URL into the <code>&lt;&lt;character&gt;&gt;</code> macro and it creates a shiny new macro you can use based on the supplied name for character speech / dialog<strong>ue</strong> boxes (I avoid the term “dialogue” in favor of “speech” in the documentation and elsewhere for fear of confusion with the unrelated term “dialog”, which refers to a modal box, like an alert or prompt or similar). </p>
+<p>Here’s an image of what I mean by a “speech box:”</p>
+<p><img src="https://i.imgur.com/CkI3K8Q.png" alt="Speech box example"></p>
+<p>It’s intentionally basic and bare bones. Whip up some CSS and make it your own! The minimalist look can probably work fine for games that use the basic SugarCube look, though, so I wouldn’t sweat it too much if CSS isn’t your thing.</p>
+<p>(Note: This Lisa is apparently a K-Pop star. She’s basically the first page of results on Google image search. I picked the first square image I could see and basically used it in several examples. I do <em>not</em> own this image, but I believe this counts as having changed it significantly enough to count as fair use, and should be defensible as fair use given the educational nature of my documentation and examples. In other words, don’t @ me.)</p>
+<h3 id="Bug-Fix-in-lt-lt-notify-gt-gt"><a href="#Bug-Fix-in-lt-lt-notify-gt-gt" class="headerlink" title="Bug Fix in &lt;&lt;notify&gt;&gt;"></a>Bug Fix in <code>&lt;&lt;notify&gt;&gt;</code></h3><p>Somehow missed this one. I did test it, but I must have made adjustments after testing it. The parsing of CSS time was throwing errors, even with valid CSS time arguments. Should be fine now.</p>
+<h3 id="Other-Fixes"><a href="#Other-Fixes" class="headerlink" title="Other Fixes"></a>Other Fixes</h3><p>I made documentation fixes and patched up some dumb errors in the download utility. I also added the new macros to the downloader, the docs, and the demo.</p>
+<h3 id="Next-Time-on-Custom-Macros-Z"><a href="#Next-Time-on-Custom-Macros-Z" class="headerlink" title="Next Time on Custom Macros Z"></a>Next Time on Custom Macros Z</h3><p>That rounds up the changes in v2.5.0. I have more ideas I’m considering, and I do jot down questions I see more than a few times, so I’m certainly not done yet in that respect. But I do feel like I’m starting to approach a line with the cycles system, the meter macros, and the speech boxes. As I close in on these more complex and specific use cases, I’m closing in on concepts that are probably better off with bespoke solutions. This narrows the band of people these macros are useful for.</p>
+<p>Consider the fading macros or the dice roller functions. There’s real value in these even for people capable of building such systems themselves because it’s already done for them and because their results would likely look almost exactly like mine.</p>
+<p>But with meters and speech boxes: why settle for someone else’s structure and the limitations and inconveniences they introduce when you can build a bespoke system from the ground up. Sure it takes a little longer, but you get exactly what you want and nothing extra and no wrestling with someone else’s stuff. This means that the people who benefit from these kinds of systems are specifically people who can’t build it themselves or people who just happen to be looking for similar aesthetics or setups to what I’m providing.</p>
+<p>This isn’t a huge deal in and of itself, but it is why I’ve been hesitant to make certain systems, like health bars and conversation boxes, in the past even though they are frequently asked for. It’s why I remain hesitant on re-making a consumable-style inventory and why I’m still sitting on ideas to extend the simple inventory to handle stackable items and other item metadata. I’m not looking for guidance or advice on this, though I welcome thoughts, I just wanted to give a small window into how I’m thinking about these things.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2020/01/23/custom-macros-2-5-0/" data-id="ck5qmwxt70000qcs37o44vlwl" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2020/01/23/custom-macros-2-5-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/macros/">macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-poof-1-6-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/12/28/poof-1-6-0/" class="article-date">
@@ -589,55 +643,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-serious-1-0-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/06/21/serious-1-0-1/" class="article-date">
-  <time datetime="2019-06-21T05:12:50.000Z" itemprop="datePublished">2019-06-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/06/21/serious-1-0-1/">Serious Release Version</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Serious has been officially released.</p>
-<p>For the unaware (most people I imagine), Serious is my software framework for creating serialized web fiction. You can read more <a href="https://serious.twinelab.net/" target="_blank" rel="noopener">here</a> and <a href="https://twinelab.net/blog/2019/01/15/serious/">here</a>.</p>
-<p>While there’s still some rough patches, I think I’m at least generally happy with how it works. A guide for authors and non-programmers will be coming at some point. I’m tossing around the idea of some sort of Twine integration that will allow you to use Twine/Twee as an editor for Serious stories; in this case, passages will be mapped to episodes and meta posts, but this idea is purely theoretical at the moment. I may create a bare-bones markdown editor in NW.js that compiles to Serious instead, but both honestly feel like a lot of work for minimal payoff.</p>
-<p>Regardless, let me know what you think if you’re interested, either via comments here or issues in the relevant repositories.</p>
-<h2 id="In-Other-News"><a href="#In-Other-News" class="headerlink" title="In Other News"></a>In Other News</h2><p>I’ve been busy lately; here’s some of the things I’ve been working on.</p>
-<p>I’ve created a curated list of Twine resources. Check it out <a href="https://resources.twinelab.net/" target="_blank" rel="noopener">here</a>.</p>
-<p>A new version of poof is in the works. This one is gonna have some pretty major additions.</p>
-<p>My custom macro collection is getting its biggest single update since the overhaul to v2. Several new macros, refactored code, a complete demo file, and more. The release of the new version of the collection will probably coincide with the next release of SugarCube, since some of the systems rely on new features in the pipeline.</p>
-<p>I have unfortunately not been spending much time on <em>Holy Land</em> lately, but a beta of <em>Deep Dive</em> is in the cards for later this year, and it will be coming to IFComp this year unless something crazy happens. Wish me luck!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/21/serious-1-0-1/" data-id="cjx5nhzyc000e4ss39b5ctogz" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2019/06/21/serious-1-0-1/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/serious/">serious</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -666,7 +671,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 13.33px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
+      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -675,7 +680,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -686,6 +691,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2020/01/23/custom-macros-2-5-0/">Custom Macro Collection v2.5.0 Release Notes</a>
+          </li>
         
           <li>
             <a href="/blog/2019/12/28/poof-1-6-0/">Poof v1.6.0 Release Notes</a>
@@ -703,10 +712,6 @@ ga('send', 'pageview');
             <a href="/blog/2019/07/18/hal-2-0-0/">HAL v2.0.0 Release Notes</a>
           </li>
         
-          <li>
-            <a href="/blog/2019/07/16/custom-macros-2-4-0/">Custom Macro Collection v2.4.0 Release Notes</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -719,7 +724,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Chapel<br>
+      &copy; 2020 Chapel<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
