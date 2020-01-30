@@ -77,6 +77,61 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-harlowe-macros-0-4-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2020/01/30/harlowe-macros-0-4-0/" class="article-date">
+  <time datetime="2020-01-30T12:19:56.000Z" itemprop="datePublished">2020-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/01/30/harlowe-macros-0-4-0/">Harlowe Macro Framework v0.4.0</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is a pretty massive update, complete notes can be found <a href="https://twinelab.net/harlowe-macro-api/#/changelog">in the changelog</a>. The biggest additions are:</p>
+<ul>
+<li>A local storage interface.</li>
+<li>More helpers and functions.</li>
+<li>Three new macro examples.</li>
+<li>Cleaned up and streamlined source code and build process.</li>
+</ul>
+<p>The additional macros are:</p>
+<ul>
+<li>A dialog macro for creating modal “windows” (like little pop-ups).</li>
+<li>An achievements system.</li>
+<li>A clamping macro.</li>
+</ul>
+<h3 id="Future-Plans"><a href="#Future-Plans" class="headerlink" title="Future Plans"></a>Future Plans</h3><p><a href="https://github.com/ChapelR/harlowe-macro-api/projects/1" target="_blank" rel="noopener">This project on the repo</a> details the plans I have headed toward a v1.0.0 release.</p>
+<p>I have put fixing the basic macros on hold indefinitely, as I don’t think it’s a big deal and fixes would require an API change, one I think would largely be for the worse.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2020/01/30/harlowe-macros-0-4-0/" data-id="ck60pi75q0000g0s36oddhl74" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2020/01/30/harlowe-macros-0-4-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/harlowe-macros/">harlowe-macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-harlowe-macros" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2020/01/27/harlowe-macros/" class="article-date">
@@ -588,53 +643,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-hal-1-3-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/06/25/hal-1-3-0/" class="article-date">
-  <time datetime="2019-06-25T18:12:01.000Z" itemprop="datePublished">2019-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/06/25/hal-1-3-0/">HAL v1.3.0 Release Notes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This version of HAL comes with a few important updates for greater compatibility with Harlowe 3, and fixes you’ll want even if you’ve stuck to Harlowe 2. </p>
-<p>The biggest addition is that HAL now preserves and restores it’s own state separately from Harlowe. In Harlowe 2, reloading the browser simply restarted the game, and this restarted HAL along with it. Loading a saved game had no meaningful effect on HAL. In Harlowe 3, browser reloads now preserve Harlowe’s state, but not in a way similar to loading a saved game. Instead, Harlowe reconstructs the history in a different way that completely ignores startup passages, meaning HAL tracks, playlists, and groups set up in such passages break even though the game itself is fine, and this failure was not handled well. </p>
-<p>Now, HAL will attempt to preserve it’s own state and restore it. This preservation only applies to tracks, playlists, and groups, and restores the ability of authors to use startup passages with these features. </p>
-<p>The menu API, however, cannot be easily serialized, and therefore must always be defined in user scripts. </p>
-<p>It is still gently recommended that you try to stick to Story JavaScript as much as possible, but this change should make it so you no longer <em>have</em> to rewrite code that was valid for Harlowe 2. </p>
-<p>Some other bug fixes, updates, and internal improvements are also included in this release, so it’s recommended you update even if the above problem wasn’t an issue for you. </p>
-<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>I will continue monitoring issue and clashes with Harlowe v3 and look into reported issues on mobile devices.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/25/hal-1-3-0/" data-id="cjxc4ev100000qss3n7nzobj2" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2019/06/25/hal-1-3-0/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hal/">hal</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -663,7 +671,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 10px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
+      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 13.33px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -685,6 +693,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/blog/2020/01/30/harlowe-macros-0-4-0/">Harlowe Macro Framework v0.4.0</a>
+          </li>
+        
+          <li>
             <a href="/blog/2020/01/27/harlowe-macros/">Harlowe Macro Framework (v0.3.0)</a>
           </li>
         
@@ -698,10 +710,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2019/12/12/twine-2019/">Twine in 2019</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/12/11/poof-1-5-0/">Poof v1.5.0 Release Notes</a>
           </li>
         
       </ul>
