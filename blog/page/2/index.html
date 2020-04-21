@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
 <!-- Google Analytics -->
@@ -38,7 +38,7 @@ ga('send', 'pageview');
   
   <link rel="stylesheet" href="/blog/css/style.css">
 </head>
-
+</html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -77,6 +77,78 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-custom-macros-2-3-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/06/28/custom-macros-2-3-0/" class="article-date">
+  <time datetime="2019-06-28T08:10:06.000Z" itemprop="datePublished">2019-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/06/28/custom-macros-2-3-0/">Custom Macro Collection v2.3.0 Release Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is a pretty big update, so we’re gonna break this all into chunks and go through it piece-by-piece. As a brief overview, the changes are: </p>
+<ul>
+<li>Three brand new macros / macro sets / scripts. </li>
+<li>One additional system from v1.x of the collection has been rewritten and re-added: the cycles system. </li>
+<li>Several scripts have been refactored to better adhere to best practices, improve performance, and rise to my evolving standard for code quality. These changes are internal and shouldn’t effect you as a user. </li>
+<li>The documentation has been improved, and the collection how has a dedicated web page at <a href="https://macros.twinelab.net" target="_blank" rel="noopener">https://macros.twinelab.net</a> </li>
+<li>A <a href="https://twinelab.net/custom-macros-for-sugarcube-2/demo/">demo project</a> to show off the basic functionality of each system. </li>
+<li>Finally, a <a href="https://twinelab.net/custom-macros-for-sugarcube-2/#/changelog">changelog</a> has been added so that changes can be tracked more easily. The v2.3.0 update represents the biggest update since v2.0.0, so it seemed wise to start documenting these changes more clearly. </li>
+</ul>
+<h2 id="New-Systems"><a href="#New-Systems" class="headerlink" title="New Systems"></a>New Systems</h2><p>I’ve added a <code>&lt;&lt;css&gt;&gt;</code> macro that lets authors programmatically customize the CSS style rules of elements on the page. This is still the <em>worst</em> way to change CSS, but it is useful in certain scenarios. </p>
+<p>The next addition is the meters macro set. It gives authors access to fully customizable meters for things like health bars, timers, and progress bars, all in SugarCube macro code. It has a few stipulations and limitations you need to be aware of to make good use of it, but I think it works well for what it is. It also includes a JavaScript API if you’re into that sort of thing. </p>
+<p>The final addition are the pronoun templates, a complete, drop-in pronoun configuration system for SugarCube leveraging the brand new <code>Template</code> API and syntax, and it can plug in to the <code>Setting</code> API as well. </p>
+<h2 id="The-Cycles-System-v2"><a href="#The-Cycles-System-v2" class="headerlink" title="The Cycles System v2"></a>The Cycles System v2</h2><p>The new cycles system is similar to, but better, than the old implementation. Code written for the old system will not be compatible with this one. Check the docs for more on how the new system works and how you may need to update your code. </p>
+<p>The only other system that is worth bringing forward to v2 is the consumables inventory system. If I do so, it will be as an extension to the existing Simple Inventory v2.x system. </p>
+<h2 id="Refactored-Scripts"><a href="#Refactored-Scripts" class="headerlink" title="Refactored Scripts"></a>Refactored Scripts</h2><p>The Simple Inventory, the Playtime system, the operations API (the dice roller and fairmath systems), and the fullscreen macros have all been refactored. Only the fullscreen macros and operations API have seen any end-user changes, in the form of a proper JavaScript-facing API for the former and support for Fate/Fudge dice for the latter (e.g., <code>&quot;2dF&quot;</code>). That said, all of these systems should now be more stable and perform better, and their code should conform better to best practices. </p>
+<h2 id="Documentation-Changes"><a href="#Documentation-Changes" class="headerlink" title="Documentation Changes"></a>Documentation Changes</h2><p>In addition to a shiny new website, much of the documentation has been clarified, improved, and fixed and several new examples have been added to several pages, while previously undocumented features have stabilized and been documented. </p>
+<p>You don’t <em>need</em> to re-read any of the docs, as none of the changes are specifically breaking. </p>
+<h2 id="The-Demo-Project"><a href="#The-Demo-Project" class="headerlink" title="The Demo Project"></a>The Demo Project</h2><p>The demo project includes demonstrations and examples of the <em>basic</em> usage of each system, and provides source code for each example passage, so that users can see how exactly each example is put together on the code side. </p>
+<p>Links to the demo and each relevant passage are in the documentation. </p>
+<h2 id="The-Changelog"><a href="#The-Changelog" class="headerlink" title="The Changelog"></a>The Changelog</h2><p>The changelog is mostly accurate to my recollection, though there may be some gaps or inconsistencies between it and the repo’s commit history. Since I typically only create releases when a system is retired, given the nature of this project, some changes that happened over short periods of time or weren’t given specific version numbers (e.g., fixed typos in the docs) have been retroactively bundled together and given a version number. </p>
+<p>Going forward, I intend to follow semantic versioning a little more closely for the sake of everyone’s sanity. </p>
+<h2 id="Other-News"><a href="#Other-News" class="headerlink" title="Other News"></a>Other News</h2><ul>
+<li>My proofing format, <a href="https://poof.twinelab.net" target="_blank" rel="noopener">poof</a>, has received a big update as well <a href="https://twinelab.net/blog/2019/06/24/poof-1-3-0/">in v1.3.0</a>. </li>
+<li><a href="https://hal.twinelab.net" target="_blank" rel="noopener">HAL (my Harlowe audio library)</a> has received an update for better compatibility with Harlowe 3 <a href="https://twinelab.net/blog/2019/06/25/hal-1-3-0/">in v1.3.0</a>. </li>
+<li>My episodic fiction framework for the web, <a href="https://serious.twinelab.net" target="_blank" rel="noopener">Serious</a>, has reached <a href="https://twinelab.net/blog/2019/06/21/serious-1-0-1/">v1.0.0</a>. </li>
+<li>The <a href="https://github.com/ChapelR/tweego-setup" target="_blank" rel="noopener">tweego-setup boilerplate</a> and tooling was <a href="https://github.com/ChapelR/tweego-setup/blob/master/docs/changelog.md" target="_blank" rel="noopener">updated recently</a> to address some issues with Babel and ES6 to ES5 transpilation. </li>
+</ul>
+<h2 id="Coming-Soon"><a href="#Coming-Soon" class="headerlink" title="Coming Soon"></a>Coming Soon</h2><ul>
+<li>My <a href="https://github.com/ChapelR/tweego-installer" target="_blank" rel="noopener">tweego-installer</a> will get its bundled formats updated in the coming month or so; I expect a v1 release of Chapbook and a new Harlowe version to be on the way soon, so I will wait for a bit before updating it’s SugarCube version to 2.29.0. </li>
+<li>Once more compilers adopt the new <a href="https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md" target="_blank" rel="noopener">Twee3 specification</a>, poof’s default Twee encoding method will be set to Twee3. Chapbook support will also be forthcoming, but probably later in the year. </li>
+<li>I’m investigating issues with HAL’s functionality on mobile devices, particularly iOS. If you’ve encountered weird behavior from HAL on mobiles, please comment on <a href="https://github.com/ChapelR/harlowe-audio/issues/14" target="_blank" rel="noopener">this issue</a>. </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2019/06/28/custom-macros-2-3-0/" data-id="ck9a24aav0001fcs3x0wi2p7v" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2019/06/28/custom-macros-2-3-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/macros/">macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hal-1-3-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/06/25/hal-1-3-0/" class="article-date">
@@ -110,7 +182,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/25/hal-1-3-0/" data-id="cjxc4ev100000qss3n7nzobj2" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/06/25/hal-1-3-0/" data-id="ck9a24aaz0005fcs38ejgwnlg" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/06/25/hal-1-3-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -182,7 +254,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/24/poof-1-3-0/" data-id="cjxa9j07c0000qgs3aqeksd8d" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/06/24/poof-1-3-0/" data-id="ck9a24abb000efcs3i7veeml3" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/06/24/poof-1-3-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -231,7 +303,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/06/21/serious-1-0-1/" data-id="cjx5nhzyc000e4ss39b5ctogz" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/06/21/serious-1-0-1/" data-id="ck9a24abf000jfcs39jizke9u" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/06/21/serious-1-0-1/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -274,7 +346,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/04/05/hal-1-2-0/" data-id="cjx5nhzxy00014ss3nnsatrke" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/04/05/hal-1-2-0/" data-id="ck9a24aay0004fcs3jem4z5q5" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/04/05/hal-1-2-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -322,7 +394,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/04/05/poof-1-2-0/" data-id="cjx5nhzy500054ss3hxwdmc8b" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/04/05/poof-1-2-0/" data-id="ck9a24abc000ffcs30j5jt2ec" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/04/05/poof-1-2-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -368,7 +440,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/04/03/poof-1-1-0/" data-id="cjx5nhzya000c4ss3fdtgkw8j" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/04/03/poof-1-1-0/" data-id="ck9a24aba000dfcs3l8aluzsi" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/04/03/poof-1-1-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -414,7 +486,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/01/18/hlg-com/" data-id="cjx5nhzy400044ss3x2ceibjp" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/01/18/hlg-com/" data-id="ck9a24ab20008fcs3j9xhih08" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/01/18/hlg-com/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -506,7 +578,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/01/15/serious/" data-id="cjx5nhzyu000q4ss3ulmdfhro" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/01/15/serious/" data-id="ck9a24acp0016fcs3yho3zgc0" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/01/15/serious/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -551,86 +623,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2018/11/21/poof-1-0-0/" data-id="cjx5nhzy9000a4ss3vqhgdzu2" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2018/11/21/poof-1-0-0/" data-id="ck9a24ab8000cfcs3ibmb747w" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2018/11/21/poof-1-0-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-holyland" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2018/11/19/holyland/" class="article-date">
-  <time datetime="2018-11-19T05:55:31.000Z" itemprop="datePublished">2018-11-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/11/19/holyland/">Holy Land: Second Coming</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It’s finally time to talk about <em>Holy Land</em> again. The game feels like it’s been in development hell, almost, a weird issue for a personal project. The issues facing its development have to some extent been author-imposed, but to a greater extent were a result of my inexperience as a developer, and the soul-crushing realization that the game needed a page-one (byte-one?) rewrite.</p>
-<p>But that rewrite has been going on for a year (though not full-time, as I’ve been working on other smaller projects and <em>Deep Dive</em>) and the project has finally started to take shape. This is the first time I’ve been able to actually <em>play</em> the new version of the game, and it was a rewarding step, and one that’s left me wanting to discuss it.</p>
-<p>Before we get into that, though, a caveat: <em>Holy Land</em> is a ways off. As I’ve transitioned from development of <em>Deep Dive</em> to content writing, I’ve spent more and more time on development for <em>Holy Land</em>, but that development work is not all that close to completion. It will still probably come out sometime after <em>Deep Dive</em>, and I’m not attaching a release date or window to that project yet. But I do have a few things I want to share with you about the nature of the new version of <em>Holy Land</em>. First, though, let’s talk about that rewrite.</p>
-<h2 id="Spaghetti"><a href="#Spaghetti" class="headerlink" title="Spaghetti"></a>Spaghetti</h2><p><em>Holy Land</em> (the original version) started development in early November 2016, in Twine 1, SugarCube 2. At that time I was a novice with Twine, web development, knew no JavaScript, and was generally ill-equipped to program a game of this complexity. While the game and its systems obviously worked, they were poorly implemented. The biggest issue was my own growth. I became a way better programmer as I went, and trying to socket better code onto a rickety code base was quickly becoming a mess. Essentially, this version of the game became playable <em>very</em> quickly; as early as late December, the game’s combat systems and UI were usable, and a prototype was released in late January. I don’t want to undersell the prototype, because I think it was impressive from the end-user side. From the development side, though, I might as well have been using line numbers.</p>
-<p>As I bolted more and more code onto it, the game started to buckle under its own weight. It became a sunk-cost fallacy for me. The game <em>worked</em> even if updating something as simple as the length of status effects took ten lines of code across various passages, widgets, and story files. I was constantly convincing myself that the finish line was the most important thing–no one would care that the code was garbage. Of course no one would care, so I was half right. But adding newer, better written features (my custom macro set first entered the world as a series of subsystems for <em>Holy Land</em>) became a chore–I’d have to remember where to go and what to change every time I improved something.</p>
-<p>It was when Tweego 1.0.0 (or so) released and I started messing with the program that I realized I wanted to move development to Tweego. Twine 1 has issues compiling large stories, and while I managed to work around some of them, by this point the writing was on the wall. Exporting the Twine 1 files to Twee source confirmed what I knew all along, I couldn’t work with this project anymore. Seeing my source code laid bare in a text file reinforced the idea that the game had become an unworkable mess. I knew I had to rewrite the code, so I started by trying to pull out and separate the systems into self-enclosed modules that could be worked on independently. This became such a rat’s nest that I ultimately had no choice but to give up.</p>
-<p>In November 2017, development of this version of <em>Holy Land</em> completely ceased. I later grew concerned that no part of the game would <em>ever</em> release, and so I released a “second prototype” in March the next year. There were good concepts and ideas in the game, and I wanted to make sure something of its year-long development saw the light of day. By this point, I wasn’t concerned about a bad release “tarnishing my brand”, something I initially considered could be an issue when development stopped. I just wanted <em>something</em> of it to survive in case I became unable to restart it and get it to a proper release.</p>
-<h2 id="Reinventing-the-Wheel"><a href="#Reinventing-the-Wheel" class="headerlink" title="Reinventing the Wheel"></a>Reinventing the Wheel</h2><p>I was still getting better pretty rapidly at programming, and it occurred to me that starting over immediately wasn’t an ideal use of my time. I threw myself into working on <em>Deep Dive</em>, a project I started for the Twine discord server’s game jam which rapidly grew into something large and unfit for that event, and continued answering questions across a variety of Twine communities, moderating many of those communities, and developing add-ons, tools, and other software for the community.</p>
-<p>I conceived of a complete, bespoke “engine” for <em>Holy Land</em> in mid-2017, and started working on it on and off starting in late 2017 or early 2018. The idea was fairly simple. The game needed every system to be a complete, self-contained module that could be imported into a generic “template” that would hold these systems together and bind them to data that held all the game’s characters, enemies, gear, spells, etc. This would also allow me to release <em>Holy Land</em> as an episodic game (my file system macro set is designed to allow save-importing across episodes, and was created for this engine). I call it the HLE (<em>Holy Land</em> Engine, yes I’m not all that creative when I don’t have to be).</p>
-<p>For the interested, the engine contains the following components:</p>
-<ul>
-<li><strong>Fractal/Fracas</strong>: This is the game’s combat implementation. If any part of the engine is ever released for other authors to use, this will be it.  </li>
-<li><strong>Pressure</strong>: Named for my old SugarCube stylesheet set, this is a library of UI components for the game.  </li>
-<li><strong>CharacterCore</strong>: This system takes raw character data and creates SugarCube serialize-able/save-able custom objects with all sorts of goodies.  </li>
-<li><strong>Noteworthy</strong>: A side-quest and journal implementation.  </li>
-<li><strong>Quartermaster</strong>: An equipment system.</li>
-</ul>
-<p>In addition to these major systems, a number of smaller systems also deserve some mention: a traits system, use-based leveling that compliments experience-based leveling, a personality system for the protagonist that allows them to subtly change in reaction to player choices, and even some surprises I’ll keep close to my chest for now.</p>
-<p>In short, the HLE is in a good place. The second version of the game itself doesn’t really exist as such, and I plan to take my time with it. But having an “engine,” though incomplete, that is able to spit out functional, fun (if I do say so myself) combat encounters really, really got me excited to spend more time on this game. These small-ish victories are all that keeps creators going when undertaking massive, long-term projects like this.</p>
-<h2 id="What’s-New"><a href="#What’s-New" class="headerlink" title="What’s New?"></a>What’s New?</h2><p>The second version of the game is very similar to the first, but with a few things simplified and a few others expanded. Something I’ve always wanted to achieve is a sort of load-out-based RPG, where builds and gear are the focus over moment-to-moment strategy. Still, I think the combat in the original version didn’t have enough flair. For this reason, I decided to add a few new bells and whistles. Chief among these is cast-able spells with a cooldown system, a revamped attack system (no more mashing, combos are still possible but work a bit differently) and more dangerous enemies that have more abilities in common with players.</p>
-<p>While I’m excited to share more, it’s hard to really explain something like this without letting you play it, and I’d prefer to let the game speak for itself someday through a prototype. The biggest change, though, I think, is the episodic structure. <em>Holy Land</em> will release in chapters now rather than as a single lengthy experience. I also may try to monetize the game in some way, though I haven’t made decisions regarding that quite yet. It won’t be ads, though.</p>
-<h2 id="Yet-a-Ways-Off"><a href="#Yet-a-Ways-Off" class="headerlink" title="Yet a Ways Off"></a>Yet a Ways Off</h2><p>Don’t expect <em>Holy Land</em> in any reasonable amount of time. At best you can expect some closed-beta prototyping on the Discord server, and maybe a bit of showing off via a short demo sometime next year. I can’t stress enough that this is more of a sharing my excitement sort of post than an announcement, so keep that in mind.</p>
-<h2 id="Project-Round-Up"><a href="#Project-Round-Up" class="headerlink" title="Project Round Up"></a>Project Round Up</h2><p>The year is ending, so here’s the status of some of my other projects right now and what you can expect nest year:</p>
-<ul>
-<li><strong>poof</strong>: My comment-based proofing story format is close to a full release. Once it hits 1.0.0 in a few weeks, it’ll leave active development and enter maintenance until I have further ideas for it.  </li>
-<li><strong>HAL</strong>: My Harlowe Audio Library is currently in maintenance. I’m happy with how it turned out, but I will admit that it isn’t seeing the amount of use I was expecting. Harlowe users seem to kind of hate it. I think it’s just scary in certain ways–it feels too JavaScript-y, perhaps, or like there’s just too much there and it’s too complicated, and even a metric ton of documentation doesn’t seem to help much. In short, those who have managed to use it seem to think it’s at least good enough to keep using, but many authors don’t seem to even try it. A second major version will attempt to address this someday, but for now, I think it’s like medicine: it’s good for you, but a spoonful of sugar could help.  </li>
-<li><strong>Custom Macros</strong>: In spite of there being no reason to be rushing out versions of this macro set, I still feel like I’m eternally behind with it. Expect new macros, more guides, a better demo, and improved docs throughout next year.  </li>
-<li><strong>Noble Avatars</strong>: <em>Sigh</em>. There’s lots of promise here, but I was hoping to get some additional assets for avatars to be able to really make this a thing. In my brain, I imagined Twine users who were good artists would be willing to provide more asset sets in a variety of styles, but it turns out that working for free isn’t a very tempting prospect. I don’t blame people for not wanting to do it, but it does sort of make dedicating my time to a dead-end project like this a hard sell. What’s here works, but I can’t justify finishing it and adding all the polish I wanted for it if there just isn’t much interest from artists in supporting it. And no, I can’t and won’t pay to generate art for an open-source project designed to help authors. I’ll pay for my own art, but that’s about it.  </li>
-<li><strong>Howler for Harlowe</strong>: I will begrudgingly fix things when absolutely necessary.  </li>
-<li><strong>Tweego Setup</strong>: I have a few updates planned for this repository, but it’s all small, and not very exciting stuff. Nothing that will dramatically change the way you use it or what it does, just a few fixes and some clean up.</li>
-<li><strong>An Unreleased Project</strong>: I’m making another piece of software that is unrelated to Twine that I’ll probably talk about here. It’s for writers wanting to create a certain kind of web content, and I don’t expect it to be that big a deal, but it’s something I want for myself, so I may as well release it in case anyone else wants something similar.</li>
-<li><strong>TwineLab</strong>: TwineLab.net itself will be going through a few changes next year too, and I’m considering adding Google analytics to it as well, though mostly to get used to using it rather than because I need the data. I’m also considering losing some of the ko-fi links I jammed everywhere, as it feels a bit tacky to me, and having those links everywhere has resoundingly <strong>not</strong> increased my income there (I am fortunate enough to not really need the money; I do all this Twine-stuff for fun on the side, so it’s not really a major issue, but I figured it’d be interesting to see what kind of support I could get, as people have asked about donating before). Something about asking for money for my projects here feels dirty to me anyhow, not exactly sure why, so I may end the ko-fi thing entirely.</li>
-</ul>
-<h2 id="Happy-Holidays"><a href="#Happy-Holidays" class="headerlink" title="Happy Holidays"></a>Happy Holidays</h2><p>If you read this blog, thanks for doing so! I hope your holidays are wonderful. I’m getting all this stuff out and off my chest now because I don’t plan on doing much blogging until next year. I’ll no doubt have more things to discuss then.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2018/11/19/holyland/" data-id="cjx5nhzyt000p4ss3j3sxsf1q" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2018/11/19/holyland/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/holyland/">holyland</a></li></ul>
 
     </footer>
   </div>
@@ -657,7 +655,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/harlowe-macros/">harlowe-macros</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/holyland/">holyland</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/macros/">macros</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/meta/">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/poof/">poof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/serious/">serious</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/thoughts/">thoughts</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/criticism/">criticism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/harlowe-macros/">harlowe-macros</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/holyland/">holyland</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/macros/">macros</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/meta/">meta</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/poof/">poof</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/serious/">serious</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/thoughts/">thoughts</a></li></ul>
     </div>
   </div>
 
@@ -667,7 +665,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 13.33px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
+      <a href="/blog/tags/criticism/" style="font-size: 10px;">criticism</a> <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 13.33px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -676,7 +674,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -687,6 +685,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2020/04/21/persona-5-royal/">Persona 5 Royal Review</a>
+          </li>
         
           <li>
             <a href="/blog/2020/01/30/harlowe-macros-0-4-0/">Harlowe Macro Framework v0.4.0</a>
@@ -702,10 +704,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2019/12/28/poof-1-6-0/">Poof v1.6.0 Release Notes</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/12/12/twine-2019/">Twine in 2019</a>
           </li>
         
       </ul>
