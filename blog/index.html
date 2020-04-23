@@ -77,6 +77,97 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-harlowe-macros-1-0-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2020/04/23/harlowe-macros-1-0-0/" class="article-date">
+  <time datetime="2020-04-23T07:36:56.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/04/23/harlowe-macros-1-0-0/">Harlowe Macro Framework v1.0.0</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>My unofficial custom macro framework for Harlowe actually just reached version 1.0.1, but I didn’t have time to write up a release note when I released v1.0.0, so I’m writing these now. This version, 1.0.1 just adds a few new macros and addresses an error in the download utility, so the framework itself hasn’t changed. I have to version-bump it any time I release macros because of how the download utility works, though. </p>
+<p>Version 1.0.0 didn’t really change much compared to 0.4.1, just featuring clearer names for APIs and cleaned up docs and such. So really there isn’t much to talk about, or there wouldn’t be. Instead of talking about the changes in 1.0.0, I think it could be more interesting and enlightening to talk about how I designed this framework and why I made the decisions I did. This may get technical at times, but I feel like the overarching story of this framework is pretty easy to grasp and shouldn’t require too much knowledge, of JavaScript or of the inner workings of Harlowe. </p>
+<h2 id="Harlowe-Hacks"><a href="#Harlowe-Hacks" class="headerlink" title="Harlowe Hacks"></a>Harlowe Hacks</h2><p>About two years ago, when I was working on Harlowe Audio Library, I was playing with the idea of exposing some Harlowe APIs used by the library to users, since I needed to access at least the State and Engine APIs for HAL. I didn’t wind up doing this because I was worried about the ramifications. Harlowe’s internal APIs aren’t designed for use by authors, and it’s easy to cause problems if you aren’t familiar with the inner workings of the engine. </p>
+<p>As an example, consider the State, which is the API that handles story variables. Exposing this API to a user would let them set and retrieve Harlowe story variables from JavaScript code. That’s great! Now you can have various user inputs or offload hefty work to more performance-friendly JavaScript code! Except that the way Harlowe handles history means that storing data in story variables that the engine can’t serialize causes all kinds of issues. The engine can only serialize primitives, arrays, sets, and maps. Not even generic objects! And the format wouldn’t error or warn you, it would usually just try to keep going, making the problems even harder to find. I ultimately decided that if I wanted to expose these APIs, then I would probably need to create wrappers around them that checked for potential problems and threw useful error messages, and that if I was going to build end-user friendly API wrappers, then that was well beyond the scope of an audio library. </p>
+<p>So I took my ideas to a project I nicknamed “Harlowe Hacks” and just dumped a bunch of code in there that I could one day release as a standalone project that did things like expose internal APIs in a safe(ish) way. While that project did eventually become my custom macro framework, custom macros were not really the focus at that point; it was just scope hacked Harlowe APIs with wrappers around them to prevent massive errors. I had no intention of messing with custom macros because I felt that Harlowe’s internal macro APIs were onerous to work with a difficult to understand. </p>
+<p>After a few months I felt that Harlowe Hacks wasn’t really going anywhere. Working on Harlowe in JavaScript, even with my code there to fill in some gaps, still required a lot of understanding of Harlowe’s internals. Realistically, if you want an extensible format, you should probably just use SugarCube. This is still largely true, but it’s not helpful to the many users who have major projects already going in Harlowe, and users who have legitimate reasons to prefer Harlowe over SugarCube, but just want a normal textbox instead of an ugly prompt. It’s true but it’s also unhelpful, and I wanted to do better, but didn’t know how. </p>
+<p>I shelved the project and moved on. </p>
+<h2 id="Everyone-Hates-HAL"><a href="#Everyone-Hates-HAL" class="headerlink" title="Everyone Hates HAL"></a>Everyone Hates HAL</h2><p>While I had made HAL’s APIs as simple as possible, it was still JavaScript, and many Harlowe users proved more resistant to even considering using it than I could have ever imagined. There is a sort of flow to suggesting HAL to most Harlowe users. They ask how to use audio in Harlowe, and someone suggests HAL. They then claim it didn’t work, or was too much since all they wanted was X, Y, or Z, or they gave up on having audio at all after being frustrated that everyone kept suggesting this “compicated” HAL thing. Not very satisfying to see, for me, but I knew I had to swallow my pride and learn whatever lesson was wrapped in this reaction. There were plenty of people who did try HAL, of course, and ultimately figured it out and swore by it. But the overall reaction to HAL was disdain. While its true that the documentation could be gentler and read more like a guide, I knew the real thing people wanted was macros. </p>
+<p>After a few illuminating discussions with GreyElf, Akjosch and TheMadExile on the Twine discord, I dived into Harlowe’s macro APIs. I hated what I found. I still hate it. The macro APIs, to say the least, are not designed the way I would do it. They’re bizarre, esoteric, and overly modular. They also require tons of type checks and other confusing, interlocking APIs that I largely don’t feel are necessary or helpful. </p>
+<p>For HAL 2, I only needed the macros to run a function and return the occasional primitive value, so I wrote around the issue, constructing a simplified API that took an object full of functions and created a macro using the property’s name, then passed the macro arguments directly to the function inside. Everything else, including type checks, was circumvented by this simplified API and ignored. </p>
+<blockquote>
+<p>HAL 2’s Macro Code</p>
+</blockquote>
+<script src="http://gist-it.appspot.com/http://github.com/chapelr/harlowe-audio/blob/master/src/js/get.js?slice=133:155"></script>
+
+<p>With improved documentation and a complete macro API, HAL 2 has proven to be much more popular. Some users still seem to approach it with skepticism and hesitancy, but the numbers don’t lie. HAL 2 gets downloaded three or so times as much in a given month, on average, that HAL 1 did at its peak. That’s really neither here nor there, though. The point is that I made a simplified, stripped down macro API for HAL 2 and that was a breakthrough for this project as much as for that one. </p>
+<p>While support for HAL 2, among other things, occupied me for a few weeks thereafter, I was starting to think about Harlowe Hacks again, but ultimately made no decisions regarding it. </p>
+<h2 id="A-Custom-Macro-Collection-for-Harlowe"><a href="#A-Custom-Macro-Collection-for-Harlowe" class="headerlink" title="A Custom Macro Collection for Harlowe"></a>A Custom Macro Collection for Harlowe</h2><p>In December 2019, I conceived of the idea of a custom macro collection for Harlowe and that became the basis for this framework. Unlike my SugarCube collection, this macro collection would need to be built around a central library file that added the required functionality. </p>
+<p>That core framework would need to be simplified, similar to HAL. It would also require safe API access like what Harlowe Hacks was designed to provide. Mix in some helpers and other basic features, and you have this custom macro framework. </p>
+<blockquote>
+<p>The framework’s simple macro creation function. Compare and contrast with HAL 2’s approach.</p>
+</blockquote>
+<script src="http://gist-it.appspot.com/http://github.com/ChapelR/harlowe-macro-api/blob/master/src/macro.js?slice=15:33"></script>
+
+<p>I had to make some decisions when providing the custom macro API. I ultimately made several decisions that I was pretty conflicted on, and I think it’s worth looking at those decisions in detail and presenting my reasoning. While I don’t think any of the decisions I made will be particularly controversial, I can imagine reasonable people coming to different conclusions and thus being interested in how and why I made the choices I did. We’ll be looking at a bit of code to ground us, but I’ll try not to get too into the weeds. Most of these decisions were actually not made for strictly technical reasons anyway. </p>
+<h3 id="A-Single-Macro-Function-for-Two-Types-of-Macros"><a href="#A-Single-Macro-Function-for-Two-Types-of-Macros" class="headerlink" title="A Single Macro Function for Two Types of Macros"></a>A Single Macro Function for Two Types of Macros</h3><p>It is possible to create two types of macros with this framework. One type simply executes a function, and can accept arguments and return values. The other type, “changer” macros, act on a hook (internally called a descriptor by the framework and Harlowe’s rendering engine). The framework omits “command” macros which are another class of macros used internally by Harlowe because they don’t really provide any features the other two don’t. </p>
+<p>I decided to determine which type of macro is needed by the number of functions the user provides to the <code>Harlowe.macro()</code> function: changer macros execute two functions, while “basic” macros execute only one. In the former, the first function typically performs set up and type checking, while the second has access to the hook. </p>
+<blockquote>
+<p>The framework determines which type of macro to create based on the arguments provided.</p>
+</blockquote>
+<script src="http://gist-it.appspot.com/http://github.com/ChapelR/harlowe-macro-api/blob/master/src/macro.js?slice=66:79"></script>
+
+<p>I could have split this into two separate functions, rather than determining which kind of macro to create based on the arguments passed, and there is a solid argument in favor of that, since the current function could be considered overloaded. That said, I think a single function works fine since there will never be any overlap. Theoretically a two function API could allow changer macros to omit the first function, but that is really the only benefit to having to separate functions. </p>
+<p>I don’t like the aesthetic of an API like <code>Harkowe.macro.changer(...)</code>, and I don’t think it’s hard to remember or confusing the way it is. I also already strongly dislike that Harlowe has different macro types with different API calls to set them up, and I think that’s a far more confusing way to approach it, especially for users experienced with making macros in SugarCube. </p>
+<p>All you have to remember is this: if you just want to run some code or return a value, you only need one function. If you want to access or act on a hook, you need to provide a second function that handles the hook specifically. </p>
+<h3 id="Macro-Execution-Context"><a href="#Macro-Execution-Context" class="headerlink" title="Macro Execution Context"></a>Macro Execution Context</h3><p>Users need to access a lot of information inside a macro. SugarCube exclusively uses an execution context class to do this: each macro has a context instance that holds all the relevant data, including arguments, the macro name, payloads, etc. Harlowe passes all this data in as arguments to the executing fucntion instead. This framework does both. </p>
+<p>Arguments passed to the macro are passed directly to the executing function(s), straight through, as entered by the user into the macro. The rest of the data is handled by a SugarCube-esque execution context (the arguments may also be accessed from the context for those who prefer that). I felt that this kept function calls clean and concise, and it allowed be to include functionality not present in Harlowe’s macro APIs without much fuss. </p>
+<blockquote>
+<p>The macro execution context constructor.</p>
+</blockquote>
+<script src="http://gist-it.appspot.com/http://github.com/ChapelR/harlowe-macro-api/blob/master/src/context.js?slice=22:40"></script>
+
+<p>Of course, adding a whole execution context prototype and instantiating it for each macro call could fairly be called overkill when I could have easily just passed everything I wanted to include in as arguments, but I think the other conveniences of this implementation make up for it, particularly with how type checks are handled in the framework. </p>
+<h3 id="Simplified-Type-Checking"><a href="#Simplified-Type-Checking" class="headerlink" title="Simplified Type Checking"></a>Simplified Type Checking</h3><p>Harlowe introduces strict typing into its engine, but the way it does so for macro arguments is laborious for devs to implement. This framework simplifies the process and makes it optional (but <em>highly</em> recommended). Calling a method on the context and passing in an array of expected types mapped to each argument, with special syntax for providing multiple options for each argument, allows you to quickly check types and be done with it. This process is super simple and clean, if I do say so myself, and is possible because of the way the execution context is handled as a prototype. </p>
+<blockquote>
+<p>Code for the type checking method of the macro context prototype.</p>
+</blockquote>
+<script src="http://gist-it.appspot.com/http://github.com/ChapelR/harlowe-macro-api/blob/master/src/context.js?slice=71:102"></script>
+
+<h2 id="The-Future"><a href="#The-Future" class="headerlink" title="The Future"></a>The Future</h2><p>I hope this post sheds some light on why and how I designed this framework. I’ve already been porting a lot of my custom macros over from SugarCube, and adding some systems to Harlowe that I think it needs, like clamping and dialogs. I plan to add new macros to the collection as I make them for Harlowe users, and I encourage users to share their macros, too. You can reach out to me in an issue or PR over on the repo if you’ve made something you’d like to share using this framework. </p>
+<p>My ultimate goal is to have a stable bench of custom macros for Harlowe users to browse and use, just like my macros for SugarCube. There are, of course, some features that will remain out of reach, but I hope this helps users who feel more comfortable with Harlowe or who prefer it to be able to squeeze more out of it. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2020/04/23/harlowe-macros-1-0-0/" data-id="ck9cef6ii000kbcs3m68dqkgf" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2020/04/23/harlowe-macros-1-0-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/harlowe-macros/">harlowe-macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-persona-5-royal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2020/04/21/persona-5-royal/" class="article-date">
@@ -132,7 +223,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2020/04/21/persona-5-royal/" data-id="ck9a24acq0019fcs3w26m0ugn" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2020/04/21/persona-5-royal/" data-id="ck9cef6j50018bcs37yix5rou" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2020/04/21/persona-5-royal/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -187,7 +278,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2020/01/30/harlowe-macros-0-4-0/" data-id="ck9a24ab10007fcs37al6t95f" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2020/01/30/harlowe-macros-0-4-0/" data-id="ck9cef6hm0001bcs3e97wsv3i" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2020/01/30/harlowe-macros-0-4-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -251,7 +342,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2020/01/27/harlowe-macros/" data-id="ck9a24ab40009fcs3jroz374a" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2020/01/27/harlowe-macros/" data-id="ck9cef6hv0008bcs3uja1bf09" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2020/01/27/harlowe-macros/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -305,7 +396,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2020/01/23/custom-macros-2-5-0/" data-id="ck9a24aax0003fcs3mrirhxpk" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2020/01/23/custom-macros-2-5-0/" data-id="ck9cef6hp0004bcs3osad7fzp" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2020/01/23/custom-macros-2-5-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -348,7 +439,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/12/28/poof-1-6-0/" data-id="ck9a24abe000ifcs341qplkpu" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/12/28/poof-1-6-0/" data-id="ck9cef6i5000fbcs3q39japrb" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/12/28/poof-1-6-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -432,7 +523,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/12/12/twine-2019/" data-id="ck9a24acr001bfcs3dae4rlkg" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/12/12/twine-2019/" data-id="ck9cef6j9001dbcs3jcjljl88" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/12/12/twine-2019/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -477,7 +568,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/12/11/poof-1-5-0/" data-id="ck9a24abe000hfcs3cssbsh8n" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/12/11/poof-1-5-0/" data-id="ck9cef6i8000jbcs3wpm31baq" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/12/11/poof-1-5-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -535,7 +626,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/07/18/hal-2-0-0/" data-id="ck9a24ab00006fcs3wctjl62k" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/07/18/hal-2-0-0/" data-id="ck9cef6hu0007bcs31c7hsl24" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/07/18/hal-2-0-0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -581,57 +672,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/07/16/custom-macros-2-4-0/" data-id="ck9a24aaw0002fcs3vxfa9rzv" class="article-share-link">Share</a>
+      <a data-url="http://twinelab.net/blog/2019/07/16/custom-macros-2-4-0/" data-id="ck9cef6ho0003bcs3auc3oqsg" class="article-share-link">Share</a>
       
         <a href="http://twinelab.net/blog/2019/07/16/custom-macros-2-4-0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/macros/">macros</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-poof-1-4-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/07/15/poof-1-4-0/" class="article-date">
-  <time datetime="2019-07-15T09:02:06.000Z" itemprop="datePublished">2019-07-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/07/15/poof-1-4-0/">Poof v1.4.0 Release Notes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>A handful of usability improvements and a few new passage tag features round out what is mostly and internal upgrade here. The most obvious update for most users will be that the view settings have been moved out of the view menu, making the view menu completely dedicated to switching between the passage, JavaScript, and stylesheet views. The view options are now in their own little settings menu with checkbox-like inputs.</p>
-<p>I edited the CSS for tags in the passage card. Tags now also come with a little box displaying their tag color from the Twine 2 editor, and clicking on a tag now performs a filtering operation using that tag, just as if you had used <code>Tools &gt; Filter...</code> and typed in the tag’s name. You can now also clear filters by clicking the so-named button on the top-right of the passage view whenever any filtering is enabled.</p>
-<p>I also ironed out a few graphical bugs with how certain combinations of view options interacted and a few other rare and non-critical bugs I found.</p>
-<p>Poof also now has official internal support for Chapbook. Chapbook inserts that reference other passages have been added to the parser, and most of its globals have been added to the linter configuration.</p>
-<h2 id="In-future-releases"><a href="#In-future-releases" class="headerlink" title="In future releases:"></a>In future releases:</h2><p>I want to improve poof’s accessibility and usability, so some updates regarding that will probably be coming in the future. I also need to stay on top of Chapbook&mdash;it’s still in beta, so I intend to keep an eye on it and address any changes I need to on poof’s parser or linter.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/07/15/poof-1-4-0/" data-id="ck9a24abd000gfcs3e8vlxxkf" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2019/07/15/poof-1-4-0/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/poof/">poof</a></li></ul>
 
     </footer>
   </div>
@@ -668,7 +714,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/criticism/" style="font-size: 10px;">criticism</a> <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 13.33px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
+      <a href="/blog/tags/criticism/" style="font-size: 10px;">criticism</a> <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 16.67px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -690,6 +736,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/blog/2020/04/23/harlowe-macros-1-0-0/">Harlowe Macro Framework v1.0.0</a>
+          </li>
+        
+          <li>
             <a href="/blog/2020/04/21/persona-5-royal/">Persona 5 Royal Review</a>
           </li>
         
@@ -703,10 +753,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2020/01/23/custom-macros-2-5-0/">Custom Macro Collection v2.5.0 Release Notes</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2019/12/28/poof-1-6-0/">Poof v1.6.0 Release Notes</a>
           </li>
         
       </ul>
