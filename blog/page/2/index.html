@@ -77,6 +77,52 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-custom-macros-2-4-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/07/16/custom-macros-2-4-0/" class="article-date">
+  <time datetime="2019-07-16T10:10:06.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/07/16/custom-macros-2-4-0/">Custom Macro Collection v2.4.0 Release Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This release updates a few macros, adds one new macro set, and features a few meta and documentation updates.</p>
+<h3 id="The-Articles-Macro-Set"><a href="#The-Articles-Macro-Set" class="headerlink" title="The Articles Macro Set"></a>The Articles Macro Set</h3><p>This is a new macro set than tries to figure out and append macros to strings. Overall, I feel pretty clever: the macro will correctly determine the articles in pretty complex situations, like “a UFO”, “an X”, “an honor”, and “an 8”.</p>
+<h3 id="Pronoun-Templates-Update"><a href="#Pronoun-Templates-Update" class="headerlink" title="Pronoun Templates Update"></a>Pronoun Templates Update</h3><p>Not yet finished with my English language programming battle, I tackled pluralizing third person pronouns for the pronoun templates system. Again, it’s pretty clever, successfully getting “die” from “dies” and “fly” from “flies.” I was going to bundle this macro as an add-on, but it’s not terribly large so I built it in.</p>
+<h3 id="Dialog-API-Macro-Set-Update"><a href="#Dialog-API-Macro-Set-Update" class="headerlink" title="Dialog API Macro Set Update"></a>Dialog API Macro Set Update</h3><p>The <code>&lt;&lt;dialog&gt;&gt;</code> macro has two new child tags: <code>&lt;&lt;onopen&gt;&gt;</code> and <code>&lt;&lt;onclose&gt;&gt;</code> that let you run code when a dialog is opened or closed.</p>
+<h3 id="Documentation-Updates"><a href="#Documentation-Updates" class="headerlink" title="Documentation Updates"></a>Documentation Updates</h3><p>I fixed a few errors and organized the list of macros int groups for easier reading.</p>
+<h3 id="Download-Utility"><a href="#Download-Utility" class="headerlink" title="Download Utility"></a>Download Utility</h3><p>This update adds a <a href="https://macros.twinelab.net/download/" target="_blank" rel="noopener">download utility</a> that allows you build customized downloads to simplify the installation process, an idea I’ve been tossing around for a while. Just select the macros / scripts you want and click the download button and the utility will spit out a zip file containing a single JavaScript file and (in some cases) a single CSS file that you can then add to your project. This will become the recommended way to download custom macros going forward.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://twinelab.net/blog/2019/07/16/custom-macros-2-4-0/" data-id="ck9cef6ho0003bcs3auc3oqsg" class="article-share-link">Share</a>
+      
+        <a href="http://twinelab.net/blog/2019/07/16/custom-macros-2-4-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/macros/">macros</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-poof-1-4-0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/07/15/poof-1-4-0/" class="article-date">
@@ -545,98 +591,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-serious" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/01/15/serious/" class="article-date">
-  <time datetime="2019-01-16T02:28:35.000Z" itemprop="datePublished">2019-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/01/15/serious/">Serious Fiction for Serious People</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I’ve just released an alpha-ish version of <a href="http://twinelab.net/serious">Serious</a>, a project I’ve been working on for quite some time. Serious generates static websites from markdown, and there’s nothing really special about that, and that’s sort of the tale of Serious in general. It’s <em>specific</em> and narrow in scope. So let’s try to figure out why Serious exists, who it’s for, and whether I’ve wasted all of my time.</p>
-<h2 id="Serial-Fiction"><a href="#Serial-Fiction" class="headerlink" title="Serial Fiction"></a>Serial Fiction</h2><p>I’ve been wanting to get into writing a web serial for literal years. Initially I planned to use Blogger, or some other online blogging software, but what immediately struck me about those platforms was just how annoying it was to present structured, ordered content, particularly in an earliest-to-latest fashion. The only real thing you could do was create a hand-edited page on the site that collected all the episodes, in order, as links. So no excerpts or pretty stuff. Even next and previous buttons didn’t really work so well. They were there, sure, but often lost in a sea of suggestions, tags, similar posts–even ads.</p>
-<p>I never did write any serial fiction, and the idea kind of died off. It’s possible on a blogging platform, but you really are fighting the platform on this one. Not only are you getting a lot of things you don’t need, but the things you do need are kludges and amateurish link-lists.</p>
-<h2 id="AO3-and-FictionPress"><a href="#AO3-and-FictionPress" class="headerlink" title="AO3 and FictionPress"></a>AO3 and FictionPress</h2><p>I sort of forgot about <a href="https://www.fictionpress.com/" target="_blank" rel="noopener">FictionPress</a> (and its big brother, <a href="https://www.fanfiction.net/" target="_blank" rel="noopener">FanFiction.net</a>) at the time I was looking into doing a serial. <a href="https://archiveofourown.org/" target="_blank" rel="noopener">AO3 (Archive of Our Own)</a> wasn’t around yet; it’s a newer but very similar take on what the other two were doing. A few years later, maybe 2012-ish I wanted to try my hand at serial fiction again. I had actually seen some success releasing content on FictionPress in my late teens or early twenties, but nothing really episodic. When I came back to it, I found it…annoying. Not in any objective way; in a ‘not for me’ way. Even so, I know I can’t rag on a site that’s doing pretty good things without any explanation, so let me start by saying a lot of nice things.</p>
-<p>I think FictionPress is a good choice for a lot of people. Particularly, if you don’t have either a lot of time to figure out your own blog-like thing, or you like the idea of an in-built audience (even if you’ll still need to fight for it). This is also true of AO3 and FF.net to, to a greater or lesser extent. You create a profile, there’s light social media elements, and you can leave comments and reviews on stories, or post your own.</p>
-<p>They all look fairly similar, which makes sense: FF.net and FP.com were made by the same people, and AO3 seems to be a more modern take on the same concept. I’m not sure if AO3 was inspired directly or indirectly by the other two, in form or function, but they do wind up giving fairly similar vibes and user experiences.</p>
-<p>Here’s some screen grabs. I blurred the text so as to not repost the writing itself without permission.</p>
-<p><img src="https://i.imgur.com/9JRVbfW.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/HVbfAuh.jpg" alt=""></p>
-<p><img src="https://i.imgur.com/WxyKeG8.jpg" alt=""></p>
-<p>I’m absolutely <strong>not</strong> criticizing these sites for having similar sorts of functionality and UIs. It works well, and reinventing the wheel is for idiots (like me). Instead, what I think bothers me about these sites is that they <em>feel</em> like they miss the point for what I want. In the first place, I want my control over the theming of my story. In particular, I prefer a minimalist design when reading (think <a href="https://medium.com/" target="_blank" rel="noopener">Medium</a>), but I also want to be able to adjust what I don’t like about whatever pre-baked theme pops out of some web designer’s brain. Blogging and site-builder software typically gives users this ability.</p>
-<p>The second thing is that I’m not really interested in the social aspect, or at least this implementation of it. While there are dedicated readers and writers on these platforms, a lot of engagement comes from “trading” reads and comments. You comment me, I comment you. It’s a fine system, and I don’t mind critiquing others’ work or reading it. In fact I enjoy it. But I want people to read my work for the same reason I read theirs; because they want to. Now, any platform can have those gross tit-for-tat undertones, and networking is good in itself, even if you have to engage in a bit of that. But I feel like I could network in a deeper pool on Twitter and write content on my own platform without having to balance that smaller (though more effective short-term) social network baked into the fiction platform.</p>
-<p>One service I didn’t mention is <a href="https://www.wattpad.com/home" target="_blank" rel="noopener">WattPad</a>. I think WattPad solves some of the problems of these other sites–particularly, I like the design, the layout, the functionality, and the general reading experience. But it’s social networking aspect is way, way, way more intense. From my own experience and the experience of other authors I’ve talked to, people on WattPad almost never just happen upon your story–you’ve got to go out and network until you’re sick of it, and then network some more, and probably a little more. And then the views will trickle in. It’s honestly a waste of time. It’s possible to make it there, and I’m sure some people have had good experiences; hell the front page shows some who must have. But the time investment for it seems out of whack to me. Whichever group of people wound up writing on WattPad seem to be way more interested in writing than reading, way more so than the other platforms. I can’t really recommend it. Again, I have a small sample size, so who knows? You may have a good experience. But I think the other sites here are better in terms of getting your content into people’s eyes.</p>
-<h2 id="Serious-Begins"><a href="#Serious-Begins" class="headerlink" title="Serious Begins"></a>Serious Begins</h2><p>I’ve experimented, to a greater or lesser extent, with all of these platforms over the last decade or so. I don’t really <em>dislike</em> any of them. But as I learned more about web development and similar, I started to wonder, could I create a “blogging” engine for web serials? I knew, thanks to my time experimenting with <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> (which powers this blog), that such a thing was possible. And my time working with Twine prepared me to understand how exactly a rendering system in a single page web app could be put together.</p>
-<p>To start out, the goals of the Serious project were simple:</p>
-<ul>
-<li>Stories should be separated into episodes. Users should be able to easily see an index of episodes, a list of the most recent episodes, and jump quickly to the first or last episode.  </li>
-<li>Each episode should have comments and the comment thread for each episode should be unique.  </li>
-<li>The generated web app should be simple, easy to read, and require no meaningful input from the author, outside of configuration options.  </li>
-<li>The generated web app should support, at the very least, CSS themes.  </li>
-<li>The author should write their posts in markdown, allowing simple formatting, embedded images, links, and other HTML features with a low barrier to entry for non-programmers.  </li>
-<li>Installing and using Serious should be as simple as possible.  </li>
-</ul>
-<p>The first thing I needed to do was create an framework that accepted a configuration file and a series of markdown files, and covert those, along with an HTML template, into an app and all the required data. I wrote a script that created an HTML file from a template and a config file, and then created a simple file handler that turned a directory of markdown files into a series of JSON files.</p>
-<p>The second stage of development was the most fun for me; generating the web app. I started with <a href="https://marked.js.org/" target="_blank" rel="noopener">marked.js</a>, <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a>, and <a href="https://purecss.io/" target="_blank" rel="noopener">pure.css</a> as a jumping-off point and wrote Serious’s renderer from there. The renderer parses the URL and determines what exactly it needs to render based on that information; an episode, a <em>meta</em> post, or some sort of episode list (recent episodes in reverse order or the whole episode list in order). In addition to this, I wrote quick sidebar links to take the user to the first episode, the latest episode, the episode list, or the recent episodes list.</p>
-<p>Adding <a href="https://disqus.com/" target="_blank" rel="noopener">Disqus comments</a> wound up being incredibly simple, though at first I made the mistake of assuming it would be complicated in a single page app. Disqus is awesome, and this turned out to be a totally painless process. Implementing <a href="https://analytics.google.com/" target="_blank" rel="noopener">Google Analytics</a> was also a snap. After the rendering engine was complete, I hosted it on the <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">awesome jsDelivr CDN</a> to be served to the generated Serious apps.</p>
-<p>The next part did prove a challenge, as I’ve never actually made an <a href="https://www.npmjs.com/" target="_blank" rel="noopener">NPM</a> package before. I had to publish several versions in a row to get things working right, but I learned a lot. I’ve worked with <a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node</a> enough by now that the errors immediately made sense to me, but each error was hiding another, more critical error behind it. After releasing several versions in a row, I managed to get a stable working version out the door.</p>
-<p>The NPM package is a CLI (command-line interface) app called <code>serious</code>. You need Nodejs to use it, but installing it is as simple as typing <code>npm install -g serious-fiction</code> into the console. This gives you access to the CLI; <code>cd</code> over to an empty folder and type in <code>serious init</code> to get started! If you’re interested, <a href="https://twinelab.net/serious">learn more here</a>.</p>
-<p>I also wrote up a <a href="https://github.com/ChapelR/serious-themes" target="_blank" rel="noopener">couple themes for Serious</a>, and more are on the way. There aren’t any releases yet, but you can still grab the appropriate <code>theme.css</code> file to use one if you want to.</p>
-<h2 id="Is-Serious-Right-for-Me"><a href="#Is-Serious-Right-for-Me" class="headerlink" title="Is Serious Right for Me?"></a>Is Serious Right for Me?</h2><p>Serious is probably not a perfect solution for every author, as it will require some know-how or some willingness to learn to actually put it into use for you. For the sake of clarity about <strong>who</strong> I envision this software is for, here’s a quick run down.</p>
-<p><strong>Assuming you’re new to web development, are you willing to learn some programming?</strong></p>
-<p>Serious is not meant to be advanced, or complicated, but it does use a lot of programming tools that most professional web developers use to make websites. These tools are built to be fast, effective, and efficient, not easy to use. If you can learn to set the clock on a VCR, you can learn this stuff, but it does take time and willingness. It can be rewarding though, and Serious may be a good way to get started.</p>
-<p><strong>Are you looking specifically for a tool to help you make episodic content?</strong></p>
-<p>Serious does <em>one</em> thing. It is not for blogs, personal web sites, portfolios, or press kits. There are probably some interesting use-cases for Serious that I haven’t thought of, but it is what it is.</p>
-<p><strong>Are you sure you wouldn’t be better served by another platform?</strong></p>
-<p>Websites like <a href="https://www.fictionpress.com/" target="_blank" rel="noopener">https://www.fictionpress.com/</a> and <a href="https://archiveofourown.org/" target="_blank" rel="noopener">https://archiveofourown.org/</a>, mentioned above, allow authors to make episodic content, too. You should choose Serious instead if you want to create your own site and host it–you don’t want to be boxed into someone else’s platform, or if the concept of building it yourself seems interesting.</p>
-<h2 id="Help"><a href="#Help" class="headerlink" title="Help!"></a>Help!</h2><p>In the near-ish future, I will be writing a complete “author’s” guide to using Serious. This guide will be written specifically for authors who have no experience with programming or the command line. It will cover everything from getting started with Nodejs to writing markdown to deploying your site on GitHub or NeoCities for free, and also a bit about setting up a custom domain.</p>
-<p>This will not be a quick write, so if you’re interested in the software but just can’t figure out exactly how to <em>use</em> it, I hope to have something to help soon.</p>
-<h2 id="The-Future-of-Serious"><a href="#The-Future-of-Serious" class="headerlink" title="The Future of Serious"></a>The Future of Serious</h2><p>There’s a few other things I have in the pipeline for Serious. Some of these may not come to fruition, but I hope to get at least some out there.</p>
-<ul>
-<li>I would live to try to build an editor for Serious, basically a GUI application that has a rich text editor and compiles your Serious story for you. This is not a small undertaking, and I’d need to make sure the main project is stable and reliable before breaking ground on something like this.  </li>
-<li>A standalone executable will some someday. It will still be a command-line application, but it will come with an installer to set everything up for you and you won’t need Node, though Node with it’s ease of updating will always be the ideal way to use Serious. This will <em>definitely</em> happen, at least for Windows machines, but it will happen <em>after</em> the project stabilizes.  </li>
-<li>More themes are in the pipeline. I feel like we have a few bases covered already, but I’d like to get a few more out there.  </li>
-<li>Swappable templates for the html of the app is a long-term goal, but isn’t currently being worked on. This will allow <em>way</em> bigger UI changes than a theme will allow, and also allow the web app to load it’s scripts locally so authors can edit the rendering engine. Again, this is a long-term goal, no ETA.  </li>
-<li>I think the ability to run custom scripts in the app similar to the way the themes work isn’t a terrible idea. I would need to wait for the project to fully stabilize and have a reliable API, and I’d need to write API docs though. Whether this happens or not will probably be based on if it’s requested. It’s possible, but not low-hanging fruit.</li>
-</ul>
-<h2 id="In-Other-News"><a href="#In-Other-News" class="headerlink" title="In Other News"></a>In Other News</h2><p>Some other news from my world:</p>
-<ul>
-<li>Three shiny new macros have arrived in <a href="https://github.com/ChapelR/custom-macros-for-sugarcube-2" target="_blank" rel="noopener">my custom macro collection for Twine/SugarCube 2</a>.  </li>
-<li>The <a href="https://github.com/ChapelR/tweego-installer" target="_blank" rel="noopener">Tweego installer</a> will be leaving active development soon and seeing full release. After it enters maintenance mode, I’ll largely just keep it’s story formats and Tweego binaries up to date, and fix any bugs.</li>
-</ul>
-<p>This has already been a busy year for me! Once Serious stabilizes, I’ll probably take a break from my open source projects to get back to creating my own things, particularly my games. I also plan to start a web serial, but it may not be released under the “Chapel” pseudonym. Of course, seeing someone using Serious may tip you off if no one else likes the app, so we’ll see.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://twinelab.net/blog/2019/01/15/serious/" data-id="ck9cef6iq000pbcs3eypa2kve" class="article-share-link">Share</a>
-      
-        <a href="http://twinelab.net/blog/2019/01/15/serious/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/serious/">serious</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -665,7 +619,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/criticism/" style="font-size: 10px;">criticism</a> <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 16.67px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
+      <a href="/blog/tags/criticism/" style="font-size: 13.33px;">criticism</a> <a href="/blog/tags/hal/" style="font-size: 16.67px;">hal</a> <a href="/blog/tags/harlowe-macros/" style="font-size: 16.67px;">harlowe-macros</a> <a href="/blog/tags/holyland/" style="font-size: 10px;">holyland</a> <a href="/blog/tags/macros/" style="font-size: 16.67px;">macros</a> <a href="/blog/tags/meta/" style="font-size: 13.33px;">meta</a> <a href="/blog/tags/poof/" style="font-size: 20px;">poof</a> <a href="/blog/tags/serious/" style="font-size: 13.33px;">serious</a> <a href="/blog/tags/thoughts/" style="font-size: 13.33px;">thoughts</a>
     </div>
   </div>
 
@@ -674,7 +628,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li></ul>
     </div>
   </div>
 
@@ -685,6 +639,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2020/05/29/nioh-2/">Nioh 2 Critique</a>
+          </li>
         
           <li>
             <a href="/blog/2020/04/23/harlowe-macros-1-0-0/">Harlowe Macro Framework v1.0.0</a>
@@ -700,10 +658,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/blog/2020/01/27/harlowe-macros/">Harlowe Macro Framework (v0.3.0)</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2020/01/23/custom-macros-2-5-0/">Custom Macro Collection v2.5.0 Release Notes</a>
           </li>
         
       </ul>
