@@ -84,3 +84,8 @@ img[title="poof"] {
         margin-bottom: -1em;
     }
 }
+
+.container {
+  max-width: 888px;
+  margin: auto;
+}
