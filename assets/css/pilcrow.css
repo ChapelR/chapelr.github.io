@@ -7,6 +7,8 @@ h6 {
   position: relative;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
 h1:hover .header-link:before,
 h2:hover .header-link:before,
 h3:hover .header-link:before,
@@ -88,4 +90,31 @@ img[title="poof"] {
 .container {
   max-width: 888px;
   margin: auto;
+}
+
+body {
+  color: #fff5ff;
+  background-color: #2a2a2a;
+  font-family: "Baloo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar {
+  box-shadow: 0 0 3px #111;
+}
+
+.btn-container {
+  box-shadow: 0 0 4px #111;
+}
+
+.container p {
+  text-shadow: 0 0 4px #000;
+}
+
+a {
+  color: #d8d;
+  text-shadow: 0 0 2px #faf3;
+}
+
+a:hover, a:focus {
+  color: #f4b;
 }
