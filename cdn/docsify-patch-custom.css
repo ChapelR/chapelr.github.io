@@ -50,6 +50,14 @@ body {
     margin-left: 1rem;
 }
 
+.sidebar li {
+    padding: 0.2rem 1rem;
+}
+
+.sidebar li.active a {
+    color: #fafafa;
+}
+
 .sidebar a {
     color: #aaa;
 }
