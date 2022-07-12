@@ -77,3 +77,7 @@ body {
     background-color: #e5e5e5;
     scrollbar-width: thin;
 }
+
+.markdown-section tr:nth-child(2n) {
+  background-color: #1f1f1f;
+}
