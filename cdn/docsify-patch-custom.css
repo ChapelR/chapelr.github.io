@@ -89,3 +89,7 @@ body {
 .sidebar-toggle span {
   background-color: #f5f;
 }
+
+.app-nav li ul {
+    background-color: #111;
+}
